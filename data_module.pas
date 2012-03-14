@@ -10,6 +10,22 @@ type
     ADOConnection1: TADOConnection;
     Authors: TADOTable;
     DataSource1: TDataSource;
+    Categories: TADOTable;
+    DataSource2: TDataSource;
+    Books: TADOTable;
+    Reasons: TADOTable;
+    TakenBooks: TADOTable;
+    Readers: TADOTable;
+    Streets: TADOTable;
+    Restrictions: TADOTable;
+    AppliedRestrictions: TADOTable;
+    DataSource3: TDataSource;
+    DataSource4: TDataSource;
+    DataSource5: TDataSource;
+    DataSource6: TDataSource;
+    DataSource7: TDataSource;
+    DataSource8: TDataSource;
+    DataSource9: TDataSource;
     procedure ADOConnection1BeforeConnect(Sender: TObject);
   private
     { Private declarations }
@@ -30,7 +46,7 @@ begin
   result:=extractFileDir(expandFileName('anything'));
 end;
 
-// Makes connection string dynamic
+// Makes connection string at runtime.
 // it's necessary because delphi don't understand relative paths.
 procedure TDataModule1.ADOConnection1BeforeConnect(Sender: TObject);
 begin

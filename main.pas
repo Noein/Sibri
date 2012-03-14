@@ -11,10 +11,14 @@ const
 
 type
   TForm1 = class(TForm)
-    DBGrid1: TDBGrid;
     DebugConsole: TMemo;
     XPManifest1: TXPManifest;
-    TabControl1: TTabControl;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
+    StatusBar1: TStatusBar;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
