@@ -4,14 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, DBGrids, StdCtrls, XPMan, ComCtrls;
+  Dialogs, Grids, DBGrids, StdCtrls, XPMan, ComCtrls, Menus;
 
 const
   DEBUG = true;
 
 type
   TForm1 = class(TForm)
-    DebugConsole: TMemo;
     XPManifest1: TXPManifest;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
@@ -19,7 +18,27 @@ type
     TabSheet3: TTabSheet;
     TabSheet4: TTabSheet;
     StatusBar1: TStatusBar;
+    MainMenu1: TMainMenu;
+    File1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    PageControl2: TPageControl;
+    TabSheet5: TTabSheet;
+    TabSheet6: TTabSheet;
+    PageControl3: TPageControl;
+    TabSheet7: TTabSheet;
+    TabSheet8: TTabSheet;
+    TabSheet9: TTabSheet;
+    TabSheet10: TTabSheet;
+    TabSheet11: TTabSheet;
+    DBGrid1: TDBGrid;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
     procedure FormCreate(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,23 +50,34 @@ type
 var
   Form1: TForm1;
 
+
 implementation
 
-uses data_module;
+uses data_module, about, book_add;
 
 {$R *.dfm}
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  if DEBUG = true then begin
-    DebugConsole.Visible:=true;
-  end;
+  //if DEBUG = true then begin
+  //  DebugConsole.Visible:=true;
+  //end;
 end;
 
 // Print message into debug console
 procedure Putsdbg;
 begin
-  Form1.DebugConsole.Lines.Add(msg);
+  // Form1.DebugConsole.Lines.Add(msg);
+end;
+
+procedure TForm1.N2Click(Sender: TObject);
+begin
+  Form2.Show;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  Form3.Show;
 end;
 
 end.

@@ -9,9 +9,9 @@ type
   TDataModule1 = class(TDataModule)
     ADOConnection1: TADOConnection;
     Authors: TADOTable;
-    DataSource1: TDataSource;
+    DSAuthors: TDataSource;
     Categories: TADOTable;
-    DataSource2: TDataSource;
+    DSCategories: TDataSource;
     Books: TADOTable;
     Reasons: TADOTable;
     TakenBooks: TADOTable;
@@ -19,13 +19,13 @@ type
     Streets: TADOTable;
     Restrictions: TADOTable;
     AppliedRestrictions: TADOTable;
-    DataSource3: TDataSource;
-    DataSource4: TDataSource;
-    DataSource5: TDataSource;
-    DataSource6: TDataSource;
-    DataSource7: TDataSource;
-    DataSource8: TDataSource;
-    DataSource9: TDataSource;
+    DSBooks: TDataSource;
+    DSReasons: TDataSource;
+    DSTakenBooks: TDataSource;
+    DSReaders: TDataSource;
+    DSStreets: TDataSource;
+    DSRestrictions: TDataSource;
+    DSApplRestr: TDataSource;
     procedure ADOConnection1BeforeConnect(Sender: TObject);
   private
     { Private declarations }

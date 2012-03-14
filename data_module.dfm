@@ -1,6 +1,6 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 193
+  Left = 1083
   Top = 385
   Height = 636
   Width = 194
@@ -25,7 +25,7 @@ object DataModule1: TDataModule1
     Left = 32
     Top = 56
   end
-  object DataSource1: TDataSource
+  object DSAuthors: TDataSource
     DataSet = Authors
     Left = 112
     Top = 56
@@ -38,7 +38,7 @@ object DataModule1: TDataModule1
     Left = 32
     Top = 112
   end
-  object DataSource2: TDataSource
+  object DSCategories: TDataSource
     DataSet = Categories
     Left = 112
     Top = 112
@@ -87,37 +87,37 @@ object DataModule1: TDataModule1
     Left = 32
     Top = 528
   end
-  object DataSource3: TDataSource
+  object DSBooks: TDataSource
     DataSet = Books
     Left = 112
     Top = 168
   end
-  object DataSource4: TDataSource
+  object DSReasons: TDataSource
     DataSet = Reasons
     Left = 112
     Top = 224
   end
-  object DataSource5: TDataSource
+  object DSTakenBooks: TDataSource
     DataSet = TakenBooks
     Left = 112
     Top = 280
   end
-  object DataSource6: TDataSource
+  object DSReaders: TDataSource
     DataSet = Readers
     Left = 112
     Top = 344
   end
-  object DataSource7: TDataSource
+  object DSStreets: TDataSource
     DataSet = Streets
     Left = 112
     Top = 408
   end
-  object DataSource8: TDataSource
+  object DSRestrictions: TDataSource
     DataSet = Restrictions
     Left = 112
     Top = 464
   end
-  object DataSource9: TDataSource
+  object DSApplRestr: TDataSource
     DataSet = AppliedRestrictions
     Left = 112
     Top = 528
