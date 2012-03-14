@@ -3,3 +3,5 @@
 *.dcu
 *.exe
 *.cbk
+db/*.ldb
+
