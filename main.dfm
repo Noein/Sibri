@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 194
-  Top = 149
+  Left = 200
+  Top = 179
   Width = 988
-  Height = 860
+  Height = 787
   Caption = 'Sibri'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -177,8 +177,8 @@ object Form1: TForm1
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 795
-    Width = 980
+    Top = 793
+    Width = 977
     Height = 19
     Panels = <>
   end
