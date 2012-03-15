@@ -22,7 +22,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, DBGrids, StdCtrls, XPMan, ComCtrls, Menus;
+  Dialogs, Grids, DBGrids, StdCtrls, XPMan, ComCtrls, Menus, ExtCtrls,
+  DBCtrls;
 
 const
   DEBUG = true;
@@ -33,8 +34,6 @@ type
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
-    TabSheet4: TTabSheet;
     StatusBar1: TStatusBar;
     MainMenu1: TMainMenu;
     File1: TMenuItem;
@@ -50,13 +49,48 @@ type
     TabSheet9: TTabSheet;
     TabSheet10: TTabSheet;
     TabSheet11: TTabSheet;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    N7: TMenuItem;
+    N8: TMenuItem;
+    N9: TMenuItem;
+    N10: TMenuItem;
+    N11: TMenuItem;
+    N12: TMenuItem;
     DBGrid1: TDBGrid;
+    DBNavigator1: TDBNavigator;
+    DBGrid2: TDBGrid;
+    LabeledEdit1: TLabeledEdit;
     Button1: TButton;
     Button2: TButton;
+    Label1: TLabel;
+    DBGrid3: TDBGrid;
+    Label2: TLabel;
     Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    DBNavigator2: TDBNavigator;
+    DBNavigator3: TDBNavigator;
+    Button7: TButton;
+    Button8: TButton;
+    Button9: TButton;
+    DBGrid4: TDBGrid;
+    DBNavigator4: TDBNavigator;
+    DBGrid5: TDBGrid;
+    DBNavigator5: TDBNavigator;
+    DBGrid6: TDBGrid;
+    DBNavigator6: TDBNavigator;
+    DBGrid7: TDBGrid;
+    DBNavigator7: TDBNavigator;
+    DBGrid8: TDBGrid;
+    DBNavigator8: TDBNavigator;
+    DBGrid9: TDBGrid;
+    DBNavigator9: TDBNavigator;
     procedure FormCreate(Sender: TObject);
     procedure N2Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure N12Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -88,16 +122,17 @@ begin
   // Form1.DebugConsole.Lines.Add(msg);
 end;
 
-// About program
+// Help -> About program
 procedure TForm1.N2Click(Sender: TObject);
 begin
   Form2.Memo1.Lines.LoadFromFile('COPYING');
   Form2.ShowModal();
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
+// file -> exit
+procedure TForm1.N12Click(Sender: TObject);
 begin
-  Form3.ShowModal();
+  close();
 end;
 
 end.

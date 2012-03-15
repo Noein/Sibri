@@ -44,6 +44,21 @@ type
     DSStreets: TDataSource;
     DSRestrictions: TDataSource;
     DSApplRestr: TDataSource;
+    Readersid_Reader: TAutoIncField;
+    Readerspassport_number: TIntegerField;
+    Readerslast_name: TWideStringField;
+    Readersfirst_name: TWideStringField;
+    Readerspatronymic: TWideStringField;
+    Readersbirth_date: TDateTimeField;
+    Readersstreet_id: TIntegerField;
+    Readershome_number: TIntegerField;
+    Readershome_case: TIntegerField;
+    Readerswork_place: TWideStringField;
+    Readerswork_phone: TWideStringField;
+    Readershome_phone: TWideStringField;
+    Readerscell_phone: TWideStringField;
+    Readersstatus: TWideStringField;
+    Readersstreet: TStringField;
     procedure ADOConnection1BeforeConnect(Sender: TObject);
   private
     { Private declarations }
