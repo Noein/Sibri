@@ -24,7 +24,7 @@ uses
   SysUtils, Classes, DB, ADODB;
 
 type
-  TDataModule1 = class(TDataModule)
+  TDataLibrary = class(TDataModule)
     ADOConnection1: TADOConnection;
     Authors: TADOTable;
     DSAuthors: TDataSource;
@@ -33,32 +33,19 @@ type
     Books: TADOTable;
     Reasons: TADOTable;
     TakenBooks: TADOTable;
-    Readers: TADOTable;
     Streets: TADOTable;
     Restrictions: TADOTable;
     AppliedRestrictions: TADOTable;
     DSBooks: TDataSource;
     DSReasons: TDataSource;
     DSTakenBooks: TDataSource;
-    DSReaders: TDataSource;
     DSStreets: TDataSource;
     DSRestrictions: TDataSource;
     DSApplRestr: TDataSource;
-    Readersid_Reader: TAutoIncField;
-    Readerspassport_number: TIntegerField;
-    Readerslast_name: TWideStringField;
-    Readersfirst_name: TWideStringField;
-    Readerspatronymic: TWideStringField;
-    Readersbirth_date: TDateTimeField;
-    Readersstreet_id: TIntegerField;
-    Readershome_number: TIntegerField;
-    Readershome_case: TIntegerField;
-    Readerswork_place: TWideStringField;
-    Readerswork_phone: TWideStringField;
-    Readershome_phone: TWideStringField;
-    Readerscell_phone: TWideStringField;
-    Readersstatus: TWideStringField;
-    Readersstreet: TStringField;
+    Readers: TADOTable;
+    DSReaders: TDataSource;
+    Publishers: TADOTable;
+    DSPublishers: TDataSource;
     procedure ADOConnection1BeforeConnect(Sender: TObject);
   private
     { Private declarations }
@@ -67,7 +54,7 @@ type
   end;
 
 var
-  DataModule1: TDataModule1;
+  DataLibrary: TDataLibrary;
 
 implementation
 
@@ -81,7 +68,7 @@ end;
 
 // Makes connection string at runtime.
 // it's necessary because delphi don't understand relative paths.
-procedure TDataModule1.ADOConnection1BeforeConnect(Sender: TObject);
+procedure TDataLibrary.ADOConnection1BeforeConnect(Sender: TObject);
 begin
   ADOConnection1.ConnectionString:='Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=' + currentDirPath() +
    '\db\Library.mdb;Mode=Share Deny None;Extended Properties="";Jet OLEDB:System database="";Jet OLEDB:Registry Path="";' +

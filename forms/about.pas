@@ -25,7 +25,7 @@ uses
   Dialogs, ComCtrls, StdCtrls;
 
 type
-  TForm2 = class(TForm)
+  TAboutForm = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
@@ -44,7 +44,7 @@ type
   end;
 
 var
-  Form2: TForm2;
+  AboutForm: TAboutForm;
 
 implementation
 

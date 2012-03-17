@@ -22,20 +22,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls, Mask;
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, Mask, DBCtrls;
 
 type
-  TForm3 = class(TForm)
-    LabeledEdit1: TLabeledEdit;
-    ComboBox1: TComboBox;
-    Label1: TLabel;
+  TBookAddForm = class(TForm)
     Label2: TLabel;
-    ComboBox2: TComboBox;
-    MaskEdit1: TMaskEdit;
     Label3: TLabel;
-    UpDown1: TUpDown;
     Button1: TButton;
     Button2: TButton;
+    DBEdit1: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
   private
     { Private declarations }
   public
@@ -43,9 +39,11 @@ type
   end;
 
 var
-  Form3: TForm3;
+  BookAddForm: TBookAddForm;
 
 implementation
+
+uses data_module;
 
 {$R *.dfm}
 

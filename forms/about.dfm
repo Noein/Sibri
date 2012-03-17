@@ -1,4 +1,4 @@
-object Form2: TForm2
+object AboutForm: TAboutForm
   Left = 353
   Top = 256
   Width = 562

@@ -1,8 +1,8 @@
-object DataModule1: TDataModule1
+object DataLibrary: TDataLibrary
   OldCreateOrder = False
   Left = 1083
-  Top = 385
-  Height = 636
+  Top = 344
+  Height = 677
   Width = 194
   object ADOConnection1: TADOConnection
     Connected = True
@@ -70,75 +70,6 @@ object DataModule1: TDataModule1
     Left = 32
     Top = 280
   end
-  object Readers: TADOTable
-    Active = True
-    Connection = ADOConnection1
-    CursorType = ctStatic
-    TableName = 'READERS'
-    Left = 32
-    Top = 344
-    object Readersid_Reader: TAutoIncField
-      FieldName = 'id_Reader'
-      ReadOnly = True
-    end
-    object Readerspassport_number: TIntegerField
-      FieldName = 'passport_number'
-    end
-    object Readerslast_name: TWideStringField
-      FieldName = 'last_name'
-      Size = 255
-    end
-    object Readersfirst_name: TWideStringField
-      FieldName = 'first_name'
-      Size = 255
-    end
-    object Readerspatronymic: TWideStringField
-      FieldName = 'patronymic'
-      Size = 255
-    end
-    object Readersbirth_date: TDateTimeField
-      FieldName = 'birth_date'
-    end
-    object Readersstreet_id: TIntegerField
-      FieldName = 'street_id'
-    end
-    object Readershome_number: TIntegerField
-      FieldName = 'home_number'
-    end
-    object Readershome_case: TIntegerField
-      FieldName = 'home_case'
-    end
-    object Readerswork_place: TWideStringField
-      FieldName = 'work_place'
-      Size = 255
-    end
-    object Readerswork_phone: TWideStringField
-      FieldName = 'work_phone'
-      Size = 255
-    end
-    object Readershome_phone: TWideStringField
-      FieldName = 'home_phone'
-      Size = 255
-    end
-    object Readerscell_phone: TWideStringField
-      FieldName = 'cell_phone'
-      Size = 255
-    end
-    object Readersstatus: TWideStringField
-      FieldName = 'status'
-      Size = 255
-    end
-    object Readersstreet: TStringField
-      FieldKind = fkLookup
-      FieldName = 'street'
-      LookupDataSet = Streets
-      LookupKeyFields = 'id_Street'
-      LookupResultField = 'title'
-      KeyFields = 'street_id'
-      Size = 50
-      Lookup = True
-    end
-  end
   object Streets: TADOTable
     Active = True
     Connection = ADOConnection1
@@ -181,11 +112,6 @@ object DataModule1: TDataModule1
     Left = 112
     Top = 280
   end
-  object DSReaders: TDataSource
-    DataSet = Readers
-    Left = 112
-    Top = 344
-  end
   object DSStreets: TDataSource
     DataSet = Streets
     Left = 112
@@ -200,5 +126,31 @@ object DataModule1: TDataModule1
     DataSet = AppliedRestrictions
     Left = 112
     Top = 528
+  end
+  object Readers: TADOTable
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    TableName = 'READERS'
+    Left = 32
+    Top = 344
+  end
+  object DSReaders: TDataSource
+    DataSet = Readers
+    Left = 112
+    Top = 344
+  end
+  object Publishers: TADOTable
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    TableName = 'PUBLISHERS'
+    Left = 32
+    Top = 592
+  end
+  object DSPublishers: TDataSource
+    DataSet = Publishers
+    Left = 112
+    Top = 592
   end
 end

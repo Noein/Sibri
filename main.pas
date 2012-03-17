@@ -29,7 +29,7 @@ const
   DEBUG = true;
 
 type
-  TForm1 = class(TForm)
+  TMainForm = class(TForm)
     XPManifest1: TXPManifest;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
@@ -58,7 +58,6 @@ type
     N10: TMenuItem;
     N11: TMenuItem;
     N12: TMenuItem;
-    DBGrid1: TDBGrid;
     DBNavigator1: TDBNavigator;
     DBGrid2: TDBGrid;
     LabeledEdit1: TLabeledEdit;
@@ -88,19 +87,24 @@ type
     DBNavigator8: TDBNavigator;
     DBGrid9: TDBGrid;
     DBNavigator9: TDBNavigator;
+    DBGrid1: TDBGrid;
+    TabSheet3: TTabSheet;
+    DBGrid10: TDBGrid;
+    DBNavigator10: TDBNavigator;
     procedure FormCreate(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N12Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
 
-  procedure Putsdbg(msg: String);
+  procedure PutsDbg(msg: String);
   
 var
-  Form1: TForm1;
+  MainForm: TMainForm;
 
 
 implementation
@@ -109,7 +113,7 @@ uses data_module, about, book_add;
 
 {$R *.dfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TMainForm.FormCreate(Sender: TObject);
 begin
   //if DEBUG = true then begin
   //  DebugConsole.Visible:=true;
@@ -117,22 +121,27 @@ begin
 end;
 
 // Print message into debug console
-procedure Putsdbg;
+procedure putsDbg;
 begin
   // Form1.DebugConsole.Lines.Add(msg);
 end;
 
 // Help -> About program
-procedure TForm1.N2Click(Sender: TObject);
+procedure TMainForm.N2Click(Sender: TObject);
 begin
-  Form2.Memo1.Lines.LoadFromFile('COPYING');
-  Form2.ShowModal();
+  aboutForm.memo1.lines.loadFromFile('COPYING');
+  aboutForm.showModal();
 end;
 
 // file -> exit
-procedure TForm1.N12Click(Sender: TObject);
+procedure TMainForm.N12Click(Sender: TObject);
 begin
   close();
+end;
+
+procedure TMainForm.Button7Click(Sender: TObject);
+begin
+  bookAddForm.showModal();
 end;
 
 end.
