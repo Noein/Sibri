@@ -59,17 +59,6 @@ object DataLibrary: TDataLibrary
     Left = 32
     Top = 224
   end
-  object TakenBooks: TADOTable
-    Active = True
-    Connection = ADOConnection1
-    CursorType = ctStatic
-    IndexFieldNames = 'reader_id'
-    MasterFields = 'id_Reader'
-    MasterSource = DSReaders
-    TableName = 'TAKEN_BOOKS'
-    Left = 32
-    Top = 280
-  end
   object Streets: TADOTable
     Active = True
     Connection = ADOConnection1
@@ -106,11 +95,6 @@ object DataLibrary: TDataLibrary
     DataSet = Reasons
     Left = 112
     Top = 224
-  end
-  object DSTakenBooks: TDataSource
-    DataSet = TakenBooks
-    Left = 112
-    Top = 280
   end
   object DSStreets: TDataSource
     DataSet = Streets
@@ -152,5 +136,21 @@ object DataLibrary: TDataLibrary
     DataSet = Publishers
     Left = 112
     Top = 592
+  end
+  object TakenBooks: TADOTable
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    IndexFieldNames = 'reader_id'
+    MasterFields = 'id_Reader'
+    MasterSource = DSReaders
+    TableName = 'TAKEN_BOOKS'
+    Left = 32
+    Top = 288
+  end
+  object DSTakenBooks: TDataSource
+    DataSet = TakenBooks
+    Left = 112
+    Top = 288
   end
 end

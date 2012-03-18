@@ -32,10 +32,10 @@ type
     Edit10: TEdit;
     Edit11: TEdit;
     DateTimePicker1: TDateTimePicker;
-    Button1: TButton;
-    Button2: TButton;
-    procedure Button2Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    SaveButton: TButton;
+    CancelButton: TButton;
+    procedure CancelButtonClick(Sender: TObject);
+    procedure SaveButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,20 +51,21 @@ uses data_module;
 
 {$R *.dfm}
 
-procedure TReaderAddForm.Button2Click(Sender: TObject);
+procedure TReaderAddForm.CancelButtonClick(Sender: TObject);
 begin
   close();
-  DateTimePicker1.value:=System.DateTime.Now;
+  DateTimePicker1.Date:=Now;
+  DBLookupComboBox1.KeyValue:=Null;
 end;
 
-procedure TReaderAddForm.Button1Click(Sender: TObject);
+procedure TReaderAddForm.SaveButtonClick(Sender: TObject);
 begin
   DataLibrary.Readers.Insert;
   DataLibrary.Readers.FieldByName('passport_number').AsString:=Edit1.Text;
   DataLibrary.Readers.FieldByName('last_name').AsString:=Edit2.Text;
   DataLibrary.Readers.FieldByName('first_name').AsString:=Edit3.Text;
   DataLibrary.Readers.FieldByName('patronymic').AsString:=Edit4.Text;
-  DataLibrary.Readers.FieldByName('birth_date').AsString:=DateTimePicker1.Date;
+  DataLibrary.Readers.FieldByName('birth_date').AsString:=DateToStr(DateTimePicker1.Date);
   DataLibrary.Readers.FieldByName('street_id').AsString:=DBLookupComboBox1.KeyValue;
   DataLibrary.Readers.FieldByName('home_number').AsString:=Edit6.Text;
   DataLibrary.Readers.FieldByName('home_case').AsString:=Edit7.Text;
@@ -74,6 +75,7 @@ begin
   DataLibrary.Readers.FieldByName('cell_phone').AsString:=Edit11.Text;
   DataLibrary.Readers.Post;
   DataLibrary.Readers.Refresh;
+  close();
 end;
 
 end.

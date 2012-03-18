@@ -1,6 +1,6 @@
 object ReaderAddForm: TReaderAddForm
-  Left = 534
-  Top = 210
+  Left = 1114
+  Top = 424
   Width = 274
   Height = 562
   Caption = #1053#1086#1074#1099#1081' '#1095#1080#1090#1072#1090#1077#1083#1100
@@ -186,22 +186,22 @@ object ReaderAddForm: TReaderAddForm
     Time = 40986.759322858800000000
     TabOrder = 11
   end
-  object Button1: TButton
+  object SaveButton: TButton
     Left = 136
     Top = 496
     Width = 121
     Height = 33
     Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
     TabOrder = 12
-    OnClick = Button1Click
+    OnClick = SaveButtonClick
   end
-  object Button2: TButton
+  object CancelButton: TButton
     Left = 8
     Top = 496
     Width = 121
     Height = 33
     Caption = #1054#1090#1084#1077#1085#1072
     TabOrder = 13
-    OnClick = Button2Click
+    OnClick = CancelButtonClick
   end
 end

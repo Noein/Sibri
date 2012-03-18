@@ -1,6 +1,6 @@
 object ReaderEditForm: TReaderEditForm
-  Left = 254
-  Top = 210
+  Left = 193
+  Top = 248
   Width = 274
   Height = 562
   Caption = #1048#1079#1084#1077#1085#1077#1085#1080#1077' '#1076#1072#1085#1085#1099#1093
@@ -187,22 +187,22 @@ object ReaderEditForm: TReaderEditForm
     Time = 40986.759322858800000000
     TabOrder = 11
   end
-  object Button1: TButton
+  object UpdateButton: TButton
     Left = 136
     Top = 496
     Width = 121
     Height = 33
     Caption = #1054#1073#1085#1086#1074#1080#1090#1100
     TabOrder = 12
-    OnClick = Button1Click
+    OnClick = UpdateButtonClick
   end
-  object Button2: TButton
+  object CancelButton: TButton
     Left = 8
     Top = 496
     Width = 121
     Height = 33
     Caption = #1054#1090#1084#1077#1085#1072
     TabOrder = 13
-    OnClick = Button2Click
+    OnClick = CancelButtonClick
   end
 end

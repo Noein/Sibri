@@ -32,13 +32,11 @@ type
     DSCategories: TDataSource;
     Books: TADOTable;
     Reasons: TADOTable;
-    TakenBooks: TADOTable;
     Streets: TADOTable;
     Restrictions: TADOTable;
     AppliedRestrictions: TADOTable;
     DSBooks: TDataSource;
     DSReasons: TDataSource;
-    DSTakenBooks: TDataSource;
     DSStreets: TDataSource;
     DSRestrictions: TDataSource;
     DSApplRestr: TDataSource;
@@ -46,6 +44,8 @@ type
     DSReaders: TDataSource;
     Publishers: TADOTable;
     DSPublishers: TDataSource;
+    TakenBooks: TADOTable;
+    DSTakenBooks: TDataSource;
     procedure ADOConnection1BeforeConnect(Sender: TObject);
   private
     { Private declarations }

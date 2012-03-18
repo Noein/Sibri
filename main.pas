@@ -65,17 +65,13 @@ type
     Label1: TLabel;
     DBGrid3: TDBGrid;
     Label2: TLabel;
-    Button3: TButton;
-    Button4: TButton;
-    Button5: TButton;
-    Button6: TButton;
-    DBNavigator2: TDBNavigator;
-    DBNavigator3: TDBNavigator;
-    Button7: TButton;
-    Button8: TButton;
-    Button9: TButton;
-    DBGrid4: TDBGrid;
-    DBNavigator4: TDBNavigator;
+    ReturnBookButton: TButton;
+    AppyRestButton: TButton;
+    CleanRestButton: TButton;
+    AddReaderButton: TButton;
+    EditReaderButton: TButton;
+    DelReaderButton: TButton;
+    DBGridBooks: TDBGrid;
     DBGrid5: TDBGrid;
     DBNavigator5: TDBNavigator;
     DBGrid6: TDBGrid;
@@ -91,12 +87,22 @@ type
     DBGrid10: TDBGrid;
     DBNavigator10: TDBNavigator;
     Button10: TButton;
+    LabeledEdit2: TLabeledEdit;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    TakeBookButton: TButton;
+    DBNavigator1: TDBNavigator;
     procedure FormCreate(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N12Click(Sender: TObject);
     procedure Button10Click(Sender: TObject);
-    procedure Button7Click(Sender: TObject);
-    procedure Button9Click(Sender: TObject);
+    procedure AddReaderButtonClick(Sender: TObject);
+    procedure DelReaderButtonClick(Sender: TObject);
+    procedure EditReaderButtonClick(Sender: TObject);
+    procedure TabSheet6Show(Sender: TObject);
+    procedure TakeBookButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -111,7 +117,7 @@ var
 
 implementation
 
-uses data_module, about, book_add, reader_add, reader_edit;
+uses data_module, about, book_add, reader_edit, reader_add;
 
 {$R *.dfm}
 
@@ -143,17 +149,43 @@ end;
 
 procedure TMainForm.Button10Click(Sender: TObject);
 begin
-  bookAddForm.showModal();
+  BookAddForm.showModal();
 end;
 
-procedure TMainForm.Button7Click(Sender: TObject);
+procedure TMainForm.AddReaderButtonClick(Sender: TObject);
 begin
   readerAddForm.showModal();
 end;
 
-procedure TMainForm.Button9Click(Sender: TObject);
+procedure TMainForm.DelReaderButtonClick(Sender: TObject);
 begin
   DataLibrary.Readers.Delete;
+end;
+
+procedure TMainForm.EditReaderButtonClick(Sender: TObject);
+begin
+  ReaderEditForm.showModal();
+end;
+
+procedure TMainForm.TabSheet6Show(Sender: TObject);
+begin
+   TakeBookButton.Caption:='Take book to'+
+  ' '+DataLibrary.Readers.fieldByName('last_name').AsString;
+end;
+
+procedure TMainForm.TakeBookButtonClick(Sender: TObject);
+begin
+  //DataLibrary.Books.Edit;
+  //DataLibrary.Books.fieldByName('number').AsInteger:=DataLibrary.Books.fieldByName('number').AsInteger - 1;
+  //DataLibrary.Books.Post;
+  //DataLibrary.Books.Refresh;
+  DataLibrary.TakenBooks.insert;
+  DataLibrary.TakenBooks.FieldByName('book_id').AsString:='3';//DataLibrary.Books.fieldByName('id_Book').AsInteger;
+  DataLibrary.TakenBooks.FieldByName('reader_id').AsString:='3';//DataLibrary.Readers.fieldByName('id_Reader').AsInteger;
+  DataLibrary.TakenBooks.FieldByName('taken_date').AsString:=DateToStr(Now);
+  DataLibrary.TakenBooks.FieldByName('return_date').AsString:=DateToStr(Now);
+  DataLibrary.TakenBooks.Post;
+  DataLibrary.TakenBooks.Refresh;
 end;
 
 end.
