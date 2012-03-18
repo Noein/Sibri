@@ -26,12 +26,8 @@ uses
 
 type
   TBookAddForm = class(TForm)
-    Label2: TLabel;
-    Label3: TLabel;
     Button1: TButton;
     Button2: TButton;
-    DBEdit1: TDBEdit;
-    DBLookupComboBox1: TDBLookupComboBox;
   private
     { Private declarations }
   public

@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 193
-  Top = 149
+  Left = 176
+  Top = 243
   Width = 1084
   Height = 837
   Caption = 'Sibri'
@@ -48,20 +48,13 @@ object MainForm: TMainForm
             Height = 13
             Caption = #1055#1088#1080#1084#1077#1085#1105#1085#1085#1099#1077' '#1084#1077#1088#1099
           end
-          object DBNavigator1: TDBNavigator
-            Left = 8
-            Top = 392
-            Width = 1040
-            Height = 25
-            TabOrder = 0
-          end
           object DBGrid2: TDBGrid
             Left = 8
             Top = 512
             Width = 385
             Height = 120
             DataSource = DataLibrary.DSTakenBooks
-            TabOrder = 1
+            TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
             TitleFont.Height = -11
@@ -76,7 +69,7 @@ object MainForm: TMainForm
             EditLabel.Width = 96
             EditLabel.Height = 13
             EditLabel.Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1092#1072#1084#1080#1083#1080#1080
-            TabOrder = 2
+            TabOrder = 1
           end
           object Button1: TButton
             Left = 376
@@ -84,7 +77,7 @@ object MainForm: TMainForm
             Width = 121
             Height = 25
             Caption = #1056#1072#1089#1096#1080#1088#1077#1085#1085#1099#1081' '#1087#1086#1080#1089#1082
-            TabOrder = 3
+            TabOrder = 2
           end
           object Button2: TButton
             Left = 304
@@ -92,7 +85,7 @@ object MainForm: TMainForm
             Width = 65
             Height = 25
             Caption = #1053#1072#1081#1090#1080
-            TabOrder = 4
+            TabOrder = 3
           end
           object DBGrid3: TDBGrid
             Left = 552
@@ -100,7 +93,7 @@ object MainForm: TMainForm
             Width = 353
             Height = 121
             DataSource = DataLibrary.DSApplRestr
-            TabOrder = 5
+            TabOrder = 4
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
             TitleFont.Height = -11
@@ -113,7 +106,7 @@ object MainForm: TMainForm
             Width = 137
             Height = 33
             Caption = #1042#1086#1079#1074#1088#1072#1090#1080#1090#1100' '#1082#1085#1080#1075#1091
-            TabOrder = 6
+            TabOrder = 5
           end
           object Button4: TButton
             Left = 400
@@ -121,7 +114,7 @@ object MainForm: TMainForm
             Width = 137
             Height = 33
             Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1082#1085#1080#1075#1091
-            TabOrder = 7
+            TabOrder = 6
           end
           object Button5: TButton
             Left = 920
@@ -129,7 +122,7 @@ object MainForm: TMainForm
             Width = 129
             Height = 33
             Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1085#1086#1074#1091#1102
-            TabOrder = 8
+            TabOrder = 7
           end
           object Button6: TButton
             Left = 920
@@ -137,7 +130,7 @@ object MainForm: TMainForm
             Width = 129
             Height = 33
             Caption = #1054#1095#1080#1089#1090#1080#1090#1100
-            TabOrder = 9
+            TabOrder = 8
           end
           object DBNavigator2: TDBNavigator
             Left = 8
@@ -145,7 +138,7 @@ object MainForm: TMainForm
             Width = 380
             Height = 25
             DataSource = DataLibrary.DSTakenBooks
-            TabOrder = 10
+            TabOrder = 9
           end
           object DBNavigator3: TDBNavigator
             Left = 552
@@ -153,32 +146,33 @@ object MainForm: TMainForm
             Width = 350
             Height = 25
             DataSource = DataLibrary.DSApplRestr
-            TabOrder = 11
+            TabOrder = 10
           end
           object Button7: TButton
-            Left = 8
-            Top = 440
+            Left = 0
+            Top = 392
             Width = 169
             Height = 33
             Caption = #1044#1086#1073#1072#1074#1080#1090#1100
-            TabOrder = 12
+            TabOrder = 11
             OnClick = Button7Click
           end
           object Button8: TButton
-            Left = 200
-            Top = 440
+            Left = 184
+            Top = 392
             Width = 177
             Height = 33
             Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
-            TabOrder = 13
+            TabOrder = 12
           end
           object Button9: TButton
-            Left = 408
-            Top = 440
+            Left = 376
+            Top = 392
             Width = 177
             Height = 33
             Caption = #1059#1076#1072#1083#1080#1090#1100
-            TabOrder = 14
+            TabOrder = 13
+            OnClick = Button9Click
           end
           object DBGrid1: TDBGrid
             Left = 0
@@ -186,7 +180,7 @@ object MainForm: TMainForm
             Width = 1041
             Height = 321
             DataSource = DataLibrary.DSReaders
-            TabOrder = 15
+            TabOrder = 14
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
             TitleFont.Height = -11
@@ -217,6 +211,15 @@ object MainForm: TMainForm
             Height = 25
             DataSource = DataLibrary.DSBooks
             TabOrder = 1
+          end
+          object Button10: TButton
+            Left = 16
+            Top = 488
+            Width = 177
+            Height = 41
+            Caption = 'Button10'
+            TabOrder = 2
+            OnClick = Button10Click
           end
         end
       end

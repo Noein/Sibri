@@ -58,7 +58,6 @@ type
     N10: TMenuItem;
     N11: TMenuItem;
     N12: TMenuItem;
-    DBNavigator1: TDBNavigator;
     DBGrid2: TDBGrid;
     LabeledEdit1: TLabeledEdit;
     Button1: TButton;
@@ -91,10 +90,13 @@ type
     TabSheet3: TTabSheet;
     DBGrid10: TDBGrid;
     DBNavigator10: TDBNavigator;
+    Button10: TButton;
     procedure FormCreate(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N12Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -109,7 +111,7 @@ var
 
 implementation
 
-uses data_module, about, book_add;
+uses data_module, about, book_add, reader_add, reader_edit;
 
 {$R *.dfm}
 
@@ -139,9 +141,19 @@ begin
   close();
 end;
 
-procedure TMainForm.Button7Click(Sender: TObject);
+procedure TMainForm.Button10Click(Sender: TObject);
 begin
   bookAddForm.showModal();
+end;
+
+procedure TMainForm.Button7Click(Sender: TObject);
+begin
+  readerAddForm.showModal();
+end;
+
+procedure TMainForm.Button9Click(Sender: TObject);
+begin
+  DataLibrary.Readers.Delete;
 end;
 
 end.
