@@ -23,7 +23,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, XPMan, ComCtrls, Menus, ExtCtrls,
-  DBCtrls;
+  DBCtrls, DB;
 
 const
   DEBUG = true;
@@ -86,23 +86,25 @@ type
     TabSheet3: TTabSheet;
     DBGrid10: TDBGrid;
     DBNavigator10: TDBNavigator;
-    Button10: TButton;
-    LabeledEdit2: TLabeledEdit;
+    AddBookButton: TButton;
+    FindBookEdit: TLabeledEdit;
     Button3: TButton;
     Button4: TButton;
-    Button5: TButton;
-    Button6: TButton;
+    EditBookButton: TButton;
+    DelBookButton: TButton;
     TakeBookButton: TButton;
     DBNavigator1: TDBNavigator;
     procedure FormCreate(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N12Click(Sender: TObject);
-    procedure Button10Click(Sender: TObject);
+    procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);
     procedure DelReaderButtonClick(Sender: TObject);
     procedure EditReaderButtonClick(Sender: TObject);
     procedure TabSheet6Show(Sender: TObject);
     procedure TakeBookButtonClick(Sender: TObject);
+    procedure FindBookEditChange(Sender: TObject);
+    procedure DelBookButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -147,7 +149,7 @@ begin
   close();
 end;
 
-procedure TMainForm.Button10Click(Sender: TObject);
+procedure TMainForm.AddBookButtonClick(Sender: TObject);
 begin
   BookAddForm.showModal();
 end;
@@ -175,17 +177,27 @@ end;
 
 procedure TMainForm.TakeBookButtonClick(Sender: TObject);
 begin
-  //DataLibrary.Books.Edit;
-  //DataLibrary.Books.fieldByName('number').AsInteger:=DataLibrary.Books.fieldByName('number').AsInteger - 1;
-  //DataLibrary.Books.Post;
-  //DataLibrary.Books.Refresh;
+  DataLibrary.Books.Edit;
+  DataLibrary.Books.fieldByName('number').AsInteger:=DataLibrary.Books.fieldByName('number').AsInteger - 1;
+  DataLibrary.Books.Post;
+  DataLibrary.Books.Refresh;
   DataLibrary.TakenBooks.insert;
-  DataLibrary.TakenBooks.FieldByName('book_id').AsString:='3';//DataLibrary.Books.fieldByName('id_Book').AsInteger;
-  DataLibrary.TakenBooks.FieldByName('reader_id').AsString:='3';//DataLibrary.Readers.fieldByName('id_Reader').AsInteger;
+  DataLibrary.TakenBooks.FieldByName('book_id').AsInteger:=DataLibrary.Books.fieldByName('id_Book').AsInteger;
+  DataLibrary.TakenBooks.FieldByName('reader_id').AsInteger:=DataLibrary.Readers.fieldByName('id_Reader').AsInteger;
   DataLibrary.TakenBooks.FieldByName('taken_date').AsString:=DateToStr(Now);
   DataLibrary.TakenBooks.FieldByName('return_date').AsString:=DateToStr(Now);
   DataLibrary.TakenBooks.Post;
   DataLibrary.TakenBooks.Refresh;
+end;
+
+procedure TMainForm.FindBookEditChange(Sender: TObject);
+begin
+   DataLibrary.Books.Locate('title', FindBookEdit.Text, [loCaseInsensitive]);
+end;
+
+procedure TMainForm.DelBookButtonClick(Sender: TObject);
+begin
+  DataLibrary.Books.Delete;
 end;
 
 end.

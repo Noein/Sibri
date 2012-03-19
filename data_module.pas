@@ -25,7 +25,7 @@ uses
 
 type
   TDataLibrary = class(TDataModule)
-    ADOConnection1: TADOConnection;
+    ConnectionLibrary: TADOConnection;
     Authors: TADOTable;
     DSAuthors: TDataSource;
     Categories: TADOTable;
@@ -46,7 +46,9 @@ type
     DSPublishers: TDataSource;
     TakenBooks: TADOTable;
     DSTakenBooks: TDataSource;
-    procedure ADOConnection1BeforeConnect(Sender: TObject);
+    ParticipatingAuthors: TADOTable;
+    DSPartAuthors: TDataSource;
+    procedure ConnectionLibraryBeforeConnect(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,7 +70,7 @@ end;
 
 // Makes connection string at runtime.
 // it's necessary because delphi don't understand relative paths.
-procedure TDataLibrary.ADOConnection1BeforeConnect(Sender: TObject);
+procedure TDataLibrary.ConnectionLibraryBeforeConnect(Sender: TObject);
 begin
   ADOConnection1.ConnectionString:='Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=' + currentDirPath() +
    '\db\Library.mdb;Mode=Share Deny None;Extended Properties="";Jet OLEDB:System database="";Jet OLEDB:Registry Path="";' +

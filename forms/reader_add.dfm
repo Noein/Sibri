@@ -1,5 +1,5 @@
 object ReaderAddForm: TReaderAddForm
-  Left = 1114
+  Left = 1003
   Top = 424
   Width = 274
   Height = 562

@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 221
-  Top = 412
+  Left = 193
+  Top = 149
   Width = 1084
   Height = 837
   Caption = 'Sibri'
@@ -29,7 +29,7 @@ object MainForm: TMainForm
         Top = 0
         Width = 1065
         Height = 741
-        ActivePage = TabSheet5
+        ActivePage = TabSheet6
         Align = alClient
         TabOrder = 0
         object TabSheet5: TTabSheet
@@ -190,16 +190,16 @@ object MainForm: TMainForm
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
           end
-          object Button10: TButton
+          object AddBookButton: TButton
             Left = 0
             Top = 568
             Width = 177
             Height = 33
             Caption = #1044#1086#1073#1072#1074#1080#1090#1100
             TabOrder = 1
-            OnClick = Button10Click
+            OnClick = AddBookButtonClick
           end
-          object LabeledEdit2: TLabeledEdit
+          object FindBookEdit: TLabeledEdit
             Left = 8
             Top = 24
             Width = 249
@@ -208,6 +208,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1085#1072#1079#1074#1072#1085#1080#1102
             TabOrder = 2
+            OnChange = FindBookEditChange
           end
           object Button3: TButton
             Left = 264
@@ -225,7 +226,7 @@ object MainForm: TMainForm
             Caption = #1056#1072#1089#1096#1080#1088#1077#1085#1085#1099#1081' '#1087#1086#1080#1089#1082
             TabOrder = 4
           end
-          object Button5: TButton
+          object EditBookButton: TButton
             Left = 200
             Top = 568
             Width = 153
@@ -233,13 +234,14 @@ object MainForm: TMainForm
             Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
             TabOrder = 5
           end
-          object Button6: TButton
+          object DelBookButton: TButton
             Left = 384
             Top = 568
             Width = 153
             Height = 33
             Caption = #1059#1076#1072#1083#1080#1090#1100
             TabOrder = 6
+            OnClick = DelBookButtonClick
           end
           object TakeBookButton: TButton
             Left = 824
@@ -261,7 +263,7 @@ object MainForm: TMainForm
         Top = 0
         Width = 1065
         Height = 741
-        ActivePage = TabSheet8
+        ActivePage = TabSheet11
         Align = alClient
         TabOrder = 0
         object TabSheet8: TTabSheet
