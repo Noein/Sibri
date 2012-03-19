@@ -85,7 +85,7 @@ begin
   DataLibrary.Books.FieldByName('reason_id').AsString:=DBLookupComboBox3.KeyValue;
   DataLibrary.Books.FieldByName('title').AsString:=Edit1.Text;
   DataLibrary.Books.FieldByName('publication_date').AsString:=DateToStr(DateTimePicker1.Date);
-  DataLibrary.Books.FieldByName('number').AsString:=Edit5.Text;
+  DataLibrary.Books.FieldByName('count').AsString:=Edit5.Text;
   DataLibrary.Books.FieldByName('ISBN').AsString:=Edit2.Text;
   DataLibrary.Books.FieldByName('BBC').AsString:=Edit3.Text;
   DataLibrary.Books.FieldByName('UDC').AsString:=Edit4.Text;

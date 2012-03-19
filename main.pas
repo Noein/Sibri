@@ -36,10 +36,8 @@ type
     TabSheet2: TTabSheet;
     StatusBar1: TStatusBar;
     MainMenu1: TMainMenu;
-    File1: TMenuItem;
     N1: TMenuItem;
     N2: TMenuItem;
-    N3: TMenuItem;
     PageControl2: TPageControl;
     TabSheet5: TTabSheet;
     TabSheet6: TTabSheet;
@@ -49,7 +47,6 @@ type
     TabSheet9: TTabSheet;
     TabSheet10: TTabSheet;
     TabSheet11: TTabSheet;
-    N4: TMenuItem;
     N5: TMenuItem;
     N6: TMenuItem;
     N7: TMenuItem;
@@ -57,11 +54,10 @@ type
     N9: TMenuItem;
     N10: TMenuItem;
     N11: TMenuItem;
-    N12: TMenuItem;
     DBGrid2: TDBGrid;
-    LabeledEdit1: TLabeledEdit;
-    Button1: TButton;
-    Button2: TButton;
+    FindReaderEdit: TLabeledEdit;
+    ExtendSearchButton: TButton;
+    FindReaderButton: TButton;
     Label1: TLabel;
     DBGrid3: TDBGrid;
     Label2: TLabel;
@@ -88,15 +84,14 @@ type
     DBNavigator10: TDBNavigator;
     AddBookButton: TButton;
     FindBookEdit: TLabeledEdit;
-    Button3: TButton;
+    FindBookButton: TButton;
     Button4: TButton;
     EditBookButton: TButton;
     DelBookButton: TButton;
     TakeBookButton: TButton;
-    DBNavigator1: TDBNavigator;
+    N4: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure N2Click(Sender: TObject);
-    procedure N12Click(Sender: TObject);
     procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);
     procedure DelReaderButtonClick(Sender: TObject);
@@ -105,6 +100,10 @@ type
     procedure TakeBookButtonClick(Sender: TObject);
     procedure FindBookEditChange(Sender: TObject);
     procedure DelBookButtonClick(Sender: TObject);
+    procedure EditBookButtonClick(Sender: TObject);
+    procedure FindReaderButtonClick(Sender: TObject);
+    procedure FindBookButtonClick(Sender: TObject);
+    procedure N4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -119,7 +118,7 @@ var
 
 implementation
 
-uses data_module, about, book_add, reader_edit, reader_add;
+uses data_module, about, book_add, reader_edit, reader_add, book_edit;
 
 {$R *.dfm}
 
@@ -141,12 +140,6 @@ procedure TMainForm.N2Click(Sender: TObject);
 begin
   aboutForm.memo1.lines.loadFromFile('COPYING');
   aboutForm.showModal();
-end;
-
-// file -> exit
-procedure TMainForm.N12Click(Sender: TObject);
-begin
-  close();
 end;
 
 procedure TMainForm.AddBookButtonClick(Sender: TObject);
@@ -178,7 +171,7 @@ end;
 procedure TMainForm.TakeBookButtonClick(Sender: TObject);
 begin
   DataLibrary.Books.Edit;
-  DataLibrary.Books.fieldByName('number').AsInteger:=DataLibrary.Books.fieldByName('number').AsInteger - 1;
+  DataLibrary.Books.fieldByName('count').AsInteger:=DataLibrary.Books.fieldByName('count').AsInteger - 1;
   DataLibrary.Books.Post;
   DataLibrary.Books.Refresh;
   DataLibrary.TakenBooks.insert;
@@ -198,6 +191,36 @@ end;
 procedure TMainForm.DelBookButtonClick(Sender: TObject);
 begin
   DataLibrary.Books.Delete;
+end;
+
+procedure TMainForm.EditBookButtonClick(Sender: TObject);
+begin
+  BookEditForm.showModal();
+end;
+
+procedure TMainForm.FindReaderButtonClick(Sender: TObject);
+begin
+  if NOT(FindReaderEdit.Text = '') then begin
+      DataLibrary.Readers.Filter:='last_name LIKE '+''''+FindReaderEdit.Text+'%''';
+      DataLibrary.Readers.Filtered:=true;
+    end
+  else
+    DataLibrary.Readers.Filtered:=false;
+end;
+
+procedure TMainForm.FindBookButtonClick(Sender: TObject);
+begin
+  if NOT(FindBookEdit.Text = '') then begin
+      DataLibrary.Books.Filter:='title LIKE '+''''+FindBookEdit.Text+'%''';
+      DataLibrary.Books.Filtered:=true;
+    end
+  else
+    DataLibrary.Books.Filtered:=false;
+end;
+
+procedure TMainForm.N4Click(Sender: TObject);
+begin
+  close();
 end;
 
 end.

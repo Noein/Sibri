@@ -126,7 +126,7 @@ object BookEditForm: TBookEditForm
     Height = 21
     TabOrder = 12
   end
-  object DBGrid1: TDBGrid
+  object DBGridPA: TDBGrid
     Left = 8
     Top = 64
     Width = 281
@@ -139,11 +139,12 @@ object BookEditForm: TBookEditForm
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
   end
-  object DBNavigator1: TDBNavigator
+  object DBNavPA: TDBNavigator
     Left = 8
     Top = 200
     Width = 280
     Height = 25
+    DataSource = DataLibrary.DSPartAuthors
     TabOrder = 14
   end
   object DBLookupComboBox1: TDBLookupComboBox

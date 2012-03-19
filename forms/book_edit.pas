@@ -40,8 +40,8 @@ type
     StaticText10: TStaticText;
     Edit1: TEdit;
     Label1: TLabel;
-    DBGrid1: TDBGrid;
-    DBNavigator1: TDBNavigator;
+    DBGridPA: TDBGrid;
+    DBNavPA: TDBNavigator;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
     DateTimePicker1: TDateTimePicker;
@@ -84,7 +84,7 @@ begin
   DataLibrary.Books.FieldByName('reason_id').AsString:=DBLookupComboBox3.KeyValue;
   DataLibrary.Books.FieldByName('title').AsString:=Edit1.Text;
   DataLibrary.Books.FieldByName('publication_date').AsString:=DateToStr(DateTimePicker1.Date);
-  DataLibrary.Books.FieldByName('number').AsString:=Edit5.Text;
+  DataLibrary.Books.FieldByName('count').AsString:=Edit5.Text;
   DataLibrary.Books.FieldByName('ISBN').AsString:=Edit2.Text;
   DataLibrary.Books.FieldByName('BBC').AsString:=Edit3.Text;
   DataLibrary.Books.FieldByName('UDC').AsString:=Edit4.Text;
@@ -100,8 +100,8 @@ begin
   DBLookupComboBox2.KeyValue:=DataLibrary.Books.FieldByName('category_id').AsString;
   DBLookupComboBox3.KeyValue:=DataLibrary.Books.FieldByName('reason_id').AsString;
   Edit1.Text:=DataLibrary.Books.FieldByName('title').AsString;
-  DateTimePicker1.Date:=StrToDate(DataLibrary.Books.FieldByName('publication_date'));
-  Edit5.Text:=DataLibrary.Books.FieldByName('number').AsString;
+  DateTimePicker1.Date:=StrToDate(DataLibrary.Books.FieldByName('publication_date').AsString);
+  Edit5.Text:=DataLibrary.Books.FieldByName('count').AsString;
   Edit2.Text:=DataLibrary.Books.FieldByName('ISBN').AsString;
   Edit3.Text:=DataLibrary.Books.FieldByName('BBC').AsString;
   Edit4.Text:=DataLibrary.Books.FieldByName('UDC').AsString;
