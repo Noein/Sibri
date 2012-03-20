@@ -91,6 +91,8 @@ type
     TakeBookButton: TButton;
     N4: TMenuItem;
     NEEDMoreTimeButton: TButton;
+    DBCheckBox1: TDBCheckBox;
+    DateTimePicker1: TDateTimePicker;
     procedure N2Click(Sender: TObject);
     procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);
@@ -108,6 +110,12 @@ type
     procedure CleanRestButtonClick(Sender: TObject);
     procedure AppyRestButtonClick(Sender: TObject);
     procedure ExtendSearchButtonClick(Sender: TObject);
+    procedure DBGrid10DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid10ColExit(Sender: TObject);
+    procedure DBCheckBox1Click(Sender: TObject);
+    procedure DateTimePicker1Change(Sender: TObject);
+    procedure DateTimePicker1DropDown(Sender: TObject);
   private
     { Private declarations }
   public
@@ -251,6 +259,78 @@ end;
 procedure TMainForm.ExtendSearchButtonClick(Sender: TObject);
 begin
   ReaderSearchForm.showModal();
+end;
+
+procedure TMainForm.DBGrid10DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+const IsChecked : array[Boolean] of Integer = (DFCS_BUTTONCHECK, DFCS_BUTTONCHECK or DFCS_CHECKED);
+var
+  DrawState: Integer;
+  DrawRect: TRect;
+begin
+  if (gdFocused in State) then
+  begin
+    if (Column.Field.FieldName = DBCheckBox1.DataField) then
+    begin
+     DBCheckBox1.Left := Rect.Left + DBGrid10.Left + 2;
+     DBCheckBox1.Top := Rect.Top + DBGrid10.top + 2;
+     DBCheckBox1.Width := Rect.Right - Rect.Left;
+     DBCheckBox1.Height := Rect.Bottom - Rect.Top;
+     DBCheckBox1.Visible := True;
+    end
+  end
+  else
+  begin
+    if (Column.Field.FieldName = DBCheckBox1.DataField) then
+    begin
+      DrawRect:=Rect;
+      InflateRect(DrawRect,-1,-1);
+      DrawState := ISChecked[Column.Field.AsBoolean];
+      DBGrid1.Canvas.FillRect(Rect);
+      DrawFrameControl(DBGrid1.Canvas.Handle, DrawRect, DFC_BUTTON, DrawState);
+    end;
+  end;
+    if (gdFocused in State) then
+  begin
+    if (Column.Field.FieldName = 'foundation_date') then
+    with DateTimePicker1 do 
+    begin
+      Left := Rect.Left + DBGrid10.Left + 1;
+      Top := Rect.Top + DBGrid10.Top + 1;
+      Width := Rect.Right - Rect.Left + 2;
+      Width := Rect.Right - Rect.Left + 2;
+      Height := Rect.Bottom - Rect.Top + 2;
+      Visible := True;
+    end;
+  end; 
+end;
+
+procedure TMainForm.DBGrid10ColExit(Sender: TObject);
+begin
+  if DBGrid1.SelectedField.FieldName = DBCheckBox1.DataField then
+    DBCheckBox1.Visible := False;
+  if DBGrid1.SelectedField.FieldName = 'foundation_date' then
+    DateTimePicker1.Visible := False;
+end;
+
+procedure TMainForm.DBCheckBox1Click(Sender: TObject);
+begin
+  if DBCheckBox1.Checked then
+     DBCheckBox1.Caption:=DBCheckBox1.ValueChecked
+  else
+     DBCheckBox1.Caption:=DBCheckBox1.ValueUnChecked;
+end;
+
+procedure TMainForm.DateTimePicker1Change(Sender: TObject);
+begin
+  if DataLibrary.DSPublishers.State in [dsEdit, dsInsert] then
+    DataLibrary.Publishers.FieldByName('foundation_date').AsString:=DateToStr(DateTimePicker1.Date);
+end;
+
+procedure TMainForm.DateTimePicker1DropDown(Sender: TObject);
+begin
+  DataLibrary.Publishers.Edit;
 end;
 
 end.

@@ -87,7 +87,7 @@ begin
     TakenBooks.Filtered:=True;
     end
   else
-    TakenBooks.Filter:='return_date = ''01.01.2999''';
+    TakenBooks.Filter:='return_date = '+''''+DateToStr(StrToDate('01.01.2199'))+'''';
 end;
 
 end.

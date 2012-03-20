@@ -1,14 +1,15 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
-  Left = 1071
-  Top = 181
+  Left = 1070
+  Top = 266
   Height = 755
   Width = 207
   object ConnectionLibrary: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Z:\Course_work\Sibr' +
-      'i\sibri\db\Library.mdb;Persist Security Info=False'
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Z:\home\natsuo\deve' +
+      'lop\dev\Projects\Course_work\Sibri\sibri\db\Library.mdb;Persist ' +
+      'Security Info=False'
     LoginPrompt = False
     Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'

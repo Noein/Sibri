@@ -51,8 +51,12 @@ type
     Edit5: TEdit;
     Edit7: TEdit;
     DBLookupComboBox3: TDBLookupComboBox;
+    DBLookupComboBox4: TDBLookupComboBox;
     procedure SaveButtonClick(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
+    procedure DBGridPADrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGridPAColExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -93,6 +97,31 @@ begin
   DataLibrary.Books.Post;
   DataLibrary.Books.Refresh;
   close();
+end;
+
+procedure TBookAddForm.DBGridPADrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+begin
+  if (gdFocused in State) then
+  begin
+    if (Column.Field.FieldName = DBLookupComboBox4.DataField) then
+    with DBLookupComboBox4 do 
+    begin
+      Left := Rect.Left + DBGridPA.Left + 2;
+      Top := Rect.Top + DBGridPA.Top + 2;
+      Width := Rect.Right - Rect.Left;
+      Width := Rect.Right - Rect.Left;
+      Height := Rect.Bottom - Rect.Top;
+      Visible := True;
+    end;
+  end
+end;
+
+procedure TBookAddForm.DBGridPAColExit(Sender: TObject);
+begin
+  if DBGridPA.SelectedField.FieldName = DBLookupComboBox4.DataField then 
+    DBLookupComboBox4.Visible := False;
 end;
 
 end.

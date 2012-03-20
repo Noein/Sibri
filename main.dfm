@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 185
-  Top = 99
+  Left = 193
+  Top = 149
   Width = 1084
   Height = 837
   Caption = 'Sibri'
@@ -312,6 +312,8 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnColExit = DBGrid10ColExit
+            OnDrawColumnCell = DBGrid10DrawColumnCell
           end
           object DBNavigator10: TDBNavigator
             Left = 16
@@ -320,6 +322,31 @@ object MainForm: TMainForm
             Height = 33
             DataSource = DataLibrary.DSPublishers
             TabOrder = 1
+          end
+          object DBCheckBox1: TDBCheckBox
+            Left = 24
+            Top = 368
+            Width = 97
+            Height = 17
+            DataField = 'noncommercial'
+            DataSource = DataLibrary.DSPublishers
+            TabOrder = 2
+            ValueChecked = #1044#1072
+            ValueUnchecked = #1053#1077#1090
+            Visible = False
+            OnClick = DBCheckBox1Click
+          end
+          object DateTimePicker1: TDateTimePicker
+            Left = 24
+            Top = 344
+            Width = 186
+            Height = 21
+            Date = 40988.880151203710000000
+            Time = 40988.880151203710000000
+            TabOrder = 3
+            Visible = False
+            OnChange = DateTimePicker1Change
+            OnDropDown = DateTimePicker1DropDown
           end
         end
         object TabSheet7: TTabSheet
