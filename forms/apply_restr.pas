@@ -38,9 +38,10 @@ end;
 procedure TApplyRestForm.ApplyButtonClick(Sender: TObject);
 begin
   DataLibrary.AppliedRestrictions.Insert;
-  DataLibrary.Readers.FieldByName('restriction_id').AsString:=DBLookupComboBox1.KeyValue;
-  DataLibrary.Readers.FieldByName('applied_date').AsString:=DateToStr(Now);
-  DataLibrary.Readers.FieldByName('applied_time').AsString:=TimeToStr(Now);
+  DataLibrary.AppliedRestrictions.FieldByName('restriction_id').AsInteger:=DBLookupComboBox1.KeyValue;
+  DataLibrary.AppliedRestrictions.FieldByName('applied_date').AsString:=DateToStr(Now);
+  DataLibrary.AppliedRestrictions.FieldByName('applied_time').AsString:=TimeToStr(Now);
+  close();
 end;
 
 end.

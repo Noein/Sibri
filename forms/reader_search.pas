@@ -20,6 +20,9 @@ type
     RadioGroup2: TRadioGroup;
     FindButton: TButton;
     CancelButton: TButton;
+    Panel1: TPanel;
+    procedure CancelButtonClick(Sender: TObject);
+    procedure FindButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,6 +34,23 @@ var
 
 implementation
 
+uses data_module;
+
 {$R *.dfm}
+
+procedure TReaderSearchForm.CancelButtonClick(Sender: TObject);
+begin
+  DataLibrary.Readers.Filter:='';
+  DataLibrary.Readers.Filtered:=False;
+  close();
+end;
+
+procedure TReaderSearchForm.FindButtonClick(Sender: TObject);
+begin
+  DataLibrary.Readers.Filter:='last_name = '+''''+labeledEdit1.Text+''''+
+  ' AND first_name = '+''''+labeledEdit2.Text+'''';
+  DataLibrary.Readers.Filtered:=True;
+  close();
+end;
 
 end.

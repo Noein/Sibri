@@ -21,7 +21,7 @@ unit data_module;
 interface
 
 uses
-  SysUtils, Classes, DB, ADODB;
+  SysUtils, Dialogs, Classes, DB, ADODB;
 
 type
   TDataLibrary = class(TDataModule)
@@ -49,6 +49,7 @@ type
     ParticipatingAuthors: TADOTable;
     DSPartAuthors: TDataSource;
     procedure ConnectionLibraryBeforeConnect(Sender: TObject);
+    procedure ReadersAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -76,6 +77,17 @@ begin
    '\db\Library.mdb;Mode=Share Deny None;Extended Properties="";Jet OLEDB:System database="";Jet OLEDB:Registry Path="";' +
    'Jet OLEDB:Database Password="";Jet OLEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLEDB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk Transactions=1;' +
    'Jet OLEDB:New Database Password="";Jet OLEDB:Create System Database=False;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don''t Copy Locale on Compact=False;Jet OLEDB:Compact Without Replica Repair=False;Jet OLEDB:SFP=False';
+end;
+
+procedure TDataLibrary.ReadersAfterScroll(DataSet: TDataSet);
+begin
+  showmessage(TakenBooks.Filter);
+  if NOT(Readers.FieldByName('id_Reader').AsString = '') then begin
+    TakenBooks.Filter:='reader_id = '+''''+Readers.FieldByName('id_Reader').AsString+''''+'';
+    TakenBooks.Filtered:=True;
+    end
+  else
+    TakenBooks.Filter:='return_date = ''01.01.2999''';
 end;
 
 end.

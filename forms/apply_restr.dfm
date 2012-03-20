@@ -1,8 +1,8 @@
 object ApplyRestForm: TApplyRestForm
-  Left = 298
-  Top = 805
-  Width = 290
-  Height = 120
+  Left = 456
+  Top = 355
+  Width = 288
+  Height = 117
   Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1084#1077#1088#1091
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -26,9 +26,9 @@ object ApplyRestForm: TApplyRestForm
   object StaticText1: TStaticText
     Left = 8
     Top = 8
-    Width = 31
+    Width = 34
     Height = 17
-    Caption = #1052#1077#1088#1072
+    Caption = #1052#1077#1088#1072':'
     TabOrder = 1
   end
   object ApplyButton: TButton

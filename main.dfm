@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 193
-  Top = 149
+  Left = 185
+  Top = 99
   Width = 1084
   Height = 837
   Caption = 'Sibri'
@@ -12,7 +12,6 @@ object MainForm: TMainForm
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
@@ -78,6 +77,7 @@ object MainForm: TMainForm
             Height = 25
             Caption = #1056#1072#1089#1096#1080#1088#1077#1085#1085#1099#1081' '#1087#1086#1080#1089#1082
             TabOrder = 2
+            OnClick = ExtendSearchButtonClick
           end
           object FindReaderButton: TButton
             Left = 304
@@ -108,6 +108,7 @@ object MainForm: TMainForm
             Height = 33
             Caption = #1042#1086#1079#1074#1088#1072#1090#1080#1090#1100' '#1082#1085#1080#1075#1091
             TabOrder = 5
+            OnClick = ReturnBookButtonClick
           end
           object AppyRestButton: TButton
             Left = 536
@@ -116,6 +117,7 @@ object MainForm: TMainForm
             Height = 33
             Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1085#1086#1074#1091#1102
             TabOrder = 6
+            OnClick = AppyRestButtonClick
           end
           object CleanRestButton: TButton
             Left = 672
@@ -124,6 +126,7 @@ object MainForm: TMainForm
             Height = 33
             Caption = #1054#1095#1080#1089#1090#1080#1090#1100
             TabOrder = 7
+            OnClick = CleanRestButtonClick
           end
           object AddReaderButton: TButton
             Left = 0
@@ -165,6 +168,15 @@ object MainForm: TMainForm
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
           end
+          object NEEDMoreTimeButton: TButton
+            Left = 152
+            Top = 608
+            Width = 129
+            Height = 33
+            Caption = #1055#1088#1086#1076#1083#1080#1090#1100' '#1082#1085#1080#1075#1091
+            TabOrder = 12
+            OnClick = NEEDMoreTimeButtonClick
+          end
         end
         object TabSheet6: TTabSheet
           Caption = #1050#1085#1080#1075#1080
@@ -201,7 +213,6 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1085#1072#1079#1074#1072#1085#1080#1102
             TabOrder = 2
-            OnChange = FindBookEditChange
           end
           object FindBookButton: TButton
             Left = 264
@@ -230,7 +241,7 @@ object MainForm: TMainForm
             OnClick = EditBookButtonClick
           end
           object DelBookButton: TButton
-            Left = 384
+            Left = 376
             Top = 568
             Width = 153
             Height = 33

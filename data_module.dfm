@@ -1,15 +1,14 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
-  Left = 1074
-  Top = 280
-  Height = 741
-  Width = 203
+  Left = 1071
+  Top = 181
+  Height = 755
+  Width = 207
   object ConnectionLibrary: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Z:\home\natsuo\deve' +
-      'lop\dev\Projects\Course_work\Sibri\sibri\db\Library.mdb;Persist ' +
-      'Security Info=False'
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Z:\Course_work\Sibr' +
+      'i\sibri\db\Library.mdb;Persist Security Info=False'
     LoginPrompt = False
     Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'
@@ -115,6 +114,7 @@ object DataLibrary: TDataLibrary
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
+    AfterScroll = ReadersAfterScroll
     TableName = 'READERS'
     Left = 40
     Top = 344
@@ -142,8 +142,6 @@ object DataLibrary: TDataLibrary
     Connection = ConnectionLibrary
     CursorType = ctStatic
     IndexFieldNames = 'reader_id'
-    MasterFields = 'id_Reader'
-    MasterSource = DSReaders
     TableName = 'TAKEN_BOOKS'
     Left = 40
     Top = 288
@@ -157,6 +155,9 @@ object DataLibrary: TDataLibrary
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
+    IndexFieldNames = 'book_id'
+    MasterFields = 'id_Book'
+    MasterSource = DSBooks
     TableName = 'PARTICIPATING_AUTHORS'
     Left = 40
     Top = 656

@@ -90,7 +90,7 @@ type
     DelBookButton: TButton;
     TakeBookButton: TButton;
     N4: TMenuItem;
-    procedure FormCreate(Sender: TObject);
+    NEEDMoreTimeButton: TButton;
     procedure N2Click(Sender: TObject);
     procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);
@@ -98,19 +98,21 @@ type
     procedure EditReaderButtonClick(Sender: TObject);
     procedure TabSheet6Show(Sender: TObject);
     procedure TakeBookButtonClick(Sender: TObject);
-    procedure FindBookEditChange(Sender: TObject);
     procedure DelBookButtonClick(Sender: TObject);
     procedure EditBookButtonClick(Sender: TObject);
     procedure FindReaderButtonClick(Sender: TObject);
     procedure FindBookButtonClick(Sender: TObject);
     procedure N4Click(Sender: TObject);
+    procedure ReturnBookButtonClick(Sender: TObject);
+    procedure NEEDMoreTimeButtonClick(Sender: TObject);
+    procedure CleanRestButtonClick(Sender: TObject);
+    procedure AppyRestButtonClick(Sender: TObject);
+    procedure ExtendSearchButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
-
-  procedure PutsDbg(msg: String);
   
 var
   MainForm: TMainForm;
@@ -118,28 +120,16 @@ var
 
 implementation
 
-uses data_module, about, book_add, reader_edit, reader_add, book_edit;
+uses data_module, about, book_add, reader_edit, reader_add, book_edit,
+  apply_restr, reader_search;
 
 {$R *.dfm}
-
-procedure TMainForm.FormCreate(Sender: TObject);
-begin
-  //if DEBUG = true then begin
-  //  DebugConsole.Visible:=true;
-  //end;
-end;
-
-// Print message into debug console
-procedure putsDbg;
-begin
-  // Form1.DebugConsole.Lines.Add(msg);
-end;
 
 // Help -> About program
 procedure TMainForm.N2Click(Sender: TObject);
 begin
-  aboutForm.memo1.lines.loadFromFile('COPYING');
-  aboutForm.showModal();
+  AboutForm.Memo1.lines.loadFromFile('COPYING');
+  AboutForm.showModal();
 end;
 
 procedure TMainForm.AddBookButtonClick(Sender: TObject);
@@ -147,45 +137,9 @@ begin
   BookAddForm.showModal();
 end;
 
-procedure TMainForm.AddReaderButtonClick(Sender: TObject);
+procedure TMainForm.EditBookButtonClick(Sender: TObject);
 begin
-  readerAddForm.showModal();
-end;
-
-procedure TMainForm.DelReaderButtonClick(Sender: TObject);
-begin
-  DataLibrary.Readers.Delete;
-end;
-
-procedure TMainForm.EditReaderButtonClick(Sender: TObject);
-begin
-  ReaderEditForm.showModal();
-end;
-
-procedure TMainForm.TabSheet6Show(Sender: TObject);
-begin
-   TakeBookButton.Caption:='Take book to'+
-  ' '+DataLibrary.Readers.fieldByName('last_name').AsString;
-end;
-
-procedure TMainForm.TakeBookButtonClick(Sender: TObject);
-begin
-  DataLibrary.Books.Edit;
-  DataLibrary.Books.fieldByName('count').AsInteger:=DataLibrary.Books.fieldByName('count').AsInteger - 1;
-  DataLibrary.Books.Post;
-  DataLibrary.Books.Refresh;
-  DataLibrary.TakenBooks.insert;
-  DataLibrary.TakenBooks.FieldByName('book_id').AsInteger:=DataLibrary.Books.fieldByName('id_Book').AsInteger;
-  DataLibrary.TakenBooks.FieldByName('reader_id').AsInteger:=DataLibrary.Readers.fieldByName('id_Reader').AsInteger;
-  DataLibrary.TakenBooks.FieldByName('taken_date').AsString:=DateToStr(Now);
-  DataLibrary.TakenBooks.FieldByName('return_date').AsString:=DateToStr(Now);
-  DataLibrary.TakenBooks.Post;
-  DataLibrary.TakenBooks.Refresh;
-end;
-
-procedure TMainForm.FindBookEditChange(Sender: TObject);
-begin
-   DataLibrary.Books.Locate('title', FindBookEdit.Text, [loCaseInsensitive]);
+  BookEditForm.showModal();
 end;
 
 procedure TMainForm.DelBookButtonClick(Sender: TObject);
@@ -193,9 +147,47 @@ begin
   DataLibrary.Books.Delete;
 end;
 
-procedure TMainForm.EditBookButtonClick(Sender: TObject);
+procedure TMainForm.AddReaderButtonClick(Sender: TObject);
 begin
-  BookEditForm.showModal();
+  ReaderAddForm.showModal();
+end;
+
+procedure TMainForm.EditReaderButtonClick(Sender: TObject);
+begin
+  ReaderEditForm.showModal();
+end;
+
+procedure TMainForm.DelReaderButtonClick(Sender: TObject);
+begin
+  DataLibrary.Readers.Delete;
+end;
+
+procedure TMainForm.TabSheet6Show(Sender: TObject);
+begin
+   TakeBookButton.Caption:='Взять книгу для читателя: '+
+   DataLibrary.Readers.FieldByName('last_name').AsString+' '+
+   DataLibrary.Readers.FieldByName('first_name').AsString;
+end;
+
+procedure TMainForm.TakeBookButtonClick(Sender: TObject);
+var count:integer;
+begin
+  count:=DataLibrary.Books.fieldByName('count').AsInteger;
+  if count > 0 then begin
+    DataLibrary.Books.Edit;
+    DataLibrary.Books.fieldByName('count').AsInteger:=count - 1;
+    DataLibrary.Books.Post;
+    DataLibrary.Books.Refresh;
+    DataLibrary.TakenBooks.insert;
+    DataLibrary.TakenBooks.FieldByName('book_id').AsInteger:=DataLibrary.Books.fieldByName('id_Book').AsInteger;
+    DataLibrary.TakenBooks.FieldByName('reader_id').AsInteger:=DataLibrary.Readers.fieldByName('id_Reader').AsInteger;
+    DataLibrary.TakenBooks.FieldByName('taken_date').AsString:=DateToStr(Now);
+    DataLibrary.TakenBooks.FieldByName('return_date').Assign(Nil);
+    DataLibrary.TakenBooks.Post;
+    DataLibrary.TakenBooks.Refresh;
+    end
+  else
+    showMessage('Нельзя взять книгу, экземпляров которой не осталось!');
 end;
 
 procedure TMainForm.FindReaderButtonClick(Sender: TObject);
@@ -221,6 +213,44 @@ end;
 procedure TMainForm.N4Click(Sender: TObject);
 begin
   close();
+end;
+
+procedure TMainForm.ReturnBookButtonClick(Sender: TObject);
+begin
+  DataLibrary.Books.Locate('id_Book', DataLibrary.TakenBooks.fieldByName('book_id').AsString, [locaseinsensitive]);
+  DataLibrary.Books.Edit;
+  DataLibrary.Books.fieldByName('count').AsInteger:=DataLibrary.Books.fieldByName('count').AsInteger + 1;
+  DataLibrary.Books.Post;
+  DataLibrary.Books.Refresh;
+  DataLibrary.TakenBooks.Edit;
+  DataLibrary.TakenBooks.fieldByName('return_date').AsString:=DateToStr(Now);
+  DataLibrary.TakenBooks.Post;
+  DataLibrary.TakenBooks.Refresh;
+end;
+
+procedure TMainForm.NEEDMoreTimeButtonClick(Sender: TObject);
+begin
+  DataLibrary.TakenBooks.Edit;
+  DataLibrary.TakenBooks.fieldByName('taken_date').AsString:=DateToStr(Now);
+  DataLibrary.TakenBooks.Post;
+  DataLibrary.TakenBooks.Refresh;
+end;
+
+procedure TMainForm.CleanRestButtonClick(Sender: TObject);
+var i:integer;
+begin
+  For i:=DataLibrary.AppliedRestrictions.RecordCount downto 1 do
+    DataLibrary.AppliedRestrictions.Delete();
+end;
+
+procedure TMainForm.AppyRestButtonClick(Sender: TObject);
+begin
+  ApplyRestForm.showModal();
+end;
+
+procedure TMainForm.ExtendSearchButtonClick(Sender: TObject);
+begin
+  ReaderSearchForm.showModal();
 end;
 
 end.
