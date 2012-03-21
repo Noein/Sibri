@@ -37,11 +37,15 @@ end;
 
 procedure TApplyRestForm.ApplyButtonClick(Sender: TObject);
 begin
-  DataLibrary.AppliedRestrictions.Insert;
-  DataLibrary.AppliedRestrictions.FieldByName('restriction_id').AsInteger:=DBLookupComboBox1.KeyValue;
-  DataLibrary.AppliedRestrictions.FieldByName('applied_date').AsString:=DateToStr(Now);
-  DataLibrary.AppliedRestrictions.FieldByName('applied_time').AsString:=TimeToStr(Now);
-  close();
+  if DBLookupComboBox1.KeyValue <> Null then begin
+    DataLibrary.AppliedRestrictions.Insert;
+    DataLibrary.AppliedRestrictions.FieldByName('restriction_id').AsInteger:=DBLookupComboBox1.KeyValue;
+    DataLibrary.AppliedRestrictions.FieldByName('applied_date').AsString:=DateToStr(Now);
+    DataLibrary.AppliedRestrictions.FieldByName('applied_time').AsString:=TimeToStr(Now);
+    close();
+    end
+  else
+    ShowMessage('Чтобы применить меру её надо выбрать из списка.');
 end;
 
 end.

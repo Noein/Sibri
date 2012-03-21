@@ -81,7 +81,6 @@ end;
 
 procedure TDataLibrary.ReadersAfterScroll(DataSet: TDataSet);
 begin
-  showmessage(TakenBooks.Filter);
   if NOT(Readers.FieldByName('id_Reader').AsString = '') then begin
     TakenBooks.Filter:='reader_id = '+''''+Readers.FieldByName('id_Reader').AsString+''''+'';
     TakenBooks.Filtered:=True;

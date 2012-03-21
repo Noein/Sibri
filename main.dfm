@@ -1,8 +1,8 @@
 object MainForm: TMainForm
-  Left = 193
-  Top = 149
+  Left = 178
+  Top = 144
   Width = 1084
-  Height = 837
+  Height = 846
   Caption = 'Sibri'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -287,6 +287,7 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnDrawColumnCell = DBGrid6DrawColumnCell
           end
           object DBNavigator6: TDBNavigator
             Left = 24
@@ -295,6 +296,18 @@ object MainForm: TMainForm
             Height = 33
             DataSource = DataLibrary.DSAuthors
             TabOrder = 1
+          end
+          object DateTimePicker2: TDateTimePicker
+            Left = 32
+            Top = 376
+            Width = 186
+            Height = 21
+            Date = 40988.858331365740000000
+            Time = 40988.858331365740000000
+            TabOrder = 2
+            Visible = False
+            OnChange = DateTimePicker2Change
+            OnDropDown = DateTimePicker2DropDown
           end
         end
         object TabSheet3: TTabSheet
@@ -328,8 +341,10 @@ object MainForm: TMainForm
             Top = 368
             Width = 97
             Height = 17
+            Color = clBtnHighlight
             DataField = 'noncommercial'
             DataSource = DataLibrary.DSPublishers
+            ParentColor = False
             TabOrder = 2
             ValueChecked = #1044#1072
             ValueUnchecked = #1053#1077#1090
@@ -499,7 +514,7 @@ object MainForm: TMainForm
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 772
+    Top = 781
     Width = 1076
     Height = 19
     Panels = <>

@@ -93,6 +93,7 @@ type
     NEEDMoreTimeButton: TButton;
     DBCheckBox1: TDBCheckBox;
     DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
     procedure N2Click(Sender: TObject);
     procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);
@@ -116,6 +117,10 @@ type
     procedure DBCheckBox1Click(Sender: TObject);
     procedure DateTimePicker1Change(Sender: TObject);
     procedure DateTimePicker1DropDown(Sender: TObject);
+    procedure DateTimePicker2Change(Sender: TObject);
+    procedure DateTimePicker2DropDown(Sender: TObject);
+    procedure DBGrid6DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -294,16 +299,20 @@ begin
     if (gdFocused in State) then
   begin
     if (Column.Field.FieldName = 'foundation_date') then
-    with DateTimePicker1 do 
+    with DateTimePicker1 do
     begin
       Left := Rect.Left + DBGrid10.Left + 1;
       Top := Rect.Top + DBGrid10.Top + 1;
       Width := Rect.Right - Rect.Left + 2;
       Width := Rect.Right - Rect.Left + 2;
       Height := Rect.Bottom - Rect.Top + 2;
+      if DataLibrary.Publishers.FieldByName('foundation_date').AsString <> '' then
+          DateTimePicker1.Date:=StrToDate(DataLibrary.Publishers.FieldByName('foundation_date').AsString)
+        else
+          DateTimePicker1.Date:=Now;
       Visible := True;
     end;
-  end; 
+  end;
 end;
 
 procedure TMainForm.DBGrid10ColExit(Sender: TObject);
@@ -331,6 +340,41 @@ end;
 procedure TMainForm.DateTimePicker1DropDown(Sender: TObject);
 begin
   DataLibrary.Publishers.Edit;
+end;
+
+procedure TMainForm.DateTimePicker2Change(Sender: TObject);
+begin
+  if DataLibrary.DSAuthors.State in [dsEdit, dsInsert] then
+    DataLibrary.Authors.FieldByName('birth_date').AsString:=DateToStr(DateTimePicker2.Date);
+end;
+
+procedure TMainForm.DateTimePicker2DropDown(Sender: TObject);
+begin
+  DataLibrary.Authors.Edit;
+end;
+
+
+procedure TMainForm.DBGrid6DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+begin
+  if (gdFocused in State) then
+    begin
+      if (Column.Field.FieldName = 'birth_date') then
+      with DateTimePicker2 do
+      begin
+        Left := Rect.Left + DBGrid6.Left + 1;
+        Top := Rect.Top + DBGrid6.Top + 1;
+        Width := Rect.Right - Rect.Left + 2;
+        Width := Rect.Right - Rect.Left + 2;
+        Height := Rect.Bottom - Rect.Top + 2;
+        if DataLibrary.Authors.FieldByName('birth_date').AsString <> '' then
+          DateTimePicker2.Date:=StrToDate(DataLibrary.Authors.FieldByName('birth_date').AsString)
+        else
+          DateTimePicker2.Date:=Now;
+        Visible := True;
+      end;
+    end;
 end;
 
 end.
