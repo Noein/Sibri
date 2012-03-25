@@ -1,6 +1,6 @@
 object ReaderSearchForm: TReaderSearchForm
-  Left = 483
-  Top = 416
+  Left = 411
+  Top = 562
   Width = 502
   Height = 209
   Caption = #1055#1086#1080#1089#1082

@@ -157,7 +157,9 @@ end;
 
 procedure TMainForm.DelBookButtonClick(Sender: TObject);
 begin
-  DataLibrary.Books.Delete;
+  if MessageBox(handle, 'Вы действительно хотите удалить книгу?',
+   'Подтверждение', MB_YESNO Or MB_ICONQUESTION) = IDYES then
+    DataLibrary.Books.Delete;
 end;
 
 procedure TMainForm.AddReaderButtonClick(Sender: TObject);
@@ -172,7 +174,9 @@ end;
 
 procedure TMainForm.DelReaderButtonClick(Sender: TObject);
 begin
-  DataLibrary.Readers.Delete;
+  if MessageBox(handle, 'Вы действительно хотите удалить читателя?',
+   'Подтверждение', MB_YESNO Or MB_ICONQUESTION) = IDYES then
+    DataLibrary.Readers.Delete;
 end;
 
 procedure TMainForm.TabSheet6Show(Sender: TObject);
@@ -252,8 +256,10 @@ end;
 procedure TMainForm.CleanRestButtonClick(Sender: TObject);
 var i:integer;
 begin
-  For i:=DataLibrary.AppliedRestrictions.RecordCount downto 1 do
-    DataLibrary.AppliedRestrictions.Delete();
+  if MessageBox(handle, 'Вы действительно хотите очистить все записи о примененных мерах?',
+   'Подтверждение', MB_YESNO Or MB_ICONQUESTION) = IDYES then
+    For i:=DataLibrary.AppliedRestrictions.RecordCount downto 1 do
+      DataLibrary.AppliedRestrictions.Delete();
 end;
 
 procedure TMainForm.AppyRestButtonClick(Sender: TObject);

@@ -1,3 +1,21 @@
+{
+  Copyright © 2012 Vladislav Mileshkin
+
+  This file is part of Sibri.
+
+  Sibri is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Sibri is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Sibri.  If not, see <http://www.gnu.org/licenses/>.
+}
 unit apply_restr;
 
 interface
@@ -31,8 +49,8 @@ uses data_module;
 
 procedure TApplyRestForm.CancelButtonClick(Sender: TObject);
 begin
-  close();
   DBLookupComboBox1.KeyValue:=Null;
+  close();
 end;
 
 procedure TApplyRestForm.ApplyButtonClick(Sender: TObject);
@@ -45,7 +63,8 @@ begin
     close();
     end
   else
-    ShowMessage('Чтобы применить меру её надо выбрать из списка.');
+    MessageDlg('Чтобы применить меру её надо выбрать из списка.', mtWarning, [mbOk], 0);
+  DBLookupComboBox1.KeyValue:=Null;
 end;
 
 end.

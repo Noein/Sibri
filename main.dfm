@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 178
-  Top = 144
+  Left = 187
+  Top = 136
   Width = 1084
   Height = 846
   Caption = 'Sibri'
@@ -250,12 +250,13 @@ object MainForm: TMainForm
             OnClick = DelBookButtonClick
           end
           object TakeBookButton: TButton
-            Left = 824
-            Top = 576
-            Width = 225
-            Height = 129
+            Left = 648
+            Top = 568
+            Width = 401
+            Height = 33
             Caption = #1042#1079#1103#1090#1100' '#1076#1083#1103' '#1095#1080#1090#1072#1090#1077#1083#1103
             TabOrder = 7
+            WordWrap = True
             OnClick = TakeBookButtonClick
           end
         end
@@ -302,8 +303,8 @@ object MainForm: TMainForm
             Top = 376
             Width = 186
             Height = 21
-            Date = 40988.858331365740000000
-            Time = 40988.858331365740000000
+            Date = 40988.858331365730000000
+            Time = 40988.858331365730000000
             TabOrder = 2
             Visible = False
             OnChange = DateTimePicker2Change
