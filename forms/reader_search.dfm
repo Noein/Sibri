@@ -1,7 +1,7 @@
 object ReaderSearchForm: TReaderSearchForm
-  Left = 411
-  Top = 562
-  Width = 502
+  Left = 439
+  Top = 493
+  Width = 462
   Height = 209
   Caption = #1055#1086#1080#1089#1082
   Color = clBtnFace
@@ -11,15 +11,9 @@ object ReaderSearchForm: TReaderSearchForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
-    Left = 176
-    Top = 96
-    Width = 209
-    Height = 73
-    TabOrder = 12
-  end
   object LabeledEdit1: TLabeledEdit
     Left = 0
     Top = 16
@@ -62,7 +56,7 @@ object ReaderSearchForm: TReaderSearchForm
   end
   object DateTimePicker1: TDateTimePicker
     Left = 184
-    Top = 128
+    Top = 104
     Width = 89
     Height = 21
     Date = 40987.874910115740000000
@@ -71,17 +65,22 @@ object ReaderSearchForm: TReaderSearchForm
   end
   object StaticText1: TStaticText
     Left = 184
-    Top = 104
+    Top = 88
     Width = 83
     Height = 17
     Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103
     TabOrder = 5
   end
-  object RadioGroup1: TRadioGroup
-    Left = 280
-    Top = 104
-    Width = 97
-    Height = 57
+  object BirthRadioGroup: TRadioGroup
+    Left = 184
+    Top = 128
+    Width = 129
+    Height = 33
+    Columns = 3
+    Items.Strings = (
+      '>'
+      '<'
+      '=')
     TabOrder = 6
   end
   object DBLookupComboBox1: TDBLookupComboBox
@@ -102,16 +101,20 @@ object ReaderSearchForm: TReaderSearchForm
     Caption = #1059#1083#1080#1094#1072
     TabOrder = 8
   end
-  object RadioGroup2: TRadioGroup
-    Left = 392
+  object AndOrRadioGroup: TRadioGroup
+    Left = 352
     Top = 48
     Width = 97
     Height = 89
     Caption = '"'#1048'" '#1080#1083#1080' "'#1048#1051#1048'"'
+    ItemIndex = 0
+    Items.Strings = (
+      #1048
+      #1048#1083#1080)
     TabOrder = 9
   end
   object FindButton: TButton
-    Left = 392
+    Left = 352
     Top = 8
     Width = 97
     Height = 33
@@ -120,7 +123,7 @@ object ReaderSearchForm: TReaderSearchForm
     OnClick = FindButtonClick
   end
   object CancelButton: TButton
-    Left = 392
+    Left = 352
     Top = 144
     Width = 97
     Height = 33

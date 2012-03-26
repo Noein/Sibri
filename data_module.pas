@@ -21,7 +21,7 @@ unit data_module;
 interface
 
 uses
-  SysUtils, Dialogs, Classes, DB, ADODB;
+  SysUtils, Dialogs, Classes, DB, ADODB, Variants;
 
 type
   TDataLibrary = class(TDataModule)
@@ -48,8 +48,23 @@ type
     DSTakenBooks: TDataSource;
     ParticipatingAuthors: TADOTable;
     DSPartAuthors: TDataSource;
+    Booksid_Book: TAutoIncField;
+    Bookspublisher_id: TIntegerField;
+    Bookscategory_id: TIntegerField;
+    Booksreason_id: TIntegerField;
+    Bookstitle: TWideStringField;
+    Bookspublication_date: TDateTimeField;
+    Bookscount: TIntegerField;
+    BooksISBN: TWideStringField;
+    BooksBBC: TWideStringField;
+    BooksUDC: TWideStringField;
+    Booksdescryption: TWideStringField;
+    Booksauthors: TStringField;
+    AuthorsQuery: TADOQuery;
+    TakenBooksQuery: TADOQuery;
     procedure ConnectionLibraryBeforeConnect(Sender: TObject);
     procedure ReadersAfterScroll(DataSet: TDataSet);
+    procedure BooksCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -81,12 +96,35 @@ end;
 
 procedure TDataLibrary.ReadersAfterScroll(DataSet: TDataSet);
 begin
-  if NOT(Readers.FieldByName('id_Reader').AsString = '') then begin
+  if Readers.FieldByName('id_Reader').Value <> Null then begin
     TakenBooks.Filter:='reader_id = '+''''+Readers.FieldByName('id_Reader').AsString+''''+' AND return_date = null';
     TakenBooks.Filtered:=True;
     end
   else
-    TakenBooks.Filter:='return_date = '+''''+DateToStr(StrToDate('01.01.2199'))+'''';
+    TakenBooks.Filter:='id_Taken_book = null';
+end;
+
+procedure TDataLibrary.BooksCalcFields(DataSet: TDataSet);
+var
+  authorsstr:string;
+  i:integer;
+begin
+  AuthorsQuery.Close;
+  AuthorsQuery.SQL.Clear;
+  AuthorsQuery.SQL.Add('SELECT AUTHORS.last_name, AUTHORS.first_name, AUTHORS.patronymic, PARTICIPATING_AUTHORS.author_id');
+  AuthorsQuery.SQL.Add('FROM AUTHORS INNER JOIN PARTICIPATING_AUTHORS ON AUTHORS.id_Author = PARTICIPATING_AUTHORS.author_id');
+  AuthorsQuery.SQL.Add('WHERE (([PARTICIPATING_AUTHORS]![book_id]=:bookid))');
+  AuthorsQuery.Parameters.ParamByName('bookid').Value:=Books.FieldByName('id_Book').AsInteger;
+  AuthorsQuery.Open;
+  For i:=AuthorsQuery.RecordCount downto 1 do begin
+    authorsstr:=authorsstr+AuthorsQuery.FieldByName('last_name').AsString;
+    if AuthorsQuery.FieldByName('first_name').Value <> Null then
+      authorsstr:=authorsstr+' '+AuthorsQuery.FieldByName('first_name').AsString[1]+'.';
+    if AuthorsQuery.FieldByName('patronymic').Value <> Null then
+      authorsstr:=authorsstr+' '+AuthorsQuery.FieldByName('patronymic').AsString[1]+'.';
+    if i > 1 then authorsstr:=authorsstr+', ';
+  end;
+  Books.FieldByName('authors').AsString:=authorsstr;
 end;
 
 end.

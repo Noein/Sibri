@@ -1,5 +1,5 @@
 object MainForm: TMainForm
-  Left = 187
+  Left = 189
   Top = 136
   Width = 1084
   Height = 846
@@ -230,6 +230,7 @@ object MainForm: TMainForm
             Height = 25
             Caption = #1056#1072#1089#1096#1080#1088#1077#1085#1085#1099#1081' '#1087#1086#1080#1089#1082
             TabOrder = 4
+            OnClick = Button4Click
           end
           object EditBookButton: TButton
             Left = 200
@@ -531,6 +532,7 @@ object MainForm: TMainForm
       Caption = #1047#1072#1087#1088#1086#1089#1099
       object N7: TMenuItem
         Caption = #1042#1079#1103#1090#1099#1077' '#1082#1085#1080#1075#1080
+        OnClick = N7Click
       end
       object N8: TMenuItem
         Caption = #1044#1086#1083#1078#1085#1080#1082#1080

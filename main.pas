@@ -121,6 +121,8 @@ type
     procedure DateTimePicker2DropDown(Sender: TObject);
     procedure DBGrid6DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure Button4Click(Sender: TObject);
+    procedure N7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -134,7 +136,7 @@ var
 implementation
 
 uses data_module, about, book_add, reader_edit, reader_add, book_edit,
-  apply_restr, reader_search;
+  apply_restr, reader_search, book_search, taken_books;
 
 {$R *.dfm}
 
@@ -381,6 +383,16 @@ begin
         Visible := True;
       end;
     end;
+end;
+
+procedure TMainForm.Button4Click(Sender: TObject);
+begin
+  BookSearchForm.ShowModal();
+end;
+
+procedure TMainForm.N7Click(Sender: TObject);
+begin
+  TakenBooksQForm.ShowModal();
 end;
 
 end.

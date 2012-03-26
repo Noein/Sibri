@@ -1,9 +1,9 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
-  Left = 1070
-  Top = 198
+  Left = 988
+  Top = 271
   Height = 755
-  Width = 207
+  Width = 295
   object ConnectionLibrary: TADOConnection
     Connected = True
     ConnectionString = 
@@ -46,9 +46,65 @@ object DataLibrary: TDataLibrary
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
+    OnCalcFields = BooksCalcFields
     TableName = 'BOOKS'
     Left = 40
     Top = 168
+    object Booksid_Book: TAutoIncField
+      DisplayWidth = 12
+      FieldName = 'id_Book'
+      ReadOnly = True
+    end
+    object Bookspublisher_id: TIntegerField
+      DisplayWidth = 12
+      FieldName = 'publisher_id'
+    end
+    object Bookscategory_id: TIntegerField
+      DisplayWidth = 12
+      FieldName = 'category_id'
+    end
+    object Booksreason_id: TIntegerField
+      DisplayWidth = 12
+      FieldName = 'reason_id'
+    end
+    object Booksauthors: TStringField
+      DisplayWidth = 10
+      FieldKind = fkCalculated
+      FieldName = 'authors'
+      Size = 30
+      Calculated = True
+    end
+    object Bookstitle: TWideStringField
+      DisplayWidth = 18
+      FieldName = 'title'
+      Size = 50
+    end
+    object Bookspublication_date: TDateTimeField
+      DisplayWidth = 22
+      FieldName = 'publication_date'
+    end
+    object Bookscount: TIntegerField
+      DisplayWidth = 12
+      FieldName = 'count'
+    end
+    object BooksISBN: TWideStringField
+      DisplayWidth = 24
+      FieldName = 'ISBN'
+    end
+    object BooksBBC: TWideStringField
+      DisplayWidth = 17
+      FieldName = 'BBC'
+    end
+    object BooksUDC: TWideStringField
+      DisplayWidth = 15
+      FieldName = 'UDC'
+      Size = 50
+    end
+    object Booksdescryption: TWideStringField
+      DisplayWidth = 18
+      FieldName = 'descryption'
+      Size = 255
+    end
   end
   object Reasons: TADOTable
     Active = True
@@ -166,5 +222,20 @@ object DataLibrary: TDataLibrary
     DataSet = ParticipatingAuthors
     Left = 128
     Top = 656
+  end
+  object AuthorsQuery: TADOQuery
+    Connection = ConnectionLibrary
+    Parameters = <
+      item
+        Name = 'bookid'
+        Value = Null
+      end>
+    Left = 208
+    Top = 656
+  end
+  object TakenBooksQuery: TADOQuery
+    Parameters = <>
+    Left = 216
+    Top = 288
   end
 end

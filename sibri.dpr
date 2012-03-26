@@ -10,7 +10,9 @@ uses
   reader_add in 'forms\reader_add.pas' {ReaderAddForm},
   book_add in 'forms\book_add.pas' {BookAddForm},
   apply_restr in 'forms\apply_restr.pas' {ApplyRestForm},
-  reader_search in 'forms\reader_search.pas' {ReaderSearchForm};
+  book_search in 'forms\book_search.pas' {BookSearchForm},
+  reader_search in 'forms\reader_search.pas' {ReaderSearchForm},
+  taken_books in 'forms\queries\taken_books.pas' {TakenBooksQForm};
 
 {$R *.res}
 
@@ -24,6 +26,8 @@ begin
   Application.CreateForm(TReaderAddForm, ReaderAddForm);
   Application.CreateForm(TBookAddForm, BookAddForm);
   Application.CreateForm(TApplyRestForm, ApplyRestForm);
+  Application.CreateForm(TBookSearchForm, BookSearchForm);
   Application.CreateForm(TReaderSearchForm, ReaderSearchForm);
+  Application.CreateForm(TTakenBooksQForm, TakenBooksQForm);
   Application.Run;
 end.

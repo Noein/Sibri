@@ -16,7 +16,7 @@
   You should have received a copy of the GNU General Public License
   along with Sibri.  If not, see <http://www.gnu.org/licenses/>.
 }
-unit reader_search;
+unit book_search;
 
 interface
 
@@ -25,19 +25,21 @@ uses
   Dialogs, StdCtrls, DBCtrls, ExtCtrls, ComCtrls;
 
 type
-  TReaderSearchForm = class(TForm)
-    LabeledEdit1: TLabeledEdit;
-    LabeledEdit2: TLabeledEdit;
-    LabeledEdit3: TLabeledEdit;
-    LabeledEdit4: TLabeledEdit;
-    DateTimePicker1: TDateTimePicker;
+  TBookSearchForm = class(TForm)
+    LabeledEditTitle: TLabeledEdit;
+    LabeledEditISBN: TLabeledEdit;
+    LabeledEditBBC: TLabeledEdit;
+    DateTimePicker: TDateTimePicker;
     StaticText1: TStaticText;
-    BirthRadioGroup: TRadioGroup;
-    DBLookupComboBox1: TDBLookupComboBox;
+    PubRadioGroup: TRadioGroup;
+    DBLookupComboBoxCat: TDBLookupComboBox;
     StaticText2: TStaticText;
     AndOrRadioGroup: TRadioGroup;
     FindButton: TButton;
     CancelButton: TButton;
+    LabeledEditUDC: TLabeledEdit;
+    DBLookupComboBoxPub: TDBLookupComboBox;
+    StaticText3: TStaticText;
     procedure CancelButtonClick(Sender: TObject);
     procedure FindButtonClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -48,7 +50,7 @@ type
   end;
 
 var
-  ReaderSearchForm: TReaderSearchForm;
+  BookSearchForm: TBookSearchForm;
 
 implementation
 
@@ -56,14 +58,14 @@ uses data_module;
 
 {$R *.dfm}
 
-procedure TReaderSearchForm.CancelButtonClick(Sender: TObject);
+procedure TBookSearchForm.CancelButtonClick(Sender: TObject);
 begin
-  DataLibrary.Readers.Filter:='';
-  DataLibrary.Readers.Filtered:=False;
+  DataLibrary.Books.Filter:='';
+  DataLibrary.Books.Filtered:=False;
   close();
 end;
 
-procedure TReaderSearchForm.FindButtonClick(Sender: TObject);
+procedure TBookSearchForm.FindButtonClick(Sender: TObject);
 var
   cond, condDate, filterStr:string;
 begin
@@ -71,26 +73,27 @@ begin
     0:cond:=' AND ';
     1:cond:=' OR ';
   end;
-  Case BirthRadioGroup.ItemIndex of
+  Case PubRadioGroup.ItemIndex of
     0:condDate:=' > ';
     1:condDate:=' < ';
     2:condDate:=' = ';
   end;
-  filterStr:='last_name = '+''''+labeledEdit1.Text+''''+
-  cond+'first_name = '+''''+labeledEdit2.Text+''''+
-  cond+'patronymic = '+''''+labeledEdit3.Text+'''';
-  if DBLookupComboBox1.KeyValue <> Null then
-    filterStr:=filterStr+cond+'street_id = '+IntToStr(DBLookupComboBox1.KeyValue);
-  if labeledEdit4.Text <> '' then
-    filterStr:=filterStr+cond+'passport_number = '+labeledEdit4.Text;
+  filterStr:='title = '+''''+labeledEditTitle.Text+''''+
+  cond+'ISBN = '+''''+labeledEditISBN.Text+''''+
+  cond+'BBC = '+''''+labeledEditBBC.Text+''''+
+  cond+'UDC = '+''''+labeledEditUDC.Text+'''';
+  if DBLookupComboBoxCat.KeyValue <> Null then
+    filterStr:=filterStr+cond+'category_id = '+IntToStr(DBLookupComboBoxCat.KeyValue);
+  if DBLookupComboBoxPub.KeyValue <> Null then
+    filterStr:=filterStr+cond+'publisher_id = '+IntToStr(DBLookupComboBoxPub.KeyValue);
   if condDate <> '' then
-    filterStr:=filterStr+cond+'birth_date'+condDate+DateToStr(DateTimePicker1.Date);
-  DataLibrary.Readers.Filter:=filterStr;
-  DataLibrary.Readers.Filtered:=True;
+    filterStr:=filterStr+cond+'publication_date'+condDate+DateToStr(DateTimePicker.Date);
+  DataLibrary.Books.Filter:=filterStr;
+  DataLibrary.Books.Filtered:=True;
   close();
 end;
 
-procedure TReaderSearchForm.FormShow(Sender: TObject);
+procedure TBookSearchForm.FormShow(Sender: TObject);
 begin
   //
 end;
