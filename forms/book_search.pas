@@ -22,7 +22,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBCtrls, ExtCtrls, ComCtrls;
+  Dialogs, StdCtrls, DBCtrls, ExtCtrls, ComCtrls, StrUtils;
 
 type
   TBookSearchForm = class(TForm)
@@ -34,15 +34,15 @@ type
     PubRadioGroup: TRadioGroup;
     DBLookupComboBoxCat: TDBLookupComboBox;
     StaticText2: TStaticText;
-    AndOrRadioGroup: TRadioGroup;
     FindButton: TButton;
     CancelButton: TButton;
     LabeledEditUDC: TLabeledEdit;
     DBLookupComboBoxPub: TDBLookupComboBox;
     StaticText3: TStaticText;
+    ClearButton: TButton;
     procedure CancelButtonClick(Sender: TObject);
     procedure FindButtonClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    procedure ClearButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,35 +67,46 @@ end;
 
 procedure TBookSearchForm.FindButtonClick(Sender: TObject);
 var
-  cond, condDate, filterStr:string;
+  cond, condDate:string;
 begin
-  Case AndOrRadioGroup.ItemIndex of
-    0:cond:=' AND ';
-    1:cond:=' OR ';
-  end;
   Case PubRadioGroup.ItemIndex of
     0:condDate:=' > ';
     1:condDate:=' < ';
     2:condDate:=' = ';
   end;
-  filterStr:='title = '+''''+labeledEditTitle.Text+''''+
-  cond+'ISBN = '+''''+labeledEditISBN.Text+''''+
-  cond+'BBC = '+''''+labeledEditBBC.Text+''''+
-  cond+'UDC = '+''''+labeledEditUDC.Text+'''';
+  if labeledEditTitle.Text <> '' then
+    cond:=cond+'title = '+''''+labeledEditTitle.Text+''' AND ';
+  if labeledEditISBN.Text <> '' then
+    cond:=cond+'ISBN = '+''''+labeledEditISBN.Text+''' AND ';
+  if labeledEditBBC.Text <> '' then
+    cond:=cond+'BBC = '+''''+labeledEditBBC.Text+''' AND ';
+  if labeledEditUDC.Text <> '' then
+    cond:=cond+'UDC = '+''''+labeledEditUDC.Text+''' AND ';
   if DBLookupComboBoxCat.KeyValue <> Null then
-    filterStr:=filterStr+cond+'category_id = '+IntToStr(DBLookupComboBoxCat.KeyValue);
+    cond:=cond+'category_id = '+IntToStr(DBLookupComboBoxCat.KeyValue)+' AND ';
   if DBLookupComboBoxPub.KeyValue <> Null then
-    filterStr:=filterStr+cond+'publisher_id = '+IntToStr(DBLookupComboBoxPub.KeyValue);
+    cond:=cond+'publisher_id = '+IntToStr(DBLookupComboBoxPub.KeyValue)+' AND ';
   if condDate <> '' then
-    filterStr:=filterStr+cond+'publication_date'+condDate+DateToStr(DateTimePicker.Date);
-  DataLibrary.Books.Filter:=filterStr;
+    cond:=cond+'publication_date'+condDate+DateToStr(DateTimePicker.Date)+' AND ';
+  if cond <> '' then
+    cond:=LeftStr(cond, length(cond)-5);
+  DataLibrary.Books.Filter:=cond;
   DataLibrary.Books.Filtered:=True;
   close();
 end;
 
-procedure TBookSearchForm.FormShow(Sender: TObject);
+procedure TBookSearchForm.ClearButtonClick(Sender: TObject);
 begin
-  //
+  labeledEditTitle.Text:='';
+  labeledEditISBN.Text:='';
+  labeledEditBBC.Text:='';
+  labeledEditUDC.Text:='';
+  DBLookupComboBoxCat.KeyValue:=Null;
+  DBLookupComboBoxPub.KeyValue:=Null;
+  DateTimePicker.Date:=Now();
+  PubRadioGroup.ItemIndex:=-1;
+  DataLibrary.Books.Filter:='';
+  DataLibrary.Books.Filtered:=False;
 end;
 
 end.

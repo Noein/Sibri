@@ -1,9 +1,9 @@
 object ReaderSearchForm: TReaderSearchForm
-  Left = 439
-  Top = 493
+  Left = 398
+  Top = 270
   Width = 462
   Height = 209
-  Caption = #1055#1086#1080#1089#1082
+  Caption = #1055#1086#1080#1089#1082' '#1095#1080#1090#1072#1090#1077#1083#1103
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,7 +11,6 @@ object ReaderSearchForm: TReaderSearchForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object LabeledEdit1: TLabeledEdit
@@ -101,34 +100,31 @@ object ReaderSearchForm: TReaderSearchForm
     Caption = #1059#1083#1080#1094#1072
     TabOrder = 8
   end
-  object AndOrRadioGroup: TRadioGroup
-    Left = 352
-    Top = 48
-    Width = 97
-    Height = 89
-    Caption = '"'#1048'" '#1080#1083#1080' "'#1048#1051#1048'"'
-    ItemIndex = 0
-    Items.Strings = (
-      #1048
-      #1048#1083#1080)
-    TabOrder = 9
-  end
   object FindButton: TButton
     Left = 352
     Top = 8
     Width = 97
     Height = 33
     Caption = #1053#1072#1081#1090#1080
-    TabOrder = 10
+    TabOrder = 9
     OnClick = FindButtonClick
   end
   object CancelButton: TButton
     Left = 352
-    Top = 144
+    Top = 88
     Width = 97
     Height = 33
-    Caption = #1054#1090#1084#1077#1085#1072
-    TabOrder = 11
+    Caption = #1047#1072#1082#1088#1099#1090#1100
+    TabOrder = 10
     OnClick = CancelButtonClick
+  end
+  object ClearButton: TButton
+    Left = 352
+    Top = 48
+    Width = 97
+    Height = 33
+    Caption = #1054#1095#1080#1089#1090#1080#1090#1100
+    TabOrder = 11
+    OnClick = ClearButtonClick
   end
 end

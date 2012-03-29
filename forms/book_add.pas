@@ -51,7 +51,7 @@ type
     Edit5: TEdit;
     Edit7: TEdit;
     DBLookupComboBox3: TDBLookupComboBox;
-    DBLookupComboBox4: TDBLookupComboBox;
+    DBLookupComboBoxAuthor: TDBLookupComboBox;
     procedure SaveButtonClick(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
     procedure DBGridPADrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -105,8 +105,8 @@ procedure TBookAddForm.DBGridPADrawColumnCell(Sender: TObject;
 begin
   if (gdFocused in State) then
   begin
-    if (Column.Field.FieldName = DBLookupComboBox4.DataField) then
-    with DBLookupComboBox4 do 
+    if (Column.Field.FieldName = 'author') then
+    with DBLookupComboBoxAuthor do
     begin
       Left := Rect.Left + DBGridPA.Left + 2;
       Top := Rect.Top + DBGridPA.Top + 2;
@@ -120,8 +120,8 @@ end;
 
 procedure TBookAddForm.DBGridPAColExit(Sender: TObject);
 begin
-  if DBGridPA.SelectedField.FieldName = DBLookupComboBox4.DataField then 
-    DBLookupComboBox4.Visible := False;
+  if DBGridPA.SelectedField.FieldName = DBLookupComboBoxAuthor.DataField then 
+    DBLookupComboBoxAuthor.Visible := False;
 end;
 
 end.

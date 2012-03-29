@@ -1,7 +1,7 @@
 object BookSearchForm: TBookSearchForm
-  Left = 220
-  Top = 783
-  Width = 554
+  Left = 415
+  Top = 370
+  Width = 464
   Height = 209
   Caption = #1055#1086#1080#1089#1082' '#1082#1085#1080#1075#1080
   Color = clBtnFace
@@ -11,7 +11,6 @@ object BookSearchForm: TBookSearchForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object LabeledEditTitle: TLabeledEdit
@@ -91,34 +90,22 @@ object BookSearchForm: TBookSearchForm
     Caption = #1050#1072#1090#1077#1075#1086#1088#1080#1103
     TabOrder = 7
   end
-  object AndOrRadioGroup: TRadioGroup
-    Left = 448
-    Top = 48
-    Width = 97
-    Height = 89
-    Caption = '"'#1048'" '#1080#1083#1080' "'#1048#1051#1048'"'
-    ItemIndex = 0
-    Items.Strings = (
-      #1048
-      #1048#1083#1080)
-    TabOrder = 8
-  end
   object FindButton: TButton
-    Left = 448
-    Top = 8
+    Left = 352
+    Top = 16
     Width = 97
     Height = 33
     Caption = #1053#1072#1081#1090#1080
-    TabOrder = 9
+    TabOrder = 8
     OnClick = FindButtonClick
   end
   object CancelButton: TButton
-    Left = 448
+    Left = 352
     Top = 144
     Width = 97
     Height = 33
     Caption = #1054#1090#1084#1077#1085#1072
-    TabOrder = 10
+    TabOrder = 9
     OnClick = CancelButtonClick
   end
   object LabeledEditUDC: TLabeledEdit
@@ -129,7 +116,7 @@ object BookSearchForm: TBookSearchForm
     EditLabel.Width = 24
     EditLabel.Height = 13
     EditLabel.Caption = #1059#1044#1050
-    TabOrder = 11
+    TabOrder = 10
   end
   object DBLookupComboBoxPub: TDBLookupComboBox
     Left = 176
@@ -139,7 +126,7 @@ object BookSearchForm: TBookSearchForm
     KeyField = 'id_Publisher'
     ListField = 'title'
     ListSource = DataLibrary.DSPublishers
-    TabOrder = 12
+    TabOrder = 11
   end
   object StaticText3: TStaticText
     Left = 176
@@ -147,6 +134,15 @@ object BookSearchForm: TBookSearchForm
     Width = 53
     Height = 17
     Caption = #1048#1079#1076#1072#1090#1077#1083#1100
+    TabOrder = 12
+  end
+  object ClearButton: TButton
+    Left = 352
+    Top = 80
+    Width = 97
+    Height = 33
+    Caption = #1054#1095#1080#1089#1090#1080#1090#1100
     TabOrder = 13
+    OnClick = ClearButtonClick
   end
 end

@@ -1,9 +1,9 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
-  Left = 988
-  Top = 271
-  Height = 755
-  Width = 295
+  Left = 900
+  Top = 248
+  Height = 771
+  Width = 383
   object ConnectionLibrary: TADOConnection
     Connected = True
     ConnectionString = 
@@ -51,57 +51,57 @@ object DataLibrary: TDataLibrary
     Left = 40
     Top = 168
     object Booksid_Book: TAutoIncField
-      DisplayWidth = 12
+      DisplayWidth = 15
       FieldName = 'id_Book'
       ReadOnly = True
     end
     object Bookspublisher_id: TIntegerField
-      DisplayWidth = 12
+      DisplayWidth = 15
       FieldName = 'publisher_id'
     end
     object Bookscategory_id: TIntegerField
-      DisplayWidth = 12
+      DisplayWidth = 15
       FieldName = 'category_id'
     end
     object Booksreason_id: TIntegerField
-      DisplayWidth = 12
+      DisplayWidth = 15
       FieldName = 'reason_id'
     end
     object Booksauthors: TStringField
-      DisplayWidth = 10
+      DisplayWidth = 20
       FieldKind = fkCalculated
       FieldName = 'authors'
       Size = 30
       Calculated = True
     end
     object Bookstitle: TWideStringField
-      DisplayWidth = 18
+      DisplayWidth = 22
       FieldName = 'title'
       Size = 50
     end
     object Bookspublication_date: TDateTimeField
-      DisplayWidth = 22
+      DisplayWidth = 27
       FieldName = 'publication_date'
     end
     object Bookscount: TIntegerField
-      DisplayWidth = 12
+      DisplayWidth = 15
       FieldName = 'count'
     end
     object BooksISBN: TWideStringField
-      DisplayWidth = 24
+      DisplayWidth = 29
       FieldName = 'ISBN'
     end
     object BooksBBC: TWideStringField
-      DisplayWidth = 17
+      DisplayWidth = 21
       FieldName = 'BBC'
     end
     object BooksUDC: TWideStringField
-      DisplayWidth = 15
+      DisplayWidth = 18
       FieldName = 'UDC'
       Size = 50
     end
     object Booksdescryption: TWideStringField
-      DisplayWidth = 18
+      DisplayWidth = 22
       FieldName = 'descryption'
       Size = 255
     end
@@ -211,12 +211,28 @@ object DataLibrary: TDataLibrary
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
+    OnCalcFields = ParticipatingAuthorsCalcFields
     IndexFieldNames = 'book_id'
     MasterFields = 'id_Book'
     MasterSource = DSBooks
     TableName = 'PARTICIPATING_AUTHORS'
     Left = 40
     Top = 656
+    object ParticipatingAuthorsid_Participating_author: TAutoIncField
+      FieldName = 'id_Participating_author'
+      ReadOnly = True
+    end
+    object ParticipatingAuthorsbook_id: TIntegerField
+      FieldName = 'book_id'
+    end
+    object ParticipatingAuthorsauthor_id: TIntegerField
+      FieldName = 'author_id'
+    end
+    object ParticipatingAuthorsauthor: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'author'
+      Calculated = True
+    end
   end
   object DSPartAuthors: TDataSource
     DataSet = ParticipatingAuthors
@@ -228,6 +244,7 @@ object DataLibrary: TDataLibrary
     Parameters = <
       item
         Name = 'bookid'
+        Size = -1
         Value = Null
       end>
     Left = 208
@@ -237,5 +254,15 @@ object DataLibrary: TDataLibrary
     Parameters = <>
     Left = 216
     Top = 288
+  end
+  object EditAuthorsQuery: TADOQuery
+    Connection = ConnectionLibrary
+    Parameters = <
+      item
+        Name = 'author_id'
+        Value = Null
+      end>
+    Left = 288
+    Top = 656
   end
 end

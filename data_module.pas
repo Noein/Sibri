@@ -62,9 +62,15 @@ type
     Booksauthors: TStringField;
     AuthorsQuery: TADOQuery;
     TakenBooksQuery: TADOQuery;
+    ParticipatingAuthorsid_Participating_author: TAutoIncField;
+    ParticipatingAuthorsbook_id: TIntegerField;
+    ParticipatingAuthorsauthor_id: TIntegerField;
+    ParticipatingAuthorsauthor: TStringField;
+    EditAuthorsQuery: TADOQuery;
     procedure ConnectionLibraryBeforeConnect(Sender: TObject);
     procedure ReadersAfterScroll(DataSet: TDataSet);
     procedure BooksCalcFields(DataSet: TDataSet);
+    procedure ParticipatingAuthorsCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -118,6 +124,7 @@ begin
   AuthorsQuery.Open;
   For i:=AuthorsQuery.RecordCount downto 1 do begin
     authorsstr:=authorsstr+AuthorsQuery.FieldByName('last_name').AsString;
+    AuthorsQuery.Next;
     if AuthorsQuery.FieldByName('first_name').Value <> Null then
       authorsstr:=authorsstr+' '+AuthorsQuery.FieldByName('first_name').AsString[1]+'.';
     if AuthorsQuery.FieldByName('patronymic').Value <> Null then
@@ -125,6 +132,24 @@ begin
     if i > 1 then authorsstr:=authorsstr+', ';
   end;
   Books.FieldByName('authors').AsString:=authorsstr;
+end;
+
+procedure TDataLibrary.ParticipatingAuthorsCalcFields(DataSet: TDataSet);
+var
+  authorstr:string;
+begin
+  EditAuthorsQuery.Close;
+  EditAuthorsQuery.SQL.Clear;
+  EditAuthorsQuery.SQL.Add('SELECT AUTHORS.last_name, AUTHORS.first_name, AUTHORS.patronymic');
+  EditAuthorsQuery.SQL.Add('FROM AUTHORS WHERE ([id_Author]=:author_id)');
+  EditAuthorsQuery.Parameters.ParamByName('author_id').Value:=ParticipatingAuthors.FieldByName('author_id').AsInteger;
+  EditAuthorsQuery.Open;
+  authorstr:=authorstr+EditAuthorsQuery.FieldByName('last_name').AsString+' ';
+  if EditAuthorsQuery.FieldByName('first_name').Value <> Null then
+    authorstr:=authorstr+EditAuthorsQuery.FieldByName('first_name').AsString+' ';
+  if EditAuthorsQuery.FieldByName('patronymic').Value <> Null then
+    authorstr:=authorstr+EditAuthorsQuery.FieldByName('patronymic').AsString;
+  ParticipatingAuthors.FieldByName('author').AsString:=authorstr;
 end;
 
 end.

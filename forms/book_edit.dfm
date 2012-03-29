@@ -1,6 +1,6 @@
 object BookEditForm: TBookEditForm
-  Left = 973
-  Top = 149
+  Left = 847
+  Top = 181
   Width = 304
   Height = 671
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1082#1085#1080#1075#1080
@@ -138,6 +138,30 @@ object BookEditForm: TBookEditForm
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
+    OnColExit = DBGridPAColExit
+    OnDrawColumnCell = DBGridPADrawColumnCell
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id_Participating_author'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'book_id'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'author_id'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'author'
+        Width = 250
+        Visible = True
+      end>
   end
   object DBNavPA: TDBNavigator
     Left = 8
@@ -220,5 +244,18 @@ object BookEditForm: TBookEditForm
     ListField = 'title'
     ListSource = DataLibrary.DSReasons
     TabOrder = 23
+  end
+  object DBLookupComboBoxAuthor: TDBLookupComboBox
+    Left = 16
+    Top = 160
+    Width = 257
+    Height = 21
+    DataField = 'author_id'
+    DataSource = DataLibrary.DSPartAuthors
+    KeyField = 'id_Author'
+    ListField = 'last_name;first_name'
+    ListSource = DataLibrary.DSAuthors
+    TabOrder = 24
+    Visible = False
   end
 end

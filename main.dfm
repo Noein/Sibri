@@ -1,8 +1,8 @@
 object MainForm: TMainForm
-  Left = 189
-  Top = 136
+  Left = 208
+  Top = 132
   Width = 1084
-  Height = 846
+  Height = 834
   Caption = 'Sibri'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,18 +17,19 @@ object MainForm: TMainForm
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 1073
-    Height = 769
+    Width = 1076
+    Height = 772
     ActivePage = TabSheet1
+    Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #1041#1080#1073#1083#1080#1086#1090#1077#1082#1072
       object PageControl2: TPageControl
         Left = 0
         Top = 0
-        Width = 1065
-        Height = 741
-        ActivePage = TabSheet5
+        Width = 1068
+        Height = 744
+        ActivePage = TabSheet6
         Align = alClient
         TabOrder = 0
         object TabSheet5: TTabSheet
@@ -269,8 +270,8 @@ object MainForm: TMainForm
       object PageControl3: TPageControl
         Left = 0
         Top = 0
-        Width = 1065
-        Height = 741
+        Width = 1068
+        Height = 744
         ActivePage = TabSheet8
         Align = alClient
         TabOrder = 0
@@ -279,9 +280,10 @@ object MainForm: TMainForm
           ImageIndex = 1
           object DBGrid6: TDBGrid
             Left = 24
-            Top = 16
-            Width = 993
-            Height = 601
+            Top = 24
+            Width = 988
+            Height = 584
+            Align = alCustom
             DataSource = DataLibrary.DSAuthors
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -516,9 +518,9 @@ object MainForm: TMainForm
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 781
+    Top = 772
     Width = 1076
-    Height = 19
+    Height = 16
     Panels = <>
   end
   object XPManifest1: TXPManifest

@@ -22,7 +22,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBCtrls, ExtCtrls, ComCtrls;
+  Dialogs, StdCtrls, DBCtrls, ExtCtrls, ComCtrls, StrUtils;
 
 type
   TReaderSearchForm = class(TForm)
@@ -35,12 +35,12 @@ type
     BirthRadioGroup: TRadioGroup;
     DBLookupComboBox1: TDBLookupComboBox;
     StaticText2: TStaticText;
-    AndOrRadioGroup: TRadioGroup;
     FindButton: TButton;
     CancelButton: TButton;
+    ClearButton: TButton;
     procedure CancelButtonClick(Sender: TObject);
     procedure FindButtonClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    procedure ClearButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,34 +65,43 @@ end;
 
 procedure TReaderSearchForm.FindButtonClick(Sender: TObject);
 var
-  cond, condDate, filterStr:string;
+  cond, condDate:string;
 begin
-  Case AndOrRadioGroup.ItemIndex of
-    0:cond:=' AND ';
-    1:cond:=' OR ';
-  end;
   Case BirthRadioGroup.ItemIndex of
     0:condDate:=' > ';
     1:condDate:=' < ';
     2:condDate:=' = ';
   end;
-  filterStr:='last_name = '+''''+labeledEdit1.Text+''''+
-  cond+'first_name = '+''''+labeledEdit2.Text+''''+
-  cond+'patronymic = '+''''+labeledEdit3.Text+'''';
-  if DBLookupComboBox1.KeyValue <> Null then
-    filterStr:=filterStr+cond+'street_id = '+IntToStr(DBLookupComboBox1.KeyValue);
+  if labeledEdit1.Text <> '' then
+    cond:=cond+'last_name = '+''''+labeledEdit1.Text+''' AND ';
+  if labeledEdit2.Text <> '' then
+    cond:=cond+'first_name = '+''''+labeledEdit2.Text+''' AND ';
+  if labeledEdit3.Text <> '' then
+    cond:=cond+'patronymic = '+''''+labeledEdit3.Text+'''AND ';
   if labeledEdit4.Text <> '' then
-    filterStr:=filterStr+cond+'passport_number = '+labeledEdit4.Text;
+    cond:=cond+'passport_number = '+labeledEdit4.Text+' AND ';
+  if DBLookupComboBox1.KeyValue <> Null then
+    cond:=cond+'street_id = '+IntToStr(DBLookupComboBox1.KeyValue)+' AND ';
   if condDate <> '' then
-    filterStr:=filterStr+cond+'birth_date'+condDate+DateToStr(DateTimePicker1.Date);
-  DataLibrary.Readers.Filter:=filterStr;
+    cond:=cond+'birth_date'+condDate+DateToStr(DateTimePicker1.Date)+' AND ';
+  if cond <> '' then
+    cond:=LeftStr(cond, length(cond)-5);
+  DataLibrary.Readers.Filter:=cond;
   DataLibrary.Readers.Filtered:=True;
   close();
 end;
 
-procedure TReaderSearchForm.FormShow(Sender: TObject);
+procedure TReaderSearchForm.ClearButtonClick(Sender: TObject);
 begin
-  //
+  labeledEdit1.Text:='';
+  labeledEdit2.Text:='';
+  labeledEdit3.Text:='';
+  labeledEdit4.Text:='';
+  DBLookupComboBox1.KeyValue:=Null;
+  DateTimePicker1.Date:=Now();
+  BirthRadioGroup.ItemIndex:=-1;
+  DataLibrary.Readers.Filter:='';
+  DataLibrary.Readers.Filtered:=False;
 end;
 
 end.

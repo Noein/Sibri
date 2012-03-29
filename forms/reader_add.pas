@@ -22,34 +22,35 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBCtrls, ComCtrls, Mask;
+  Dialogs, StdCtrls, DBCtrls, ComCtrls, Mask, ExtCtrls;
 
 type
   TReaderAddForm = class(TForm)
-    Label1: TLabel;
-    Label2: TLabel;
+    Panel1: TPanel;
     Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
-    Label12: TLabel;
     Edit1: TEdit;
     Edit2: TEdit;
+    Label2: TLabel;
+    Label1: TLabel;
     Edit3: TEdit;
+    Label4: TLabel;
     Edit4: TEdit;
-    DBLookupComboBox1: TDBLookupComboBox;
-    Edit6: TEdit;
-    Edit7: TEdit;
-    Edit8: TEdit;
-    Edit9: TEdit;
-    Edit10: TEdit;
-    Edit11: TEdit;
+    Label5: TLabel;
     DateTimePicker1: TDateTimePicker;
+    Label6: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    Label7: TLabel;
+    Edit6: TEdit;
+    Label8: TLabel;
+    Edit7: TEdit;
+    Label9: TLabel;
+    Edit8: TEdit;
+    Label10: TLabel;
+    Edit9: TEdit;
+    Label11: TLabel;
+    Edit10: TEdit;
+    Label12: TLabel;
+    Edit11: TEdit;
     SaveButton: TButton;
     CancelButton: TButton;
     procedure CancelButtonClick(Sender: TObject);

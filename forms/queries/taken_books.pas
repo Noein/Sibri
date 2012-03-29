@@ -57,12 +57,22 @@ var
   query:string;
   i:integer;
 begin
-  TakenBooksQuery.Close;
-  TakenBooksQuery.SQL.Clear;
-  TakenBooksQuery.SQL.Add;
-  AuthorsQuery.SQL.Add('WHERE (([PARTICIPATING_AUTHORS]![book_id]=:bookid))');
-  TakenBooksQuery.Parameters.ParamByName('bookid').Value:=Books.FieldByName('id_Book').AsInteger;
-  TakenBooksQuery.Open;
+  DataLibrary.TakenBooksQuery.Close;
+  DataLibrary.TakenBooksQuery.SQL.Clear;
+  DataLibrary.TakenBooksQuery.SQL.Add('
+
+
+
+
+
+
+
+
+
+  ');
+  DataLibrary.TakenBooksQuery.SQL.Add('WHERE (([PARTICIPATING_AUTHORS]![book_id]=:bookid))');
+  //DataLibrary.TakenBooksQuery.Parameters.ParamByName('bookid').Value:=Books.FieldByName('id_Book').AsInteger;
+  DataLibrary.TakenBooksQuery.Open;
 end;
 
 procedure TTakenBooksQForm.DBLookupComboBoxCatClick(Sender: TObject);

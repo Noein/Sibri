@@ -1,6 +1,6 @@
 object TakenBooksQForm: TTakenBooksQForm
-  Left = 292
-  Top = 622
+  Left = 300
+  Top = 203
   Width = 854
   Height = 678
   Caption = #1047#1072#1087#1088#1086#1089' '#1074#1079#1103#1090#1099#1093' '#1082#1085#1080#1075
