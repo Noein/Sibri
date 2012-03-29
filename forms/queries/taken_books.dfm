@@ -19,6 +19,7 @@ object TakenBooksQForm: TTakenBooksQForm
     Width = 846
     Height = 89
     Align = alTop
+    BevelOuter = bvNone
     TabOrder = 8
     object Label1: TLabel
       Left = 4

@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 208
-  Top = 132
+  Left = 187
+  Top = 137
   Width = 1084
   Height = 834
   Caption = 'Sibri'
@@ -29,7 +29,7 @@ object MainForm: TMainForm
         Top = 0
         Width = 1068
         Height = 744
-        ActivePage = TabSheet6
+        ActivePage = TabSheet5
         Align = alClient
         TabOrder = 0
         object TabSheet5: TTabSheet
@@ -42,16 +42,35 @@ object MainForm: TMainForm
             Caption = #1042#1079#1103#1090#1099#1077' '#1082#1085#1080#1075#1080
           end
           object Label2: TLabel
-            Left = 552
-            Top = 496
-            Width = 103
-            Height = 13
+            Left = 744
+            Top = 440
+            Width = 180
+            Height = 24
             Caption = #1055#1088#1080#1084#1077#1085#1105#1085#1085#1099#1077' '#1084#1077#1088#1099
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = 25
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label3: TLabel
+            Left = 216
+            Top = 440
+            Width = 122
+            Height = 24
+            Caption = #1042#1079#1103#1090#1099#1077' '#1082#1085#1080#1075#1080
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = 25
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
           end
           object DBGrid2: TDBGrid
             Left = 0
-            Top = 448
-            Width = 521
+            Top = 472
+            Width = 609
             Height = 153
             DataSource = DataLibrary.DSTakenBooks
             TabOrder = 0
@@ -60,6 +79,46 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'id_Taken_book'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'book_id'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'book_title'
+                Title.Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1082#1085#1080#1075#1080
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'authors'
+                Title.Caption = #1040#1074#1090#1086#1088#1099
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'reader_id'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'taken_date'
+                Title.Caption = #1044#1072#1090#1072' '#1074#1079#1103#1090#1080#1103
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'return_date'
+                Title.Caption = #1044#1072#1090#1072' '#1074#1086#1079#1074#1088#1072#1090#1072
+                Visible = True
+              end>
           end
           object FindReaderEdit: TLabeledEdit
             Left = 8
@@ -90,9 +149,9 @@ object MainForm: TMainForm
             OnClick = FindReaderButtonClick
           end
           object DBGrid3: TDBGrid
-            Left = 536
-            Top = 448
-            Width = 521
+            Left = 624
+            Top = 472
+            Width = 433
             Height = 153
             DataSource = DataLibrary.DSApplRestr
             TabOrder = 4
@@ -101,10 +160,45 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'id_Applied_restriction'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'reader_id'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'restriction_id'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'restriction'
+                Title.Caption = #1052#1077#1088#1072
+                Width = 131
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'applied_date'
+                Title.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1084#1077#1085#1077#1085#1080#1103
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'applied_time'
+                Title.Caption = #1042#1088#1077#1084#1103' '#1087#1088#1080#1084#1077#1085#1077#1085#1080#1103
+                Visible = True
+              end>
           end
           object ReturnBookButton: TButton
             Left = 0
-            Top = 608
+            Top = 632
             Width = 137
             Height = 33
             Caption = #1042#1086#1079#1074#1088#1072#1090#1080#1090#1100' '#1082#1085#1080#1075#1091
@@ -112,8 +206,8 @@ object MainForm: TMainForm
             OnClick = ReturnBookButtonClick
           end
           object AppyRestButton: TButton
-            Left = 536
-            Top = 608
+            Left = 624
+            Top = 632
             Width = 129
             Height = 33
             Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1085#1086#1074#1091#1102
@@ -121,8 +215,8 @@ object MainForm: TMainForm
             OnClick = AppyRestButtonClick
           end
           object CleanRestButton: TButton
-            Left = 672
-            Top = 608
+            Left = 768
+            Top = 632
             Width = 129
             Height = 33
             Caption = #1054#1095#1080#1089#1090#1080#1090#1100
@@ -168,10 +262,104 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'id_Reader'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'passport_number'
+                Title.Caption = #1053#1086#1084#1077#1088' '#1087#1072#1089#1087#1086#1088#1090#1072
+                Width = 60
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'last_name'
+                Title.Caption = #1060#1072#1084#1080#1083#1080#1103
+                Width = 100
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'first_name'
+                Title.Caption = #1048#1084#1103
+                Width = 100
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'patronymic'
+                Title.Caption = #1054#1090#1095#1077#1089#1090#1074#1086
+                Width = 100
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'birth_date'
+                Title.Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103
+                Width = 85
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'street_id'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'street'
+                Title.Caption = #1059#1083#1080#1094#1072
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'home_number'
+                Title.Caption = #1053#1086#1084#1077#1088' '#1076#1086#1084#1072
+                Width = 68
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'home_case'
+                Title.Caption = #1050#1086#1088#1087#1091#1089
+                Width = 40
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'work_place'
+                Title.Caption = #1052#1077#1089#1090#1086' '#1088#1072#1073#1086#1090#1099
+                Width = 75
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'work_phone'
+                Title.Caption = #1056#1072#1073#1086#1095#1080#1081' '#1090#1077#1083#1077#1092#1086#1085
+                Width = 94
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'home_phone'
+                Title.Caption = #1044#1086#1084#1072#1096#1085#1080#1081' '#1090#1077#1083#1077#1092#1086#1085
+                Width = 85
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'cell_phone'
+                Title.Caption = #1052#1086#1073#1080#1083#1100#1085#1099#1081' '#1090#1077#1083#1077#1092#1086#1085
+                Width = 63
+                Visible = True
+              end>
           end
           object NEEDMoreTimeButton: TButton
             Left = 152
-            Top = 608
+            Top = 632
             Width = 129
             Height = 33
             Caption = #1055#1088#1086#1076#1083#1080#1090#1100' '#1082#1085#1080#1075#1091
@@ -195,6 +383,92 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'id_Book'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'publisher_id'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'category_id'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'reason_id'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'title'
+                Title.Caption = #1053#1072#1079#1074#1072#1085#1080#1077
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'authors'
+                Title.Caption = #1040#1074#1090#1086#1088
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'publication_date'
+                Title.Caption = #1044#1072#1090#1072' '#1087#1091#1073#1083#1080#1082#1072#1094#1080#1080
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'publisher'
+                Title.Caption = #1048#1079#1076#1072#1090#1077#1083#1100#1089#1090#1074#1086
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'category'
+                Title.Caption = #1050#1072#1090#1077#1075#1086#1088#1080#1103
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ISBN'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'BBC'
+                Title.Caption = #1041#1041#1050
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'UDC'
+                Title.Caption = #1059#1044#1050
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'count'
+                Title.Caption = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'reason'
+                Title.Caption = #1087#1088#1080#1095#1080#1085#1072' '#1086#1090#1089#1091#1090#1089#1090#1074#1080#1103
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'descryption'
+                Title.Caption = #1054#1087#1080#1089#1072#1085#1080#1077
+                Visible = True
+              end>
           end
           object AddBookButton: TButton
             Left = 0
@@ -292,6 +566,54 @@ object MainForm: TMainForm
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
             OnDrawColumnCell = DBGrid6DrawColumnCell
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'id_Author'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'last_name'
+                Title.Caption = #1060#1072#1084#1080#1083#1080#1103
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'first_name'
+                Title.Caption = #1048#1084#1103
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'patronymic'
+                Title.Caption = #1054#1090#1095#1077#1089#1090#1074#1086
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'pseudonym'
+                Title.Caption = #1055#1089#1077#1074#1076#1086#1085#1080#1084
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'birth_date'
+                Title.Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'country'
+                Title.Caption = #1057#1090#1088#1072#1085#1072
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'biography'
+                Title.Caption = #1041#1080#1086#1075#1088#1072#1092#1080#1103
+                Visible = True
+              end>
           end
           object DBNavigator6: TDBNavigator
             Left = 24
@@ -318,8 +640,8 @@ object MainForm: TMainForm
           Caption = #1048#1079#1076#1072#1090#1077#1083#1100#1089#1090#1074#1072
           ImageIndex = 5
           object DBGrid10: TDBGrid
-            Left = 16
-            Top = 16
+            Left = 8
+            Top = 8
             Width = 1025
             Height = 617
             DataSource = DataLibrary.DSPublishers
@@ -331,6 +653,54 @@ object MainForm: TMainForm
             TitleFont.Style = []
             OnColExit = DBGrid10ColExit
             OnDrawColumnCell = DBGrid10DrawColumnCell
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'id_Publisher'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'title'
+                Title.Caption = #1053#1072#1079#1074#1072#1085#1080#1077
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'country'
+                Title.Caption = #1057#1090#1088#1072#1085#1072
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'city'
+                Title.Caption = #1043#1086#1088#1086#1076
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'foundation_date'
+                Title.Caption = #1044#1072#1090#1072' '#1086#1089#1085#1086#1074#1072#1085#1080#1103
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'noncommercial'
+                Title.Caption = #1053#1077#1082#1086#1084#1084#1077#1088#1095#1077#1089#1082#1072#1103'?'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'website'
+                Title.Caption = #1057#1072#1081#1090
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'descryption'
+                Title.Caption = #1054#1087#1080#1089#1072#1085#1080#1077
+                Visible = True
+              end>
           end
           object DBNavigator10: TDBNavigator
             Left = 16

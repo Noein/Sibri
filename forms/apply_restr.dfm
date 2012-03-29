@@ -1,6 +1,6 @@
 object ApplyRestForm: TApplyRestForm
-  Left = 548
-  Top = 643
+  Left = 644
+  Top = 499
   Width = 288
   Height = 117
   Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1084#1077#1088#1091

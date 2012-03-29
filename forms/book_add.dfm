@@ -1,6 +1,6 @@
 object BookAddForm: TBookAddForm
-  Left = 849
-  Top = 179
+  Left = 632
+  Top = 181
   Width = 304
   Height = 671
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1082#1085#1080#1075#1080

@@ -1,6 +1,6 @@
 object BookEditForm: TBookEditForm
-  Left = 847
-  Top = 181
+  Left = 628
+  Top = 188
   Width = 304
   Height = 671
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1082#1085#1080#1075#1080

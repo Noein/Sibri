@@ -1,8 +1,8 @@
 object AboutForm: TAboutForm
-  Left = 353
-  Top = 256
-  Width = 562
-  Height = 583
+  Left = 424
+  Top = 226
+  Width = 557
+  Height = 537
   Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,33 +13,35 @@ object AboutForm: TAboutForm
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 8
-    Top = 8
-    Width = 110
-    Height = 42
-    Caption = 'Sibri'
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -37
-    Font.Name = 'Liberation Mono'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label2: TLabel
-    Left = 128
-    Top = 24
-    Width = 79
-    Height = 13
-    Caption = #1042#1077#1088#1089#1080#1103' 1.0 beta'
+  object Panel1: TPanel
+    Left = 0
+    Top = 463
+    Width = 549
+    Height = 47
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 1
+    DesignSize = (
+      549
+      47)
+    object Button1: TButton
+      Left = 441
+      Top = 8
+      Width = 105
+      Height = 33
+      Anchors = [akRight]
+      Caption = #1047#1072#1082#1088#1099#1090#1100
+      ModalResult = 2
+      TabOrder = 0
+    end
   end
   object PageControl1: TPageControl
-    Left = 8
-    Top = 48
-    Width = 537
-    Height = 457
+    Left = 0
+    Top = 41
+    Width = 549
+    Height = 422
     ActivePage = TabSheet1
-    Align = alCustom
+    Align = alClient
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -53,28 +55,28 @@ object AboutForm: TAboutForm
         Left = 16
         Top = 24
         Width = 4
-        Height = 17
+        Height = 4
         TabOrder = 0
       end
       object StaticText2: TStaticText
         Left = 16
         Top = 48
         Width = 4
-        Height = 17
+        Height = 4
         TabOrder = 1
       end
       object StaticText3: TStaticText
         Left = 16
         Top = 64
         Width = 4
-        Height = 17
+        Height = 4
         TabOrder = 2
       end
       object Memo2: TMemo
         Left = 0
         Top = 0
-        Width = 529
-        Height = 429
+        Width = 541
+        Height = 394
         Align = alClient
         BorderStyle = bsNone
         Color = clActiveBorder
@@ -126,8 +128,8 @@ object AboutForm: TAboutForm
       object Memo1: TMemo
         Left = 0
         Top = 0
-        Width = 529
-        Height = 429
+        Width = 541
+        Height = 394
         Align = alClient
         BorderStyle = bsNone
         Color = clActiveBorder
@@ -143,13 +145,33 @@ object AboutForm: TAboutForm
       end
     end
   end
-  object Button1: TButton
-    Left = 440
-    Top = 512
-    Width = 105
-    Height = 33
-    Caption = #1047#1072#1082#1088#1099#1090#1100
-    ModalResult = 2
-    TabOrder = 1
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 549
+    Height = 41
+    Align = alTop
+    BevelOuter = bvNone
+    TabOrder = 2
+    object Label1: TLabel
+      Left = 8
+      Top = -3
+      Width = 72
+      Height = 42
+      Caption = 'Sibri'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -37
+      Font.Name = 'Liberation Mono'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 96
+      Top = 16
+      Width = 79
+      Height = 13
+      Caption = #1042#1077#1088#1089#1080#1103' 1.0 beta'
+    end
   end
 end

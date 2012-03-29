@@ -94,6 +94,7 @@ type
     DBCheckBox1: TDBCheckBox;
     DateTimePicker1: TDateTimePicker;
     DateTimePicker2: TDateTimePicker;
+    Label3: TLabel;
     procedure N2Click(Sender: TObject);
     procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);
@@ -235,16 +236,21 @@ begin
 end;
 
 procedure TMainForm.ReturnBookButtonClick(Sender: TObject);
+var id:integer;
 begin
   DataLibrary.Books.Locate('id_Book', DataLibrary.TakenBooks.fieldByName('book_id').AsString, [locaseinsensitive]);
   DataLibrary.Books.Edit;
   DataLibrary.Books.fieldByName('count').AsInteger:=DataLibrary.Books.fieldByName('count').AsInteger + 1;
   DataLibrary.Books.Post;
   DataLibrary.Books.Refresh;
+  // Work around some bug
+  id:=DataLibrary.TakenBooks.fieldByName('id_Taken_book').AsInteger;
+  DataLibrary.TakenBooks.Filtered:=False;
+  DataLibrary.TakenBooks.Locate('id_Taken_book', id, [locaseinsensitive]);
   DataLibrary.TakenBooks.Edit;
-  DataLibrary.TakenBooks.fieldByName('return_date').AsString:=DateToStr(Now);
+  DataLibrary.TakenBooks.FieldByName('return_date').AsString:=DateToStr(Now);
   DataLibrary.TakenBooks.Post;
-  DataLibrary.TakenBooks.Refresh;
+  DataLibrary.TakenBooks.Filtered:=True;
 end;
 
 procedure TMainForm.NEEDMoreTimeButtonClick(Sender: TObject);
