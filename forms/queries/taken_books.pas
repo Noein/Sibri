@@ -37,6 +37,7 @@ type
     Panel1: TPanel;
     Label1: TLabel;
     procedure DBLookupComboBoxCatClick(Sender: TObject);
+    procedure runQuery;
   private
     { Private declarations }
   public
@@ -52,22 +53,25 @@ uses data_module;
 
 {$R *.dfm}
 
-procedure makeQuery;
-var
-  query:string;
-  i:integer;
+procedure TTakenBooksQForm.runQuery;
 begin
   DataLibrary.TakenBooksQuery.Close;
   DataLibrary.TakenBooksQuery.SQL.Clear;
-  DataLibrary.TakenBooksQuery.SQL.Add('');
-  DataLibrary.TakenBooksQuery.SQL.Add('WHERE (([PARTICIPATING_AUTHORS]![book_id]=:bookid))');
-  //DataLibrary.TakenBooksQuery.Parameters.ParamByName('bookid').Value:=Books.FieldByName('id_Book').AsInteger;
+  DataLibrary.TakenBooksQuery.SQL.Add('SELECT DISTINCT BOOKS.id_Book, First([AUTHORS]![last_name]+" "+[AUTHORS]![first_name]) AS Author, BOOKS.title, BOOKS.publication_date');
+  DataLibrary.TakenBooksQuery.SQL.Add('FROM CATEGORIES INNER JOIN (AUTHORS INNER JOIN ((BOOKS INNER JOIN TAKEN_BOOKS ON BOOKS.id_Book = TAKEN_BOOKS.book_id) ');
+  DataLibrary.TakenBooksQuery.SQL.Add('INNER JOIN PARTICIPATING_AUTHORS ON BOOKS.id_Book = PARTICIPATING_AUTHORS.book_id) ON AUTHORS.id_Author = PARTICIPATING_AUTHORS.author_id) ON CATEGORIES.id_Category = BOOKS.category_id');
+  DataLibrary.TakenBooksQuery.SQL.Add('GROUP BY BOOKS.id_Book, BOOKS.title, BOOKS.publication_date, BOOKS.category_id, TAKEN_BOOKS.taken_date');
+  DataLibrary.TakenBooksQuery.SQL.Add('HAVING (((BOOKS.category_id)=:cat) AND ((TAKEN_BOOKS.taken_date)>:fromDate And (TAKEN_BOOKS.taken_date)<:toDate));');
+  if DBLookupComboBoxCat.KeyValue <> Null then
+    DataLibrary.TakenBooksQuery.Parameters.ParamByName('cat').Value:=DBLookupComboBoxCat.KeyValue;
+  DataLibrary.TakenBooksQuery.Parameters.ParamByName('fromDate').Value:=DateToStr(DateTimePickerFrom.Date);
+  DataLibrary.TakenBooksQuery.Parameters.ParamByName('toDate').Value:=DateToStr(DateTimePickerTo.Date);
   DataLibrary.TakenBooksQuery.Open;
 end;
 
 procedure TTakenBooksQForm.DBLookupComboBoxCatClick(Sender: TObject);
 begin
-  makeQuery();
+  runQuery();
 end;
 
 end.

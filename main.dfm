@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 187
-  Top = 137
+  Left = 169
+  Top = 141
   Width = 1084
   Height = 834
   Caption = 'Sibri'

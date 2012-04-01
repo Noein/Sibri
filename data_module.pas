@@ -97,6 +97,7 @@ type
     Bookscategory: TStringField;
     Booksreason: TStringField;
     TakenBooksauthors: TStringField;
+    DSQuery1: TDataSource;
     procedure ConnectionLibraryBeforeConnect(Sender: TObject);
     procedure ReadersAfterScroll(DataSet: TDataSet);
     procedure BooksCalcFields(DataSet: TDataSet);

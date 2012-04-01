@@ -51,8 +51,11 @@ type
     Edit10: TEdit;
     Label12: TLabel;
     Edit11: TEdit;
-    SaveButton: TButton;
+    Panel4: TPanel;
+    Panel3: TPanel;
     CancelButton: TButton;
+    Panel5: TPanel;
+    SaveButton: TButton;
     procedure CancelButtonClick(Sender: TObject);
     procedure SaveButtonClick(Sender: TObject);
   private

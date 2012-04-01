@@ -1,6 +1,6 @@
 object TakenBooksQForm: TTakenBooksQForm
-  Left = 300
-  Top = 203
+  Left = 235
+  Top = 218
   Width = 854
   Height = 678
   Caption = #1047#1072#1087#1088#1086#1089' '#1074#1079#1103#1090#1099#1093' '#1082#1085#1080#1075
@@ -100,11 +100,31 @@ object TakenBooksQForm: TTakenBooksQForm
     Width = 846
     Height = 562
     Align = alClient
+    DataSource = DataLibrary.DSQuery1
     TabOrder = 7
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'title'
+        Title.Caption = #1053#1072#1079#1074#1072#1085#1080#1077
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'author'
+        Title.Caption = #1040#1074#1090#1086#1088
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'publication_date'
+        Title.Caption = #1044#1072#1090#1072' '#1080#1079#1076#1072#1085#1080#1103
+        Visible = True
+      end>
   end
 end

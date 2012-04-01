@@ -1,7 +1,7 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
   Left = 897
-  Top = 253
+  Top = 181
   Height = 771
   Width = 383
   object ConnectionLibrary: TADOConnection
@@ -391,7 +391,20 @@ object DataLibrary: TDataLibrary
     Top = 656
   end
   object TakenBooksQuery: TADOQuery
-    Parameters = <>
+    Connection = ConnectionLibrary
+    Parameters = <
+      item
+        Name = 'cat'
+        Value = Null
+      end
+      item
+        Name = 'fromDate'
+        Value = Null
+      end
+      item
+        Name = 'toDate'
+        Value = Null
+      end>
     Left = 216
     Top = 288
   end
@@ -405,5 +418,10 @@ object DataLibrary: TDataLibrary
       end>
     Left = 288
     Top = 656
+  end
+  object DSQuery1: TDataSource
+    DataSet = TakenBooksQuery
+    Left = 296
+    Top = 288
   end
 end

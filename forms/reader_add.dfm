@@ -1,10 +1,13 @@
 object ReaderAddForm: TReaderAddForm
-  Left = 604
-  Top = 214
-  Width = 272
-  Height = 566
+  Left = 370
+  Top = 183
+  Width = 274
+  Height = 562
   Caption = #1053#1086#1074#1099#1081' '#1095#1080#1090#1072#1090#1077#1083#1100
   Color = clBtnFace
+  Constraints.MaxHeight = 562
+  Constraints.MinHeight = 562
+  Constraints.MinWidth = 274
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -16,11 +19,14 @@ object ReaderAddForm: TReaderAddForm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 264
-    Height = 539
+    Width = 266
+    Height = 500
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    DesignSize = (
+      266
+      500)
     object Label3: TLabel
       Left = 8
       Top = 8
@@ -108,9 +114,9 @@ object ReaderAddForm: TReaderAddForm
     object Edit1: TEdit
       Left = 8
       Top = 24
-      Width = 249
+      Width = 251
       Height = 21
-      AutoSize = False
+      Anchors = [akLeft, akTop, akRight]
       BiDiMode = bdLeftToRight
       ParentBiDiMode = False
       TabOrder = 0
@@ -118,29 +124,34 @@ object ReaderAddForm: TReaderAddForm
     object Edit2: TEdit
       Left = 8
       Top = 64
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
+      AutoSize = False
       TabOrder = 1
     end
     object Edit3: TEdit
       Left = 8
       Top = 104
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 2
     end
     object Edit4: TEdit
       Left = 8
       Top = 144
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 3
     end
     object DateTimePicker1: TDateTimePicker
       Left = 8
       Top = 184
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       Date = 40986.759322858800000000
       Time = 40986.759322858800000000
       TabOrder = 4
@@ -148,8 +159,9 @@ object ReaderAddForm: TReaderAddForm
     object DBLookupComboBox1: TDBLookupComboBox
       Left = 8
       Top = 224
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       KeyField = 'id_Street'
       ListField = 'title'
       ListSource = DataLibrary.DSStreets
@@ -158,62 +170,109 @@ object ReaderAddForm: TReaderAddForm
     object Edit6: TEdit
       Left = 8
       Top = 264
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 6
     end
     object Edit7: TEdit
       Left = 8
       Top = 304
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 7
     end
     object Edit8: TEdit
       Left = 8
       Top = 344
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 8
     end
     object Edit9: TEdit
       Left = 8
       Top = 384
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 9
     end
     object Edit10: TEdit
       Left = 8
       Top = 424
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 10
     end
     object Edit11: TEdit
       Left = 8
       Top = 464
-      Width = 249
+      Width = 251
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 11
     end
-    object SaveButton: TButton
-      Left = 136
-      Top = 496
+  end
+  object Panel4: TPanel
+    Left = 0
+    Top = 500
+    Width = 266
+    Height = 35
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 1
+    object Panel3: TPanel
+      Left = 0
+      Top = 0
       Width = 121
-      Height = 33
-      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
-      TabOrder = 12
-      OnClick = SaveButtonClick
+      Height = 35
+      Align = alLeft
+      Alignment = taLeftJustify
+      BevelOuter = bvNone
+      TabOrder = 0
+      DesignSize = (
+        121
+        35)
+      object CancelButton: TButton
+        Left = 0
+        Top = 0
+        Width = 113
+        Height = 33
+        Anchors = [akLeft, akTop, akRight]
+        BiDiMode = bdLeftToRight
+        Caption = #1054#1090#1084#1077#1085#1072
+        ParentBiDiMode = False
+        TabOrder = 0
+        OnClick = CancelButtonClick
+      end
     end
-    object CancelButton: TButton
-      Left = 8
-      Top = 496
-      Width = 121
-      Height = 33
-      Caption = #1054#1090#1084#1077#1085#1072
-      TabOrder = 13
-      OnClick = CancelButtonClick
+    object Panel5: TPanel
+      Left = 136
+      Top = 0
+      Width = 130
+      Height = 35
+      Align = alRight
+      Alignment = taRightJustify
+      BevelOuter = bvNone
+      TabOrder = 1
+      DesignSize = (
+        130
+        35)
+      object SaveButton: TButton
+        Left = 17
+        Top = 0
+        Width = 113
+        Height = 33
+        Anchors = [akLeft, akTop, akRight]
+        BiDiMode = bdLeftToRight
+        Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
+        ParentBiDiMode = False
+        TabOrder = 0
+        OnClick = SaveButtonClick
+      end
     end
   end
 end

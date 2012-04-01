@@ -1,8 +1,8 @@
 object BookEditForm: TBookEditForm
   Left = 628
   Top = 188
-  Width = 304
-  Height = 671
+  Width = 305
+  Height = 669
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1082#1085#1080#1075#1080
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,9 +22,9 @@ object BookEditForm: TBookEditForm
     Caption = #1040#1074#1090#1086#1088#1099':'
   end
   object UpdateButton: TButton
-    Left = 184
+    Left = 176
     Top = 600
-    Width = 105
+    Width = 113
     Height = 33
     Caption = #1054#1073#1085#1086#1074#1080#1090#1100
     TabOrder = 0
