@@ -104,7 +104,7 @@ object BookSearchForm: TBookSearchForm
     Top = 144
     Width = 97
     Height = 33
-    Caption = #1054#1090#1084#1077#1085#1072
+    Caption = #1047#1072#1082#1088#1099#1090#1100
     TabOrder = 9
     OnClick = CancelButtonClick
   end

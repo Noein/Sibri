@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 169
-  Top = 141
+  Left = 192
+  Top = 139
   Width = 1084
   Height = 834
   Caption = 'Sibri'
@@ -67,6 +67,33 @@ object MainForm: TMainForm
             Font.Style = []
             ParentFont = False
           end
+          object Panel7: TPanel
+            Left = 0
+            Top = 0
+            Width = 1060
+            Height = 49
+            Align = alTop
+            BevelOuter = bvNone
+            TabOrder = 13
+            object FindReaderEdit: TLabeledEdit
+              Left = 8
+              Top = 20
+              Width = 281
+              Height = 21
+              EditLabel.Width = 96
+              EditLabel.Height = 13
+              EditLabel.Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1092#1072#1084#1080#1083#1080#1080
+              TabOrder = 0
+            end
+          end
+          object GroupBox1: TGroupBox
+            Left = 616
+            Top = 456
+            Width = 441
+            Height = 225
+            Caption = #1055#1088#1080#1084#1077#1085#1105#1085#1085#1099#1077' '#1084#1077#1088#1099
+            TabOrder = 12
+          end
           object DBGrid2: TDBGrid
             Left = 0
             Top = 472
@@ -120,41 +147,32 @@ object MainForm: TMainForm
                 Visible = True
               end>
           end
-          object FindReaderEdit: TLabeledEdit
-            Left = 8
-            Top = 24
-            Width = 281
-            Height = 21
-            EditLabel.Width = 96
-            EditLabel.Height = 13
-            EditLabel.Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1092#1072#1084#1080#1083#1080#1080
-            TabOrder = 1
-          end
           object ExtendSearchButton: TButton
             Left = 376
-            Top = 24
+            Top = 16
             Width = 121
             Height = 25
             Caption = #1056#1072#1089#1096#1080#1088#1077#1085#1085#1099#1081' '#1087#1086#1080#1089#1082
-            TabOrder = 2
+            TabOrder = 1
             OnClick = ExtendSearchButtonClick
           end
           object FindReaderButton: TButton
             Left = 304
-            Top = 24
+            Top = 16
             Width = 65
             Height = 25
             Caption = #1053#1072#1081#1090#1080
-            TabOrder = 3
+            TabOrder = 2
             OnClick = FindReaderButtonClick
           end
           object DBGrid3: TDBGrid
             Left = 624
             Top = 472
-            Width = 433
+            Width = 425
             Height = 153
+            Align = alCustom
             DataSource = DataLibrary.DSApplRestr
-            TabOrder = 4
+            TabOrder = 3
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
             TitleFont.Height = -11
@@ -202,7 +220,7 @@ object MainForm: TMainForm
             Width = 137
             Height = 33
             Caption = #1042#1086#1079#1074#1088#1072#1090#1080#1090#1100' '#1082#1085#1080#1075#1091
-            TabOrder = 5
+            TabOrder = 4
             OnClick = ReturnBookButtonClick
           end
           object AppyRestButton: TButton
@@ -211,7 +229,7 @@ object MainForm: TMainForm
             Width = 129
             Height = 33
             Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1085#1086#1074#1091#1102
-            TabOrder = 6
+            TabOrder = 5
             OnClick = AppyRestButtonClick
           end
           object CleanRestButton: TButton
@@ -220,7 +238,7 @@ object MainForm: TMainForm
             Width = 129
             Height = 33
             Caption = #1054#1095#1080#1089#1090#1080#1090#1100
-            TabOrder = 7
+            TabOrder = 6
             OnClick = CleanRestButtonClick
           end
           object AddReaderButton: TButton
@@ -229,7 +247,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 33
             Caption = #1044#1086#1073#1072#1074#1080#1090#1100
-            TabOrder = 8
+            TabOrder = 7
             OnClick = AddReaderButtonClick
           end
           object EditReaderButton: TButton
@@ -238,7 +256,7 @@ object MainForm: TMainForm
             Width = 177
             Height = 33
             Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
-            TabOrder = 9
+            TabOrder = 8
             OnClick = EditReaderButtonClick
           end
           object DelReaderButton: TButton
@@ -247,7 +265,7 @@ object MainForm: TMainForm
             Width = 177
             Height = 33
             Caption = #1059#1076#1072#1083#1080#1090#1100
-            TabOrder = 10
+            TabOrder = 9
             OnClick = DelReaderButtonClick
           end
           object DBGrid1: TDBGrid
@@ -256,7 +274,7 @@ object MainForm: TMainForm
             Width = 1057
             Height = 321
             DataSource = DataLibrary.DSReaders
-            TabOrder = 11
+            TabOrder = 10
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
             TitleFont.Height = -11
@@ -363,7 +381,7 @@ object MainForm: TMainForm
             Width = 129
             Height = 33
             Caption = #1055#1088#1086#1076#1083#1080#1090#1100' '#1082#1085#1080#1075#1091
-            TabOrder = 12
+            TabOrder = 11
             OnClick = NEEDMoreTimeButtonClick
           end
         end
@@ -371,11 +389,31 @@ object MainForm: TMainForm
           Caption = #1050#1085#1080#1075#1080
           ImageIndex = 1
           OnShow = TabSheet6Show
+          object Panel9: TPanel
+            Left = 0
+            Top = 0
+            Width = 1060
+            Height = 65
+            Align = alTop
+            BevelOuter = bvNone
+            TabOrder = 4
+            object FindBookEdit: TLabeledEdit
+              Left = 8
+              Top = 20
+              Width = 249
+              Height = 21
+              EditLabel.Width = 100
+              EditLabel.Height = 13
+              EditLabel.Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1085#1072#1079#1074#1072#1085#1080#1102
+              TabOrder = 0
+            end
+          end
           object DBGridBooks: TDBGrid
             Left = 0
-            Top = 64
-            Width = 1057
-            Height = 497
+            Top = 65
+            Width = 1060
+            Height = 591
+            Align = alClient
             DataSource = DataLibrary.DSBooks
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -470,32 +508,13 @@ object MainForm: TMainForm
                 Visible = True
               end>
           end
-          object AddBookButton: TButton
-            Left = 0
-            Top = 568
-            Width = 177
-            Height = 33
-            Caption = #1044#1086#1073#1072#1074#1080#1090#1100
-            TabOrder = 1
-            OnClick = AddBookButtonClick
-          end
-          object FindBookEdit: TLabeledEdit
-            Left = 8
-            Top = 24
-            Width = 249
-            Height = 21
-            EditLabel.Width = 100
-            EditLabel.Height = 13
-            EditLabel.Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1085#1072#1079#1074#1072#1085#1080#1102
-            TabOrder = 2
-          end
           object FindBookButton: TButton
             Left = 264
             Top = 24
             Width = 65
             Height = 25
             Caption = #1053#1072#1081#1090#1080
-            TabOrder = 3
+            TabOrder = 1
             OnClick = FindBookButtonClick
           end
           object Button4: TButton
@@ -504,36 +523,54 @@ object MainForm: TMainForm
             Width = 129
             Height = 25
             Caption = #1056#1072#1089#1096#1080#1088#1077#1085#1085#1099#1081' '#1087#1086#1080#1089#1082
-            TabOrder = 4
+            TabOrder = 2
             OnClick = Button4Click
           end
-          object EditBookButton: TButton
-            Left = 200
-            Top = 568
-            Width = 153
-            Height = 33
-            Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
-            TabOrder = 5
-            OnClick = EditBookButtonClick
-          end
-          object DelBookButton: TButton
-            Left = 376
-            Top = 568
-            Width = 153
-            Height = 33
-            Caption = #1059#1076#1072#1083#1080#1090#1100
-            TabOrder = 6
-            OnClick = DelBookButtonClick
-          end
-          object TakeBookButton: TButton
-            Left = 648
-            Top = 568
-            Width = 401
-            Height = 33
-            Caption = #1042#1079#1103#1090#1100' '#1076#1083#1103' '#1095#1080#1090#1072#1090#1077#1083#1103
-            TabOrder = 7
-            WordWrap = True
-            OnClick = TakeBookButtonClick
+          object Panel8: TPanel
+            Left = 0
+            Top = 656
+            Width = 1060
+            Height = 60
+            Align = alBottom
+            BevelOuter = bvNone
+            TabOrder = 3
+            object AddBookButton: TButton
+              Left = 0
+              Top = 16
+              Width = 177
+              Height = 33
+              Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+              TabOrder = 0
+              OnClick = AddBookButtonClick
+            end
+            object EditBookButton: TButton
+              Left = 200
+              Top = 16
+              Width = 153
+              Height = 33
+              Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
+              TabOrder = 1
+              OnClick = EditBookButtonClick
+            end
+            object DelBookButton: TButton
+              Left = 376
+              Top = 16
+              Width = 153
+              Height = 33
+              Caption = #1059#1076#1072#1083#1080#1090#1100
+              TabOrder = 2
+              OnClick = DelBookButtonClick
+            end
+            object TakeBookButton: TButton
+              Left = 648
+              Top = 16
+              Width = 401
+              Height = 33
+              Caption = #1042#1079#1103#1090#1100' '#1076#1083#1103' '#1095#1080#1090#1072#1090#1077#1083#1103
+              TabOrder = 3
+              WordWrap = True
+              OnClick = TakeBookButtonClick
+            end
           end
         end
       end
@@ -553,11 +590,11 @@ object MainForm: TMainForm
           Caption = #1040#1074#1090#1086#1088#1099
           ImageIndex = 1
           object DBGrid6: TDBGrid
-            Left = 24
-            Top = 24
-            Width = 988
-            Height = 584
-            Align = alCustom
+            Left = 0
+            Top = 0
+            Width = 1060
+            Height = 675
+            Align = alClient
             DataSource = DataLibrary.DSAuthors
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -615,14 +652,6 @@ object MainForm: TMainForm
                 Visible = True
               end>
           end
-          object DBNavigator6: TDBNavigator
-            Left = 24
-            Top = 624
-            Width = 990
-            Height = 33
-            DataSource = DataLibrary.DSAuthors
-            TabOrder = 1
-          end
           object DateTimePicker2: TDateTimePicker
             Left = 32
             Top = 376
@@ -630,20 +659,39 @@ object MainForm: TMainForm
             Height = 21
             Date = 40988.858331365730000000
             Time = 40988.858331365730000000
-            TabOrder = 2
+            TabOrder = 1
             Visible = False
             OnChange = DateTimePicker2Change
             OnDropDown = DateTimePicker2DropDown
+          end
+          object Panel1: TPanel
+            Left = 0
+            Top = 675
+            Width = 1060
+            Height = 41
+            Align = alBottom
+            BevelOuter = bvNone
+            TabOrder = 2
+            object DBNavigator6: TDBNavigator
+              Left = 0
+              Top = 0
+              Width = 1060
+              Height = 41
+              DataSource = DataLibrary.DSAuthors
+              Align = alClient
+              TabOrder = 0
+            end
           end
         end
         object TabSheet3: TTabSheet
           Caption = #1048#1079#1076#1072#1090#1077#1083#1100#1089#1090#1074#1072
           ImageIndex = 5
           object DBGrid10: TDBGrid
-            Left = 8
-            Top = 8
-            Width = 1025
-            Height = 617
+            Left = 0
+            Top = 0
+            Width = 1060
+            Height = 675
+            Align = alClient
             DataSource = DataLibrary.DSPublishers
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -702,14 +750,6 @@ object MainForm: TMainForm
                 Visible = True
               end>
           end
-          object DBNavigator10: TDBNavigator
-            Left = 16
-            Top = 640
-            Width = 1020
-            Height = 33
-            DataSource = DataLibrary.DSPublishers
-            TabOrder = 1
-          end
           object DBCheckBox1: TDBCheckBox
             Left = 24
             Top = 368
@@ -719,7 +759,7 @@ object MainForm: TMainForm
             DataField = 'noncommercial'
             DataSource = DataLibrary.DSPublishers
             ParentColor = False
-            TabOrder = 2
+            TabOrder = 1
             ValueChecked = #1044#1072
             ValueUnchecked = #1053#1077#1090
             Visible = False
@@ -732,19 +772,38 @@ object MainForm: TMainForm
             Height = 21
             Date = 40988.880151203710000000
             Time = 40988.880151203710000000
-            TabOrder = 3
+            TabOrder = 2
             Visible = False
             OnChange = DateTimePicker1Change
             OnDropDown = DateTimePicker1DropDown
+          end
+          object Panel2: TPanel
+            Left = 0
+            Top = 675
+            Width = 1060
+            Height = 41
+            Align = alBottom
+            BevelOuter = bvNone
+            TabOrder = 3
+            object DBNavigator10: TDBNavigator
+              Left = 0
+              Top = 0
+              Width = 1060
+              Height = 41
+              DataSource = DataLibrary.DSPublishers
+              Align = alClient
+              TabOrder = 0
+            end
           end
         end
         object TabSheet7: TTabSheet
           Caption = #1050#1072#1090#1077#1075#1086#1088#1080#1080
           object DBGrid5: TDBGrid
-            Left = 16
-            Top = 16
-            Width = 1009
-            Height = 617
+            Left = 0
+            Top = 0
+            Width = 1060
+            Height = 675
+            Align = alClient
             DataSource = DataLibrary.DSCategories
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -766,23 +825,34 @@ object MainForm: TMainForm
                 Visible = True
               end>
           end
-          object DBNavigator5: TDBNavigator
-            Left = 16
-            Top = 640
-            Width = 1010
-            Height = 33
-            DataSource = DataLibrary.DSCategories
+          object Panel3: TPanel
+            Left = 0
+            Top = 675
+            Width = 1060
+            Height = 41
+            Align = alBottom
+            BevelOuter = bvNone
             TabOrder = 1
+            object DBNavigator5: TDBNavigator
+              Left = 0
+              Top = 0
+              Width = 1060
+              Height = 41
+              DataSource = DataLibrary.DSCategories
+              Align = alClient
+              TabOrder = 0
+            end
           end
         end
         object TabSheet9: TTabSheet
           Caption = #1055#1088#1080#1095#1080#1085#1099
           ImageIndex = 2
           object DBGrid7: TDBGrid
-            Left = 16
-            Top = 16
-            Width = 1025
-            Height = 609
+            Left = 0
+            Top = 0
+            Width = 1060
+            Height = 675
+            Align = alClient
             DataSource = DataLibrary.DSReasons
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -804,23 +874,34 @@ object MainForm: TMainForm
                 Visible = True
               end>
           end
-          object DBNavigator7: TDBNavigator
-            Left = 16
-            Top = 632
-            Width = 1020
-            Height = 33
-            DataSource = DataLibrary.DSReasons
+          object Panel4: TPanel
+            Left = 0
+            Top = 675
+            Width = 1060
+            Height = 41
+            Align = alBottom
+            BevelOuter = bvNone
             TabOrder = 1
+            object DBNavigator7: TDBNavigator
+              Left = 0
+              Top = 0
+              Width = 1060
+              Height = 41
+              DataSource = DataLibrary.DSReasons
+              Align = alClient
+              TabOrder = 0
+            end
           end
         end
         object TabSheet10: TTabSheet
           Caption = #1052#1077#1088#1099
           ImageIndex = 3
           object DBGrid8: TDBGrid
-            Left = 16
-            Top = 16
-            Width = 1017
-            Height = 593
+            Left = 0
+            Top = 0
+            Width = 1060
+            Height = 675
+            Align = alClient
             DataSource = DataLibrary.DSRestrictions
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -842,23 +923,34 @@ object MainForm: TMainForm
                 Visible = True
               end>
           end
-          object DBNavigator8: TDBNavigator
-            Left = 16
-            Top = 616
-            Width = 1010
-            Height = 33
-            DataSource = DataLibrary.DSRestrictions
+          object Panel5: TPanel
+            Left = 0
+            Top = 675
+            Width = 1060
+            Height = 41
+            Align = alBottom
+            BevelOuter = bvNone
             TabOrder = 1
+            object DBNavigator8: TDBNavigator
+              Left = 0
+              Top = 0
+              Width = 1060
+              Height = 41
+              DataSource = DataLibrary.DSRestrictions
+              Align = alClient
+              TabOrder = 0
+            end
           end
         end
         object TabSheet11: TTabSheet
           Caption = #1059#1083#1080#1094#1099
           ImageIndex = 4
           object DBGrid9: TDBGrid
-            Left = 16
-            Top = 16
-            Width = 1009
-            Height = 585
+            Left = 0
+            Top = 0
+            Width = 1060
+            Height = 675
+            Align = alClient
             DataSource = DataLibrary.DSStreets
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -874,13 +966,23 @@ object MainForm: TMainForm
                 Visible = True
               end>
           end
-          object DBNavigator9: TDBNavigator
-            Left = 16
-            Top = 608
-            Width = 1000
-            Height = 33
-            DataSource = DataLibrary.DSStreets
+          object Panel6: TPanel
+            Left = 0
+            Top = 675
+            Width = 1060
+            Height = 41
+            Align = alBottom
+            BevelOuter = bvNone
             TabOrder = 1
+            object DBNavigator9: TDBNavigator
+              Left = 0
+              Top = 0
+              Width = 1060
+              Height = 41
+              DataSource = DataLibrary.DSStreets
+              Align = alClient
+              TabOrder = 0
+            end
           end
         end
       end
@@ -908,15 +1010,18 @@ object MainForm: TMainForm
       end
       object N8: TMenuItem
         Caption = #1044#1086#1083#1078#1085#1080#1082#1080
+        OnClick = N8Click
       end
       object N9: TMenuItem
         Caption = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072
+        OnClick = N9Click
       end
     end
     object N6: TMenuItem
       Caption = #1054#1090#1095#1105#1090#1099
       object N10: TMenuItem
         Caption = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072
+        OnClick = N10Click
       end
       object N11: TMenuItem
         Caption = #1053#1077#1074#1086#1079#1074#1088#1072#1097#1077#1085#1085#1099#1077

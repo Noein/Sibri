@@ -1,6 +1,6 @@
 object TakenBooksQForm: TTakenBooksQForm
-  Left = 235
-  Top = 218
+  Left = 195
+  Top = 177
   Width = 854
   Height = 678
   Caption = #1047#1072#1087#1088#1086#1089' '#1074#1079#1103#1090#1099#1093' '#1082#1085#1080#1075
@@ -112,18 +112,21 @@ object TakenBooksQForm: TTakenBooksQForm
         Expanded = False
         FieldName = 'title'
         Title.Caption = #1053#1072#1079#1074#1072#1085#1080#1077
+        Width = 250
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'author'
         Title.Caption = #1040#1074#1090#1086#1088
+        Width = 250
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'publication_date'
-        Title.Caption = #1044#1072#1090#1072' '#1080#1079#1076#1072#1085#1080#1103
+        FieldName = 'year'
+        Title.Caption = #1043#1086#1076' '#1080#1079#1076#1072#1085#1080#1103
+        Width = 100
         Visible = True
       end>
   end

@@ -55,7 +55,6 @@ type
     N10: TMenuItem;
     N11: TMenuItem;
     DBGrid2: TDBGrid;
-    FindReaderEdit: TLabeledEdit;
     ExtendSearchButton: TButton;
     FindReaderButton: TButton;
     Label1: TLabel;
@@ -69,32 +68,43 @@ type
     DelReaderButton: TButton;
     DBGridBooks: TDBGrid;
     DBGrid5: TDBGrid;
-    DBNavigator5: TDBNavigator;
     DBGrid6: TDBGrid;
-    DBNavigator6: TDBNavigator;
     DBGrid7: TDBGrid;
-    DBNavigator7: TDBNavigator;
     DBGrid8: TDBGrid;
-    DBNavigator8: TDBNavigator;
     DBGrid9: TDBGrid;
-    DBNavigator9: TDBNavigator;
     DBGrid1: TDBGrid;
     TabSheet3: TTabSheet;
     DBGrid10: TDBGrid;
-    DBNavigator10: TDBNavigator;
-    AddBookButton: TButton;
-    FindBookEdit: TLabeledEdit;
     FindBookButton: TButton;
     Button4: TButton;
-    EditBookButton: TButton;
-    DelBookButton: TButton;
-    TakeBookButton: TButton;
     N4: TMenuItem;
     NEEDMoreTimeButton: TButton;
     DBCheckBox1: TDBCheckBox;
     DateTimePicker1: TDateTimePicker;
     DateTimePicker2: TDateTimePicker;
     Label3: TLabel;
+    Panel1: TPanel;
+    DBNavigator6: TDBNavigator;
+    Panel2: TPanel;
+    DBNavigator10: TDBNavigator;
+    Panel3: TPanel;
+    DBNavigator5: TDBNavigator;
+    Panel4: TPanel;
+    DBNavigator7: TDBNavigator;
+    Panel5: TPanel;
+    DBNavigator8: TDBNavigator;
+    Panel6: TPanel;
+    DBNavigator9: TDBNavigator;
+    GroupBox1: TGroupBox;
+    Panel7: TPanel;
+    FindReaderEdit: TLabeledEdit;
+    Panel8: TPanel;
+    AddBookButton: TButton;
+    EditBookButton: TButton;
+    DelBookButton: TButton;
+    TakeBookButton: TButton;
+    Panel9: TPanel;
+    FindBookEdit: TLabeledEdit;
     procedure N2Click(Sender: TObject);
     procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);
@@ -124,6 +134,9 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure Button4Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
+    procedure N8Click(Sender: TObject);
+    procedure N9Click(Sender: TObject);
+    procedure N10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -137,7 +150,8 @@ var
 implementation
 
 uses data_module, about, book_add, reader_edit, reader_add, book_edit,
-  apply_restr, reader_search, book_search, taken_books;
+  apply_restr, reader_search, book_search, taken_books, debtors,
+  statistics, report1;
 
 {$R *.dfm}
 
@@ -399,6 +413,21 @@ end;
 procedure TMainForm.N7Click(Sender: TObject);
 begin
   TakenBooksQForm.ShowModal();
+end;
+
+procedure TMainForm.N8Click(Sender: TObject);
+begin
+  DebtorsQForm.ShowModal();
+end;
+
+procedure TMainForm.N9Click(Sender: TObject);
+begin
+  StatisticsQForm.ShowModal();
+end;
+
+procedure TMainForm.N10Click(Sender: TObject);
+begin
+  Report1Form.ShowModal();
 end;
 
 end.

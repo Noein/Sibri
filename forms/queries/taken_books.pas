@@ -57,7 +57,7 @@ procedure TTakenBooksQForm.runQuery;
 begin
   DataLibrary.TakenBooksQuery.Close;
   DataLibrary.TakenBooksQuery.SQL.Clear;
-  DataLibrary.TakenBooksQuery.SQL.Add('SELECT DISTINCT BOOKS.id_Book, First([AUTHORS]![last_name]+" "+[AUTHORS]![first_name]) AS Author, BOOKS.title, BOOKS.publication_date');
+  DataLibrary.TakenBooksQuery.SQL.Add('SELECT DISTINCT BOOKS.id_Book, First([AUTHORS]![last_name]+" "+[AUTHORS]![first_name]) AS Author, BOOKS.title, Year([publication_date]) AS [Year]');
   DataLibrary.TakenBooksQuery.SQL.Add('FROM CATEGORIES INNER JOIN (AUTHORS INNER JOIN ((BOOKS INNER JOIN TAKEN_BOOKS ON BOOKS.id_Book = TAKEN_BOOKS.book_id) ');
   DataLibrary.TakenBooksQuery.SQL.Add('INNER JOIN PARTICIPATING_AUTHORS ON BOOKS.id_Book = PARTICIPATING_AUTHORS.book_id) ON AUTHORS.id_Author = PARTICIPATING_AUTHORS.author_id) ON CATEGORIES.id_Category = BOOKS.category_id');
   DataLibrary.TakenBooksQuery.SQL.Add('GROUP BY BOOKS.id_Book, BOOKS.title, BOOKS.publication_date, BOOKS.category_id, TAKEN_BOOKS.taken_date');

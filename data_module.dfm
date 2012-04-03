@@ -1,7 +1,7 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
   Left = 897
-  Top = 181
+  Top = 217
   Height = 771
   Width = 383
   object ConnectionLibrary: TADOConnection
@@ -395,14 +395,17 @@ object DataLibrary: TDataLibrary
     Parameters = <
       item
         Name = 'cat'
+        Size = -1
         Value = Null
       end
       item
         Name = 'fromDate'
+        Size = -1
         Value = Null
       end
       item
         Name = 'toDate'
+        Size = -1
         Value = Null
       end>
     Left = 216
@@ -423,5 +426,95 @@ object DataLibrary: TDataLibrary
     DataSet = TakenBooksQuery
     Left = 296
     Top = 288
+  end
+  object DebtorsQuery: TADOQuery
+    Active = True
+    Connection = ConnectionLibrary
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT DISTINCT READERS.last_name, READERS.first_name, READERS.p' +
+        'atronymic, [STREETS]![title]+", '#1076#1086#1084'  "+CStr([READERS]![home_numb' +
+        'er])+", '#1082#1086#1088#1087#1091#1089'  "+CStr([READERS]![home_case]) AS adress, READERS' +
+        '.home_phone'
+      
+        'FROM STREETS INNER JOIN ((READERS INNER JOIN APPLIED_RESTRICTION' +
+        'S ON READERS.id_Reader = APPLIED_RESTRICTIONS.reader_id) INNER J' +
+        'OIN TAKEN_BOOKS ON READERS.id_Reader = TAKEN_BOOKS.reader_id) ON' +
+        ' STREETS.id_Street = READERS.street_id'
+      
+        'WHERE ((([APPLIED_RESTRICTIONS]![restriction_id])=CInt("5")) AND' +
+        ' (([TAKEN_BOOKS]![return_date]) Is Null));')
+    Left = 216
+    Top = 344
+  end
+  object DSQuery2: TDataSource
+    DataSet = DebtorsQuery
+    Left = 296
+    Top = 344
+  end
+  object DSQuery3: TDataSource
+    DataSet = StatQuery
+    Left = 296
+    Top = 408
+  end
+  object StatQuery: TADOQuery
+    Active = True
+    Connection = ConnectionLibrary
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT CATEGORIES.title, Sum(BOOKS.count) AS [Sum-count], Min(Ye' +
+        'ar(Date())-Year([birth_date])) AS minYears, Max(Year(Date())-Yea' +
+        'r([birth_date])) AS maxYears, CInt(Avg(Year(Date())-Year([birth_' +
+        'date]))) AS average'
+      
+        'FROM READERS INNER JOIN (CATEGORIES INNER JOIN (BOOKS INNER JOIN' +
+        ' TAKEN_BOOKS ON BOOKS.id_Book = TAKEN_BOOKS.book_id) ON CATEGORI' +
+        'ES.id_Category = BOOKS.category_id) ON READERS.id_Reader = TAKEN' +
+        '_BOOKS.reader_id'
+      'GROUP BY CATEGORIES.title;')
+    Left = 216
+    Top = 408
+  end
+  object Rep1Query: TADOQuery
+    Active = True
+    Connection = ConnectionLibrary
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT CATEGORIES.title, TAKEN_BOOKS.taken_date, READERS.last_na' +
+        'me, First(AUTHORS.last_name) AS [First-last_name], BOOKS.title, ' +
+        'BOOKS.publication_date'
+      
+        'FROM CATEGORIES INNER JOIN (READERS INNER JOIN (AUTHORS INNER JO' +
+        'IN ((BOOKS INNER JOIN TAKEN_BOOKS ON BOOKS.id_Book = TAKEN_BOOKS' +
+        '.book_id) INNER JOIN PARTICIPATING_AUTHORS ON BOOKS.id_Book = PA' +
+        'RTICIPATING_AUTHORS.book_id) ON AUTHORS.id_Author = PARTICIPATIN' +
+        'G_AUTHORS.author_id) ON READERS.id_Reader = TAKEN_BOOKS.reader_i' +
+        'd) ON CATEGORIES.id_Category = BOOKS.category_id'
+      
+        'GROUP BY CATEGORIES.title, TAKEN_BOOKS.taken_date, READERS.last_' +
+        'name, BOOKS.title, BOOKS.publication_date;')
+    Left = 216
+    Top = 464
+  end
+  object Rep2Query: TADOQuery
+    Connection = ConnectionLibrary
+    Parameters = <>
+    Left = 216
+    Top = 520
+  end
+  object DSRep1: TDataSource
+    DataSet = Rep1Query
+    Left = 296
+    Top = 464
+  end
+  object DSRep2: TDataSource
+    Left = 296
+    Top = 520
   end
 end

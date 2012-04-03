@@ -12,7 +12,10 @@ uses
   apply_restr in 'forms\apply_restr.pas' {ApplyRestForm},
   book_search in 'forms\book_search.pas' {BookSearchForm},
   reader_search in 'forms\reader_search.pas' {ReaderSearchForm},
-  taken_books in 'forms\queries\taken_books.pas' {TakenBooksQForm};
+  statistics in 'forms\queries\statistics.pas' {StatisticsQForm},
+  taken_books in 'forms\queries\taken_books.pas' {TakenBooksQForm},
+  debtors in 'forms\queries\debtors.pas' {DebtorsQForm},
+  report1 in 'forms\reports\report1.pas' {Report1Form};
 
 {$R *.res}
 
@@ -28,6 +31,9 @@ begin
   Application.CreateForm(TApplyRestForm, ApplyRestForm);
   Application.CreateForm(TBookSearchForm, BookSearchForm);
   Application.CreateForm(TReaderSearchForm, ReaderSearchForm);
+  Application.CreateForm(TStatisticsQForm, StatisticsQForm);
   Application.CreateForm(TTakenBooksQForm, TakenBooksQForm);
+  Application.CreateForm(TDebtorsQForm, DebtorsQForm);
+  Application.CreateForm(TReport1Form, Report1Form);
   Application.Run;
 end.

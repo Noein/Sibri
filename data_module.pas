@@ -98,6 +98,14 @@ type
     Booksreason: TStringField;
     TakenBooksauthors: TStringField;
     DSQuery1: TDataSource;
+    DebtorsQuery: TADOQuery;
+    DSQuery2: TDataSource;
+    DSQuery3: TDataSource;
+    StatQuery: TADOQuery;
+    Rep1Query: TADOQuery;
+    Rep2Query: TADOQuery;
+    DSRep1: TDataSource;
+    DSRep2: TDataSource;
     procedure ConnectionLibraryBeforeConnect(Sender: TObject);
     procedure ReadersAfterScroll(DataSet: TDataSet);
     procedure BooksCalcFields(DataSet: TDataSet);
