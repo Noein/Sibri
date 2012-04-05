@@ -75,13 +75,15 @@ uses data_module;
 
 procedure TReaderAddForm.CancelButtonClick(Sender: TObject);
 begin
-  close();
   DateTimePicker1.Date:=Now;
   DBLookupComboBox1.KeyValue:=Null;
+  close();
 end;
 
 procedure TReaderAddForm.SaveButtonClick(Sender: TObject);
 begin
+  try
+  try
   DataLibrary.Readers.Insert;
   DataLibrary.Readers.FieldByName('passport_number').AsString:=Edit1.Text;
   DataLibrary.Readers.FieldByName('last_name').AsString:=Edit2.Text;
@@ -98,6 +100,12 @@ begin
   DataLibrary.Readers.Post;
   DataLibrary.Readers.Refresh;
   close();
+  except
+  showmessage('Произошла ошибка. Приносим свои извинения. Попробуйте снова.');
+  end;
+  finally
+  close();
+  end;
 end;
 
 end.

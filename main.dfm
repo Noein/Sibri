@@ -41,12 +41,11 @@ object MainForm: TMainForm
             Height = 13
             Caption = #1042#1079#1103#1090#1099#1077' '#1082#1085#1080#1075#1080
           end
-          object Label2: TLabel
-            Left = 744
+          object Label3: TLabel
+            Left = 216
             Top = 440
-            Width = 180
+            Width = 5
             Height = 24
-            Caption = #1055#1088#1080#1084#1077#1085#1105#1085#1085#1099#1077' '#1084#1077#1088#1099
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = 25
@@ -54,18 +53,28 @@ object MainForm: TMainForm
             Font.Style = []
             ParentFont = False
           end
-          object Label3: TLabel
-            Left = 216
+          object Panel10: TPanel
+            Left = 0
+            Top = 400
+            Width = 1060
+            Height = 316
+            Align = alBottom
+            BevelOuter = bvNone
+            TabOrder = 15
+          end
+          object GroupBox2: TGroupBox
+            Left = 0
             Top = 440
-            Width = 122
-            Height = 24
+            Width = 617
+            Height = 241
             Caption = #1042#1079#1103#1090#1099#1077' '#1082#1085#1080#1075#1080
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
-            Font.Height = 25
+            Font.Height = -21
             Font.Name = 'MS Sans Serif'
             Font.Style = []
             ParentFont = False
+            TabOrder = 14
           end
           object Panel7: TPanel
             Left = 0
@@ -88,10 +97,16 @@ object MainForm: TMainForm
           end
           object GroupBox1: TGroupBox
             Left = 616
-            Top = 456
+            Top = 440
             Width = 441
-            Height = 225
+            Height = 241
             Caption = #1055#1088#1080#1084#1077#1085#1105#1085#1085#1099#1077' '#1084#1077#1088#1099
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -21
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 12
           end
           object DBGrid2: TDBGrid
@@ -127,6 +142,7 @@ object MainForm: TMainForm
                 Expanded = False
                 FieldName = 'authors'
                 Title.Caption = #1040#1074#1090#1086#1088#1099
+                Width = 64
                 Visible = True
               end
               item
@@ -138,12 +154,14 @@ object MainForm: TMainForm
                 Expanded = False
                 FieldName = 'taken_date'
                 Title.Caption = #1044#1072#1090#1072' '#1074#1079#1103#1090#1080#1103
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'return_date'
                 Title.Caption = #1044#1072#1090#1072' '#1074#1086#1079#1074#1088#1072#1090#1072
+                Width = 64
                 Visible = True
               end>
           end
@@ -211,6 +229,7 @@ object MainForm: TMainForm
                 Expanded = False
                 FieldName = 'applied_time'
                 Title.Caption = #1042#1088#1077#1084#1103' '#1087#1088#1080#1084#1077#1085#1077#1085#1080#1103
+                Width = 64
                 Visible = True
               end>
           end
@@ -243,7 +262,7 @@ object MainForm: TMainForm
           end
           object AddReaderButton: TButton
             Left = 0
-            Top = 392
+            Top = 408
             Width = 169
             Height = 33
             Caption = #1044#1086#1073#1072#1074#1080#1090#1100
@@ -251,8 +270,8 @@ object MainForm: TMainForm
             OnClick = AddReaderButtonClick
           end
           object EditReaderButton: TButton
-            Left = 184
-            Top = 392
+            Left = 176
+            Top = 408
             Width = 177
             Height = 33
             Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
@@ -260,8 +279,8 @@ object MainForm: TMainForm
             OnClick = EditReaderButtonClick
           end
           object DelReaderButton: TButton
-            Left = 376
-            Top = 392
+            Left = 360
+            Top = 408
             Width = 177
             Height = 33
             Caption = #1059#1076#1072#1083#1080#1090#1100
@@ -270,9 +289,10 @@ object MainForm: TMainForm
           end
           object DBGrid1: TDBGrid
             Left = 0
-            Top = 64
-            Width = 1057
-            Height = 321
+            Top = 49
+            Width = 1060
+            Height = 351
+            Align = alClient
             DataSource = DataLibrary.DSReaders
             TabOrder = 10
             TitleFont.Charset = DEFAULT_CHARSET

@@ -1,6 +1,6 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
-  Left = 897
+  Left = 894
   Top = 217
   Height = 771
   Width = 383

@@ -1,6 +1,6 @@
 object Report1Form: TReport1Form
-  Left = 191
-  Top = 142
+  Left = 237
+  Top = 205
   Width = 855
   Height = 627
   Caption = #1054#1090#1095#1105#1090' '#8470'1'
@@ -12,6 +12,7 @@ object Report1Form: TReport1Form
   Font.Style = []
   OldCreateOrder = False
   Scaled = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -23,7 +24,7 @@ object Report1Form: TReport1Form
     BevelOuter = bvNone
     TabOrder = 0
     object Button1: TButton
-      Left = 88
+      Left = 8
       Top = 8
       Width = 113
       Height = 33
@@ -32,7 +33,7 @@ object Report1Form: TReport1Form
       OnClick = Button1Click
     end
     object Button2: TButton
-      Left = 208
+      Left = 136
       Top = 8
       Width = 129
       Height = 33
@@ -42,12 +43,13 @@ object Report1Form: TReport1Form
   end
   object RvProject1: TRvProject
     ProjectFile = 'Z:\Course_work\Sibri\sibri\forms\reports\report1.rav'
-    Top = 8
+    Left = 8
+    Top = 64
   end
   object RvDataSetConnection1: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
     DataSet = DataLibrary.Rep1Query
     Left = 40
-    Top = 8
+    Top = 64
   end
 end

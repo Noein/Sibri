@@ -15,6 +15,7 @@ type
     Button1: TButton;
     Button2: TButton;
     procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,6 +34,11 @@ uses data_module;
 procedure TReport1Form.Button1Click(Sender: TObject);
 begin
   RvProject1.Execute;
+end;
+
+procedure TReport1Form.FormCreate(Sender: TObject);
+begin
+  RvProject1.ProjectFile:=DataLibrary.currentDirPath()+'\forms\reports\report1.rav';
 end;
 
 end.

@@ -159,6 +159,7 @@ object BookEditForm: TBookEditForm
       item
         Expanded = False
         FieldName = 'author'
+        Title.Caption = #1040#1074#1090#1086#1088
         Width = 250
         Visible = True
       end>

@@ -59,7 +59,6 @@ type
     FindReaderButton: TButton;
     Label1: TLabel;
     DBGrid3: TDBGrid;
-    Label2: TLabel;
     ReturnBookButton: TButton;
     AppyRestButton: TButton;
     CleanRestButton: TButton;
@@ -105,6 +104,8 @@ type
     TakeBookButton: TButton;
     Panel9: TPanel;
     FindBookEdit: TLabeledEdit;
+    GroupBox2: TGroupBox;
+    Panel10: TPanel;
     procedure N2Click(Sender: TObject);
     procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);

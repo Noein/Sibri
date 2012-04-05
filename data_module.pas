@@ -114,6 +114,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    function currentDirPath():String;
   end;
 
 var
@@ -124,7 +125,7 @@ implementation
 {$R *.dfm}
 
 // Returns a full path to the current dir
-function currentDirPath():String;
+function TDataLibrary.currentDirPath():String;
 begin
   result:=extractFileDir(expandFileName('anything'));
 end;
