@@ -10,12 +10,19 @@ uses
 type
   TReport1Form = class(TForm)
     Panel1: TPanel;
-    RvProject1: TRvProject;
-    RvDataSetConnection1: TRvDataSetConnection;
-    Button1: TButton;
-    Button2: TButton;
-    procedure Button1Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    QuickRep1: TQuickRep;
+    ColumnHeaderBand1: TQRBand;
+    DetailBand1: TQRBand;
+    PageFooterBand1: TQRBand;
+    TitleBand1: TQRBand;
+    QRLabel1: TQRLabel;
+    QRLabel2: TQRLabel;
+    QRLabel3: TQRLabel;
+    QRLabel4: TQRLabel;
+    QRDBText1: TQRDBText;
+    QRDBText2: TQRDBText;
+    QRDBText3: TQRDBText;
+    QRSysData1: TQRSysData;
   private
     { Private declarations }
   public
@@ -30,15 +37,5 @@ implementation
 uses data_module;
 
 {$R *.dfm}
-
-procedure TReport1Form.Button1Click(Sender: TObject);
-begin
-  RvProject1.Execute;
-end;
-
-procedure TReport1Form.FormCreate(Sender: TObject);
-begin
-  RvProject1.ProjectFile:=DataLibrary.currentDirPath()+'\forms\reports\report1.rav';
-end;
 
 end.

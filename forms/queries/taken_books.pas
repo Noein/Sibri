@@ -29,15 +29,13 @@ type
     StaticText1: TStaticText;
     DBLookupComboBoxCat: TDBLookupComboBox;
     StaticText2: TStaticText;
-    DateTimePickerFrom: TDateTimePicker;
-    DateTimePickerTo: TDateTimePicker;
-    StaticText3: TStaticText;
-    StaticText4: TStaticText;
     DBGrid1: TDBGrid;
     Panel1: TPanel;
-    Label1: TLabel;
+    MonthCalendar: TMonthCalendar;
+    Memo1: TMemo;
     procedure DBLookupComboBoxCatClick(Sender: TObject);
     procedure runQuery;
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -61,17 +59,21 @@ begin
   DataLibrary.TakenBooksQuery.SQL.Add('FROM CATEGORIES INNER JOIN (AUTHORS INNER JOIN ((BOOKS INNER JOIN TAKEN_BOOKS ON BOOKS.id_Book = TAKEN_BOOKS.book_id) ');
   DataLibrary.TakenBooksQuery.SQL.Add('INNER JOIN PARTICIPATING_AUTHORS ON BOOKS.id_Book = PARTICIPATING_AUTHORS.book_id) ON AUTHORS.id_Author = PARTICIPATING_AUTHORS.author_id) ON CATEGORIES.id_Category = BOOKS.category_id');
   DataLibrary.TakenBooksQuery.SQL.Add('GROUP BY BOOKS.id_Book, BOOKS.title, BOOKS.publication_date, BOOKS.category_id, TAKEN_BOOKS.taken_date');
-  DataLibrary.TakenBooksQuery.SQL.Add('HAVING (((BOOKS.category_id)=:cat) AND ((TAKEN_BOOKS.taken_date)>:fromDate And (TAKEN_BOOKS.taken_date)<:toDate));');
+  DataLibrary.TakenBooksQuery.SQL.Add('HAVING BOOKS.category_id=:cat AND month(TAKEN_BOOKS.taken_date)=:month;');
   if DBLookupComboBoxCat.KeyValue <> Null then
     DataLibrary.TakenBooksQuery.Parameters.ParamByName('cat').Value:=DBLookupComboBoxCat.KeyValue;
-  DataLibrary.TakenBooksQuery.Parameters.ParamByName('fromDate').Value:=DateToStr(DateTimePickerFrom.Date);
-  DataLibrary.TakenBooksQuery.Parameters.ParamByName('toDate').Value:=DateToStr(DateTimePickerTo.Date);
+  DataLibrary.TakenBooksQuery.Parameters.ParamByName('month').Value:=FormatDateTime('m', MonthCalendar.Date);
   DataLibrary.TakenBooksQuery.Open;
 end;
 
 procedure TTakenBooksQForm.DBLookupComboBoxCatClick(Sender: TObject);
 begin
-  runQuery();
+  runQuery();       
+end;
+
+procedure TTakenBooksQForm.FormShow(Sender: TObject);
+begin
+  MonthCalendar.Date:=Now();
 end;
 
 end.

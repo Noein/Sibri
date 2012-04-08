@@ -21,7 +21,7 @@ unit data_module;
 interface
 
 uses
-  SysUtils, Dialogs, Classes, DB, ADODB, Variants;
+  SysUtils, Dialogs, Classes, DB, ADODB, Variants, DateUtils;
 
 type
   TDataLibrary = class(TDataModule)
@@ -106,10 +106,14 @@ type
     Rep2Query: TADOQuery;
     DSRep1: TDataSource;
     DSRep2: TDataSource;
+    TakenBooksmust_return_date: TDateField;
+    Settings: TADOTable;
+    DSSettings: TDataSource;
     procedure ConnectionLibraryBeforeConnect(Sender: TObject);
     procedure ReadersAfterScroll(DataSet: TDataSet);
     procedure BooksCalcFields(DataSet: TDataSet);
     procedure ParticipatingAuthorsCalcFields(DataSet: TDataSet);
+    procedure TakenBooksCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -190,6 +194,11 @@ begin
   if EditAuthorsQuery.FieldByName('patronymic').Value <> Null then
     authorstr:=authorstr+EditAuthorsQuery.FieldByName('patronymic').AsString;
   ParticipatingAuthors.FieldByName('author').AsString:=authorstr;
+end;
+
+procedure TDataLibrary.TakenBooksCalcFields(DataSet: TDataSet);
+begin
+  TakenBooks.FieldByName('must_return_date').AsDateTime:=IncDay(TakenBooks.FieldByName('taken_date').AsDateTime, 14);
 end;
 
 end.

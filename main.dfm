@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 192
-  Top = 139
+  Left = 186
+  Top = 134
   Width = 1084
   Height = 834
   Caption = 'Sibri'
@@ -12,6 +12,7 @@ object MainForm: TMainForm
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
@@ -142,7 +143,6 @@ object MainForm: TMainForm
                 Expanded = False
                 FieldName = 'authors'
                 Title.Caption = #1040#1074#1090#1086#1088#1099
-                Width = 64
                 Visible = True
               end
               item
@@ -154,14 +154,19 @@ object MainForm: TMainForm
                 Expanded = False
                 FieldName = 'taken_date'
                 Title.Caption = #1044#1072#1090#1072' '#1074#1079#1103#1090#1080#1103
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'return_date'
                 Title.Caption = #1044#1072#1090#1072' '#1074#1086#1079#1074#1088#1072#1090#1072
-                Width = 64
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'must_return_date'
+                Title.Caption = #1044#1072#1090#1072' '#1074#1086#1079#1074#1088#1072#1090#1072
+                Width = 110
                 Visible = True
               end>
           end
@@ -229,12 +234,11 @@ object MainForm: TMainForm
                 Expanded = False
                 FieldName = 'applied_time'
                 Title.Caption = #1042#1088#1077#1084#1103' '#1087#1088#1080#1084#1077#1085#1077#1085#1080#1103
-                Width = 64
                 Visible = True
               end>
           end
           object ReturnBookButton: TButton
-            Left = 0
+            Left = 8
             Top = 632
             Width = 137
             Height = 33
@@ -300,6 +304,8 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnMouseMove = DBGrid1MouseMove
+            OnTitleClick = DBGrid1TitleClick
             Columns = <
               item
                 Expanded = False
@@ -396,7 +402,7 @@ object MainForm: TMainForm
               end>
           end
           object NEEDMoreTimeButton: TButton
-            Left = 152
+            Left = 160
             Top = 632
             Width = 129
             Height = 33
@@ -471,7 +477,8 @@ object MainForm: TMainForm
               item
                 Expanded = False
                 FieldName = 'authors'
-                Title.Caption = #1040#1074#1090#1086#1088
+                Title.Caption = #1040#1074#1090#1086#1088#1099
+                Width = 166
                 Visible = True
               end
               item
@@ -1040,12 +1047,17 @@ object MainForm: TMainForm
     object N6: TMenuItem
       Caption = #1054#1090#1095#1105#1090#1099
       object N10: TMenuItem
-        Caption = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072
+        Caption = #1050' '#1089#1087#1080#1089#1072#1085#1080#1102
         OnClick = N10Click
       end
       object N11: TMenuItem
         Caption = #1053#1077#1074#1086#1079#1074#1088#1072#1097#1077#1085#1085#1099#1077
+        OnClick = N11Click
       end
+    end
+    object N3: TMenuItem
+      Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+      OnClick = N3Click
     end
     object N1: TMenuItem
       Caption = #1057#1087#1088#1072#1074#1082#1072

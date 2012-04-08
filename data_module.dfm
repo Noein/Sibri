@@ -2,7 +2,7 @@ object DataLibrary: TDataLibrary
   OldCreateOrder = False
   Left = 894
   Top = 217
-  Height = 771
+  Height = 809
   Width = 383
   object ConnectionLibrary: TADOConnection
     Connected = True
@@ -302,6 +302,7 @@ object DataLibrary: TDataLibrary
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
+    OnCalcFields = TakenBooksCalcFields
     IndexFieldNames = 'reader_id'
     TableName = 'TAKEN_BOOKS'
     Left = 40
@@ -340,6 +341,11 @@ object DataLibrary: TDataLibrary
       KeyFields = 'book_id'
       Size = 30
       Lookup = True
+    end
+    object TakenBooksmust_return_date: TDateField
+      FieldKind = fkCalculated
+      FieldName = 'must_return_date'
+      Calculated = True
     end
   end
   object DSTakenBooks: TDataSource
@@ -399,12 +405,7 @@ object DataLibrary: TDataLibrary
         Value = Null
       end
       item
-        Name = 'fromDate'
-        Size = -1
-        Value = Null
-      end
-      item
-        Name = 'toDate'
+        Name = 'month'
         Size = -1
         Value = Null
       end>
@@ -431,7 +432,16 @@ object DataLibrary: TDataLibrary
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
-    Parameters = <>
+    Parameters = <
+      item
+        Name = 'restr'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
     SQL.Strings = (
       
         'SELECT DISTINCT READERS.last_name, READERS.first_name, READERS.p' +
@@ -444,8 +454,8 @@ object DataLibrary: TDataLibrary
         'OIN TAKEN_BOOKS ON READERS.id_Reader = TAKEN_BOOKS.reader_id) ON' +
         ' STREETS.id_Street = READERS.street_id'
       
-        'WHERE ((([APPLIED_RESTRICTIONS]![restriction_id])=CInt("5")) AND' +
-        ' (([TAKEN_BOOKS]![return_date]) Is Null));')
+        'WHERE ((([APPLIED_RESTRICTIONS]![restriction_id])=:restr) AND ((' +
+        '[TAKEN_BOOKS]![return_date]) Is Null));')
     Left = 216
     Top = 344
   end
@@ -464,18 +474,16 @@ object DataLibrary: TDataLibrary
     Connection = ConnectionLibrary
     CursorType = ctStatic
     Parameters = <>
+    Prepared = True
     SQL.Strings = (
       
-        'SELECT CATEGORIES.title, Sum(BOOKS.count) AS [Sum-count], Min(Ye' +
-        'ar(Date())-Year([birth_date])) AS minYears, Max(Year(Date())-Yea' +
-        'r([birth_date])) AS maxYears, CInt(Avg(Year(Date())-Year([birth_' +
-        'date]))) AS average'
+        'SELECT CATEGORIES.title, Count(BOOKS.id_Book) AS [Count-id_Book]' +
+        ', Sum(BOOKS.count) AS [Sum-count], ABSENCE_REASONS.title'
       
-        'FROM READERS INNER JOIN (CATEGORIES INNER JOIN (BOOKS INNER JOIN' +
-        ' TAKEN_BOOKS ON BOOKS.id_Book = TAKEN_BOOKS.book_id) ON CATEGORI' +
-        'ES.id_Category = BOOKS.category_id) ON READERS.id_Reader = TAKEN' +
-        '_BOOKS.reader_id'
-      'GROUP BY CATEGORIES.title;')
+        'FROM ABSENCE_REASONS INNER JOIN (CATEGORIES INNER JOIN BOOKS ON ' +
+        'CATEGORIES.id_Category = BOOKS.category_id) ON ABSENCE_REASONS.i' +
+        'd_Absence_reason = BOOKS.reason_id'
+      'GROUP BY CATEGORIES.title, ABSENCE_REASONS.title;')
     Left = 216
     Top = 408
   end
@@ -483,28 +491,63 @@ object DataLibrary: TDataLibrary
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
-    Parameters = <>
+    Parameters = <
+      item
+        Name = 'trash_reas'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    Prepared = True
     SQL.Strings = (
       
-        'SELECT CATEGORIES.title, TAKEN_BOOKS.taken_date, READERS.last_na' +
-        'me, First(AUTHORS.last_name) AS [First-last_name], BOOKS.title, ' +
-        'BOOKS.publication_date'
+        'SELECT BOOKS.title, First(AUTHORS.last_name) AS [First-last_name' +
+        '], Year([BOOKS]![publication_date]) AS pubYear'
       
-        'FROM CATEGORIES INNER JOIN (READERS INNER JOIN (AUTHORS INNER JO' +
-        'IN ((BOOKS INNER JOIN TAKEN_BOOKS ON BOOKS.id_Book = TAKEN_BOOKS' +
-        '.book_id) INNER JOIN PARTICIPATING_AUTHORS ON BOOKS.id_Book = PA' +
-        'RTICIPATING_AUTHORS.book_id) ON AUTHORS.id_Author = PARTICIPATIN' +
-        'G_AUTHORS.author_id) ON READERS.id_Reader = TAKEN_BOOKS.reader_i' +
-        'd) ON CATEGORIES.id_Category = BOOKS.category_id'
+        'FROM BOOKS INNER JOIN (AUTHORS INNER JOIN PARTICIPATING_AUTHORS ' +
+        'ON AUTHORS.id_Author = PARTICIPATING_AUTHORS.author_id) ON BOOKS' +
+        '.id_Book = PARTICIPATING_AUTHORS.book_id'
       
-        'GROUP BY CATEGORIES.title, TAKEN_BOOKS.taken_date, READERS.last_' +
-        'name, BOOKS.title, BOOKS.publication_date;')
+        'GROUP BY BOOKS.title, Year([BOOKS]![publication_date]), BOOKS.re' +
+        'ason_id'
+      
+        'HAVING (((Year([BOOKS]![publication_date]))<Year(Now())-40) AND ' +
+        '((BOOKS.reason_id)<>:trash_reas));')
     Left = 216
     Top = 464
   end
   object Rep2Query: TADOQuery
     Connection = ConnectionLibrary
-    Parameters = <>
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'date'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'SELECT BOOKS.title, First(AUTHORS.last_name) AS [First-last_name' +
+        '], TAKEN_BOOKS.taken_date, [taken_date]+Day(14) AS must_return_d' +
+        'ate'
+      
+        'FROM (BOOKS INNER JOIN TAKEN_BOOKS ON BOOKS.id_Book = TAKEN_BOOK' +
+        'S.book_id) INNER JOIN (AUTHORS INNER JOIN PARTICIPATING_AUTHORS ' +
+        'ON AUTHORS.id_Author = PARTICIPATING_AUTHORS.author_id) ON BOOKS' +
+        '.id_Book = PARTICIPATING_AUTHORS.book_id'
+      
+        'GROUP BY BOOKS.title, TAKEN_BOOKS.taken_date, [taken_date]+Day(1' +
+        '4), TAKEN_BOOKS.return_date'
+      
+        'HAVING (((TAKEN_BOOKS.taken_date)=:date) AND (([taken_date]+Day(' +
+        '14))<Now()) AND ((TAKEN_BOOKS.return_date) Is Null));')
     Left = 216
     Top = 520
   end
@@ -516,5 +559,18 @@ object DataLibrary: TDataLibrary
   object DSRep2: TDataSource
     Left = 296
     Top = 520
+  end
+  object Settings: TADOTable
+    Active = True
+    Connection = ConnectionLibrary
+    CursorType = ctStatic
+    TableName = 'SETTINGS'
+    Left = 40
+    Top = 712
+  end
+  object DSSettings: TDataSource
+    DataSet = Settings
+    Left = 128
+    Top = 712
   end
 end

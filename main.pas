@@ -23,7 +23,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, XPMan, ComCtrls, Menus, ExtCtrls,
-  DBCtrls, DB;
+  DBCtrls, DB, ADODB;
 
 const
   DEBUG = true;
@@ -106,6 +106,7 @@ type
     FindBookEdit: TLabeledEdit;
     GroupBox2: TGroupBox;
     Panel10: TPanel;
+    N3: TMenuItem;
     procedure N2Click(Sender: TObject);
     procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);
@@ -138,21 +139,27 @@ type
     procedure N8Click(Sender: TObject);
     procedure N9Click(Sender: TObject);
     procedure N10Click(Sender: TObject);
+    procedure N11Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure DBGrid1MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure DBGrid1TitleClick(Column: TColumn);
   private
     { Private declarations }
   public
     { Public declarations }
+    reasons_ended:integer;
   end;
   
 var
   MainForm: TMainForm;
 
-
 implementation
 
 uses data_module, about, book_add, reader_edit, reader_add, book_edit,
   apply_restr, reader_search, book_search, taken_books, debtors,
-  statistics, report1;
+  statistics, report1, report2_cond, settings;
 
 {$R *.dfm}
 
@@ -211,6 +218,7 @@ begin
   if count > 0 then begin
     DataLibrary.Books.Edit;
     DataLibrary.Books.fieldByName('count').AsInteger:=count - 1;
+    if count = 0 then DataLibrary.Books.fieldByName('reason_id').AsInteger:=reasons_ended;
     DataLibrary.Books.Post;
     DataLibrary.Books.Refresh;
     DataLibrary.TakenBooks.insert;
@@ -428,7 +436,66 @@ end;
 
 procedure TMainForm.N10Click(Sender: TObject);
 begin
-  Report1Form.ShowModal();
+  //Report1Form.ShowModal();
+  DataLibrary.Rep1Query.Close;
+  DataLibrary.Rep1Query.Open;
+  Report1Form.QuickRep1.Preview;
+end;
+
+procedure TMainForm.N11Click(Sender: TObject);
+begin
+  Report2CondForm.ShowModal();
+end;
+
+procedure TMainForm.N3Click(Sender: TObject);
+begin
+  SettingsForm.ShowModal();
+end;
+
+procedure TMainForm.FormShow(Sender: TObject);
+begin
+  DataLibrary.Settings.Locate('Key', 'debtors_restr', [locaseinsensitive]);
+  DataLibrary.DebtorsQuery.Parameters.ParamByName('restr').Value:=StrToInt(DataLibrary.Settings.FieldByName('Value').AsString);
+  DataLibrary.Settings.Locate('Key', 'reasons_trash', [locaseinsensitive]);
+  DataLibrary.Rep1Query.Parameters.ParamByName('trash_reas').Value:=StrToInt(DataLibrary.Settings.FieldByName('Value').AsString);
+  DataLibrary.Settings.Locate('Key', 'reasons_ended', [locaseinsensitive]);
+  reasons_ended:=StrToInt(DataLibrary.Settings.FieldByName('Value').AsString);
+end;
+
+procedure TMainForm.DBGrid1MouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer);
+var
+  pt: TGridcoord;
+begin
+  pt:= DBGrid1.MouseCoord(x, y);
+
+  if pt.y=0 then
+    DBGrid1.Cursor:=crHandPoint
+  else
+    DBGrid1.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGrid1TitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex : integer = -1;
+{$J-}
+begin
+  if DBGrid1.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGrid1.DataSource.DataSet) do
+  begin
+    try
+      DBGrid1.Columns[PreviousColumnIndex].title.Font.Style:=DBGrid1.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName + ' DESC'
+    else
+      Sort:=Column.Field.FieldName + ' ASC';
+  end;
 end;
 
 end.

@@ -58,6 +58,7 @@ type
     SaveButton: TButton;
     procedure CancelButtonClick(Sender: TObject);
     procedure SaveButtonClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,8 +76,6 @@ uses data_module;
 
 procedure TReaderAddForm.CancelButtonClick(Sender: TObject);
 begin
-  DateTimePicker1.Date:=Now;
-  DBLookupComboBox1.KeyValue:=Null;
   close();
 end;
 
@@ -106,6 +105,12 @@ begin
   finally
   close();
   end;
+end;
+
+procedure TReaderAddForm.FormShow(Sender: TObject);
+begin
+  DateTimePicker1.Date:=Now;
+  DBLookupComboBox1.KeyValue:=Null;
 end;
 
 end.

@@ -41,6 +41,7 @@ type
     procedure CancelButtonClick(Sender: TObject);
     procedure FindButtonClick(Sender: TObject);
     procedure ClearButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -102,6 +103,11 @@ begin
   BirthRadioGroup.ItemIndex:=-1;
   DataLibrary.Readers.Filter:='';
   DataLibrary.Readers.Filtered:=False;
+end;
+
+procedure TReaderSearchForm.FormCreate(Sender: TObject);
+begin
+  DateTimePicker1.Date:=Now();
 end;
 
 end.

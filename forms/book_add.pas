@@ -57,6 +57,7 @@ type
     procedure DBGridPADrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DBGridPAColExit(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,10 +76,6 @@ uses data_module;
 procedure TBookAddForm.CancelButtonClick(Sender: TObject);
 begin
   close();
-  DateTimePicker1.Date:=Now;
-  DBLookupComboBox1.KeyValue:=Null;
-  DBLookupComboBox2.KeyValue:=Null;
-  DBLookupComboBox3.KeyValue:=Null;
 end;
 
 procedure TBookAddForm.SaveButtonClick(Sender: TObject);
@@ -122,6 +119,14 @@ procedure TBookAddForm.DBGridPAColExit(Sender: TObject);
 begin
   if DBGridPA.SelectedField.FieldName = DBLookupComboBoxAuthor.DataField then 
     DBLookupComboBoxAuthor.Visible := False;
+end;
+
+procedure TBookAddForm.FormShow(Sender: TObject);
+begin
+  DateTimePicker1.Date:=Now;
+  DBLookupComboBox1.KeyValue:=Null;
+  DBLookupComboBox2.KeyValue:=Null;
+  DBLookupComboBox3.KeyValue:=Null;
 end;
 
 end.

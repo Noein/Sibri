@@ -43,6 +43,7 @@ type
     procedure CancelButtonClick(Sender: TObject);
     procedure FindButtonClick(Sender: TObject);
     procedure ClearButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -107,6 +108,11 @@ begin
   PubRadioGroup.ItemIndex:=-1;
   DataLibrary.Books.Filter:='';
   DataLibrary.Books.Filtered:=False;
+end;
+
+procedure TBookSearchForm.FormCreate(Sender: TObject);
+begin
+  DateTimePicker.Date:=Now();
 end;
 
 end.

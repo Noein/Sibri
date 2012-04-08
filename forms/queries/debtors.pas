@@ -29,7 +29,7 @@ type
     DBGrid1: TDBGrid;
     Panel1: TPanel;
     Label1: TLabel;
-    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,8 +45,9 @@ uses data_module;
 
 {$R *.dfm}
 
-procedure TDebtorsQForm.FormCreate(Sender: TObject);
+procedure TDebtorsQForm.FormShow(Sender: TObject);
 begin
+  DataLibrary.DebtorsQuery.Close;
   DataLibrary.DebtorsQuery.Open;
 end;
 

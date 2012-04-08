@@ -29,8 +29,7 @@ type
     DBGrid1: TDBGrid;
     Panel1: TPanel;
     Label1: TLabel;
-    Panel2: TPanel;
-    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,7 +45,7 @@ uses data_module;
 
 {$R *.dfm}
 
-procedure TStatisticsQForm.FormCreate(Sender: TObject);
+procedure TStatisticsQForm.FormShow(Sender: TObject);
 begin
   DataLibrary.StatQuery.Open;
 end;
