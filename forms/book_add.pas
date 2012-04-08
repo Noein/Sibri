@@ -41,7 +41,6 @@ type
     Edit1: TEdit;
     Label1: TLabel;
     DBGridPA: TDBGrid;
-    DBNavPA: TDBNavigator;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
     DateTimePicker1: TDateTimePicker;
@@ -52,6 +51,7 @@ type
     Edit7: TEdit;
     DBLookupComboBox3: TDBLookupComboBox;
     DBLookupComboBoxAuthor: TDBLookupComboBox;
+    DBNavigator1: TDBNavigator;
     procedure SaveButtonClick(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
     procedure DBGridPADrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -80,7 +80,6 @@ end;
 
 procedure TBookAddForm.SaveButtonClick(Sender: TObject);
 begin
-  DataLibrary.Books.Insert;
   DataLibrary.Books.FieldByName('publisher_id').AsString:=DBLookupComboBox1.KeyValue;
   DataLibrary.Books.FieldByName('category_id').AsString:=DBLookupComboBox2.KeyValue;
   DataLibrary.Books.FieldByName('reason_id').AsString:=DBLookupComboBox3.KeyValue;
@@ -117,16 +116,19 @@ end;
 
 procedure TBookAddForm.DBGridPAColExit(Sender: TObject);
 begin
-  if DBGridPA.SelectedField.FieldName = DBLookupComboBoxAuthor.DataField then 
-    DBLookupComboBoxAuthor.Visible := False;
+  if DBGridPA.SelectedField.FieldName=DBLookupComboBoxAuthor.DataField then
+    DBLookupComboBoxAuthor.Visible:=False;
 end;
 
 procedure TBookAddForm.FormShow(Sender: TObject);
 begin
+  DataLibrary.Books.Insert;
   DateTimePicker1.Date:=Now;
   DBLookupComboBox1.KeyValue:=Null;
   DBLookupComboBox2.KeyValue:=Null;
   DBLookupComboBox3.KeyValue:=Null;
+  Edit1.Text:=''; Edit2.Text:=''; Edit3.Text:=''; Edit4.Text:='';
+  Edit5.Text:=''; Edit7.Text:='';
 end;
 
 end.

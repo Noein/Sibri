@@ -89,7 +89,7 @@ begin
   DataLibrary.Settings.FieldByName('Value').AsString:='2';
   DataLibrary.Settings.Post;
   DataLibrary.Settings.Refresh;
-  DBlookupComboBox2.KeyValue:='2';
+  DBlookupComboBox3.KeyValue:='2';
 end;
 
 procedure TSettingsForm.FormShow(Sender: TObject);

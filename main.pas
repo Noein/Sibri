@@ -460,6 +460,8 @@ begin
   DataLibrary.Rep1Query.Parameters.ParamByName('trash_reas').Value:=StrToInt(DataLibrary.Settings.FieldByName('Value').AsString);
   DataLibrary.Settings.Locate('Key', 'reasons_ended', [locaseinsensitive]);
   reasons_ended:=StrToInt(DataLibrary.Settings.FieldByName('Value').AsString);
+  StatusBar1.Panels.Items[0].Text:='Всего читателей: ' + IntToStr(DataLibrary.Readers.RecordCount);
+  StatusBar1.Panels.Items[1].Text:='Всего книг: ' + IntToStr(DataLibrary.Books.RecordCount);
 end;
 
 procedure TMainForm.DBGrid1MouseMove(Sender: TObject; Shift: TShiftState;

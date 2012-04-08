@@ -109,6 +109,9 @@ end;
 
 procedure TReaderAddForm.FormShow(Sender: TObject);
 begin
+  Edit1.Text:=''; Edit2.Text:=''; Edit3.Text:=''; Edit4.Text:='';
+  Edit6.Text:=''; Edit7.Text:=''; Edit8.Text:=''; Edit9.Text:='';
+  Edit10.Text:=''; Edit11.Text:='';
   DateTimePicker1.Date:=Now;
   DBLookupComboBox1.KeyValue:=Null;
 end;

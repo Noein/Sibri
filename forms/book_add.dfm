@@ -164,14 +164,6 @@ object BookAddForm: TBookAddForm
         Visible = True
       end>
   end
-  object DBNavPA: TDBNavigator
-    Left = 8
-    Top = 200
-    Width = 280
-    Height = 25
-    DataSource = DataLibrary.DSPartAuthors
-    TabOrder = 14
-  end
   object DBLookupComboBox1: TDBLookupComboBox
     Left = 8
     Top = 248
@@ -180,7 +172,7 @@ object BookAddForm: TBookAddForm
     KeyField = 'id_Publisher'
     ListField = 'title'
     ListSource = DataLibrary.DSPublishers
-    TabOrder = 15
+    TabOrder = 14
   end
   object DBLookupComboBox2: TDBLookupComboBox
     Left = 8
@@ -190,7 +182,7 @@ object BookAddForm: TBookAddForm
     KeyField = 'id_Category'
     ListField = 'title'
     ListSource = DataLibrary.DSCategories
-    TabOrder = 16
+    TabOrder = 15
   end
   object DateTimePicker1: TDateTimePicker
     Left = 8
@@ -199,42 +191,42 @@ object BookAddForm: TBookAddForm
     Height = 21
     Date = 40987.808116701390000000
     Time = 40987.808116701390000000
-    TabOrder = 17
+    TabOrder = 16
   end
   object Edit2: TEdit
     Left = 8
     Top = 368
     Width = 281
     Height = 21
-    TabOrder = 18
+    TabOrder = 17
   end
   object Edit3: TEdit
     Left = 8
     Top = 408
     Width = 281
     Height = 21
-    TabOrder = 19
+    TabOrder = 18
   end
   object Edit4: TEdit
     Left = 8
     Top = 448
     Width = 281
     Height = 21
-    TabOrder = 20
+    TabOrder = 19
   end
   object Edit5: TEdit
     Left = 8
     Top = 488
     Width = 281
     Height = 21
-    TabOrder = 21
+    TabOrder = 20
   end
   object Edit7: TEdit
     Left = 8
     Top = 568
     Width = 281
     Height = 21
-    TabOrder = 22
+    TabOrder = 21
   end
   object DBLookupComboBox3: TDBLookupComboBox
     Left = 8
@@ -244,7 +236,7 @@ object BookAddForm: TBookAddForm
     KeyField = 'id_Absence_reason'
     ListField = 'title'
     ListSource = DataLibrary.DSReasons
-    TabOrder = 23
+    TabOrder = 22
   end
   object DBLookupComboBoxAuthor: TDBLookupComboBox
     Left = 16
@@ -256,7 +248,15 @@ object BookAddForm: TBookAddForm
     KeyField = 'id_Author'
     ListField = 'last_name;first_name'
     ListSource = DataLibrary.DSAuthors
-    TabOrder = 24
+    TabOrder = 23
     Visible = False
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 8
+    Top = 200
+    Width = 280
+    Height = 25
+    DataSource = DataLibrary.DSPartAuthors
+    TabOrder = 24
   end
 end

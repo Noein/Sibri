@@ -1,6 +1,6 @@
 object ReaderAddForm: TReaderAddForm
-  Left = 370
-  Top = 183
+  Left = 717
+  Top = 260
   Width = 274
   Height = 562
   Caption = #1053#1086#1074#1099#1081' '#1095#1080#1090#1072#1090#1077#1083#1100

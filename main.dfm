@@ -1020,7 +1020,15 @@ object MainForm: TMainForm
     Top = 772
     Width = 1076
     Height = 16
-    Panels = <>
+    Panels = <
+      item
+        Text = #1042#1089#1077#1075#1086' '#1095#1080#1090#1072#1090#1077#1083#1077#1081': '
+        Width = 500
+      end
+      item
+        Text = #1042#1089#1077#1075#1086' '#1082#1085#1080#1075':'
+        Width = 50
+      end>
   end
   object XPManifest1: TXPManifest
     Left = 296
