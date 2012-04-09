@@ -23,7 +23,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, XPMan, ComCtrls, Menus, ExtCtrls,
-  DBCtrls, DB, ADODB;
+  DBCtrls, DB, ADODB, DateUtils;
 
 const
   DEBUG = true;
@@ -107,6 +107,9 @@ type
     GroupBox2: TGroupBox;
     Panel10: TPanel;
     N3: TMenuItem;
+    CheckBox1: TCheckBox;
+    DateTimePicker3: TDateTimePicker;
+    CheckBox2: TCheckBox;
     procedure N2Click(Sender: TObject);
     procedure AddBookButtonClick(Sender: TObject);
     procedure AddReaderButtonClick(Sender: TObject);
@@ -145,6 +148,11 @@ type
     procedure DBGrid1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure DBGrid1TitleClick(Column: TColumn);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure CheckBox2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -259,11 +267,13 @@ begin
 end;
 
 procedure TMainForm.ReturnBookButtonClick(Sender: TObject);
-var id:integer;
+var id, count:integer;
 begin
   DataLibrary.Books.Locate('id_Book', DataLibrary.TakenBooks.fieldByName('book_id').AsString, [locaseinsensitive]);
   DataLibrary.Books.Edit;
-  DataLibrary.Books.fieldByName('count').AsInteger:=DataLibrary.Books.fieldByName('count').AsInteger + 1;
+  count:=DataLibrary.Books.fieldByName('count').AsInteger;
+  if count = 0 then DataLibrary.Books.fieldByName('reason_id').AsInteger:=1;
+  DataLibrary.Books.fieldByName('count').AsInteger:=count + 1;
   DataLibrary.Books.Post;
   DataLibrary.Books.Refresh;
   // Work around some bug
@@ -462,6 +472,7 @@ begin
   reasons_ended:=StrToInt(DataLibrary.Settings.FieldByName('Value').AsString);
   StatusBar1.Panels.Items[0].Text:='Всего читателей: ' + IntToStr(DataLibrary.Readers.RecordCount);
   StatusBar1.Panels.Items[1].Text:='Всего книг: ' + IntToStr(DataLibrary.Books.RecordCount);
+  DateTimePicker3.Date:=IncDay(Now(),-14);
 end;
 
 procedure TMainForm.DBGrid1MouseMove(Sender: TObject; Shift: TShiftState;
@@ -498,6 +509,34 @@ begin
     else
       Sort:=Column.Field.FieldName + ' ASC';
   end;
+end;
+
+
+procedure TMainForm.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+begin
+  if Checkbox1.Checked = True then
+    if DataLibrary.Readers.FieldByName('debt').AsBoolean=True then
+      DBGrid1.Canvas.Brush.Color:=clLime;
+  DBGrid1.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+procedure TMainForm.CheckBox1Click(Sender: TObject);
+begin
+  DataLibrary.Readers.Refresh;
+end;
+
+procedure TMainForm.Button1Click(Sender: TObject);
+begin
+  DataLibrary.Readers.Filtered:=true;
+end;
+
+procedure TMainForm.CheckBox2Click(Sender: TObject);
+begin
+  DataLibrary.Readers.filtered:=False;
+  DataLibrary.Readers.Refresh;
+  DataLibrary.Readers.filtered:=True;
 end;
 
 end.

@@ -15,7 +15,7 @@ object AboutForm: TAboutForm
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 463
+    Top = 456
     Width = 549
     Height = 47
     Align = alBottom
@@ -39,7 +39,7 @@ object AboutForm: TAboutForm
     Left = 0
     Top = 41
     Width = 549
-    Height = 422
+    Height = 415
     ActivePage = TabSheet1
     Align = alClient
     Font.Charset = RUSSIAN_CHARSET
@@ -76,10 +76,10 @@ object AboutForm: TAboutForm
         Left = 0
         Top = 0
         Width = 541
-        Height = 394
+        Height = 387
         Align = alClient
         BorderStyle = bsNone
-        Color = clActiveBorder
+        Color = clBtnFace
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -129,10 +129,10 @@ object AboutForm: TAboutForm
         Left = 0
         Top = 0
         Width = 541
-        Height = 394
+        Height = 387
         Align = alClient
         BorderStyle = bsNone
-        Color = clActiveBorder
+        Color = clBtnFace
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
         Font.Height = -16

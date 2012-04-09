@@ -1,8 +1,8 @@
 object Report2CondForm: TReport2CondForm
   Left = 373
   Top = 342
-  Width = 457
-  Height = 106
+  Width = 468
+  Height = 131
   Caption = #1053#1077#1074#1086#1079#1074#1088#1072#1097#1105#1085#1085#1099#1077' '#1082#1085#1080#1075#1080
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,8 +17,8 @@ object Report2CondForm: TReport2CondForm
   object Panel2: TPanel
     Left = 0
     Top = 25
-    Width = 449
-    Height = 54
+    Width = 460
+    Height = 72
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 3
@@ -51,7 +51,7 @@ object Report2CondForm: TReport2CondForm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 449
+    Width = 460
     Height = 25
     Align = alTop
     BevelOuter = bvNone

@@ -26,18 +26,18 @@ uses
 
 type
   TReaderSearchForm = class(TForm)
+    FindButton: TButton;
+    ClearButton: TButton;
     LabeledEdit1: TLabeledEdit;
+    StaticText2: TStaticText;
+    DBLookupComboBox1: TDBLookupComboBox;
+    LabeledEdit4: TLabeledEdit;
     LabeledEdit2: TLabeledEdit;
     LabeledEdit3: TLabeledEdit;
-    LabeledEdit4: TLabeledEdit;
     DateTimePicker1: TDateTimePicker;
     StaticText1: TStaticText;
     BirthRadioGroup: TRadioGroup;
-    DBLookupComboBox1: TDBLookupComboBox;
-    StaticText2: TStaticText;
-    FindButton: TButton;
-    CancelButton: TButton;
-    ClearButton: TButton;
+    Button1: TButton;
     procedure CancelButtonClick(Sender: TObject);
     procedure FindButtonClick(Sender: TObject);
     procedure ClearButtonClick(Sender: TObject);

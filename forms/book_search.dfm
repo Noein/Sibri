@@ -1,8 +1,8 @@
 object BookSearchForm: TBookSearchForm
-  Left = 415
-  Top = 370
-  Width = 464
-  Height = 209
+  Left = 412
+  Top = 362
+  Width = 483
+  Height = 245
   Caption = #1055#1086#1080#1089#1082' '#1082#1085#1080#1075#1080
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,7 +16,7 @@ object BookSearchForm: TBookSearchForm
   TextHeight = 13
   object LabeledEditTitle: TLabeledEdit
     Left = 0
-    Top = 16
+    Top = 24
     Width = 169
     Height = 21
     EditLabel.Width = 50
@@ -26,7 +26,7 @@ object BookSearchForm: TBookSearchForm
   end
   object LabeledEditISBN: TLabeledEdit
     Left = 0
-    Top = 56
+    Top = 64
     Width = 169
     Height = 21
     EditLabel.Width = 25
@@ -36,7 +36,7 @@ object BookSearchForm: TBookSearchForm
   end
   object LabeledEditBBC: TLabeledEdit
     Left = 0
-    Top = 96
+    Top = 104
     Width = 169
     Height = 21
     EditLabel.Width = 21
@@ -46,7 +46,7 @@ object BookSearchForm: TBookSearchForm
   end
   object DateTimePicker: TDateTimePicker
     Left = 176
-    Top = 96
+    Top = 104
     Width = 89
     Height = 21
     Date = 40987.874910115740000000
@@ -55,15 +55,15 @@ object BookSearchForm: TBookSearchForm
   end
   object StaticText1: TStaticText
     Left = 176
-    Top = 80
+    Top = 88
     Width = 75
-    Height = 17
+    Height = 13
     Caption = #1044#1072#1090#1072' '#1080#1079#1076#1072#1085#1080#1103
     TabOrder = 4
   end
   object PubRadioGroup: TRadioGroup
     Left = 176
-    Top = 120
+    Top = 128
     Width = 129
     Height = 41
     Columns = 3
@@ -75,7 +75,7 @@ object BookSearchForm: TBookSearchForm
   end
   object DBLookupComboBoxCat: TDBLookupComboBox
     Left = 176
-    Top = 16
+    Top = 24
     Width = 169
     Height = 21
     KeyField = 'id_Category'
@@ -85,9 +85,9 @@ object BookSearchForm: TBookSearchForm
   end
   object StaticText2: TStaticText
     Left = 176
-    Top = 0
+    Top = 8
     Width = 57
-    Height = 17
+    Height = 10
     Caption = #1050#1072#1090#1077#1075#1086#1088#1080#1103
     TabOrder = 7
   end
@@ -111,7 +111,7 @@ object BookSearchForm: TBookSearchForm
   end
   object LabeledEditUDC: TLabeledEdit
     Left = 0
-    Top = 136
+    Top = 144
     Width = 169
     Height = 21
     EditLabel.Width = 24
@@ -121,7 +121,7 @@ object BookSearchForm: TBookSearchForm
   end
   object DBLookupComboBoxPub: TDBLookupComboBox
     Left = 176
-    Top = 56
+    Top = 64
     Width = 169
     Height = 21
     KeyField = 'id_Publisher'
@@ -131,9 +131,9 @@ object BookSearchForm: TBookSearchForm
   end
   object StaticText3: TStaticText
     Left = 176
-    Top = 40
+    Top = 48
     Width = 53
-    Height = 17
+    Height = 13
     Caption = #1048#1079#1076#1072#1090#1077#1083#1100
     TabOrder = 12
   end

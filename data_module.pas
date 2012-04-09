@@ -109,11 +109,19 @@ type
     TakenBooksmust_return_date: TDateField;
     Settings: TADOTable;
     DSSettings: TDataSource;
+    StatusQuery: TADOQuery;
+    TakenFromDate: TADOQuery;
+    Readersdebt: TBooleanField;
+    Readerstdatecomp: TBooleanField;
+    AppliedRestrictionstime: TStringField;
     procedure ConnectionLibraryBeforeConnect(Sender: TObject);
     procedure ReadersAfterScroll(DataSet: TDataSet);
     procedure BooksCalcFields(DataSet: TDataSet);
     procedure ParticipatingAuthorsCalcFields(DataSet: TDataSet);
     procedure TakenBooksCalcFields(DataSet: TDataSet);
+    procedure ReadersCalcFields(DataSet: TDataSet);
+    procedure ReadersFilterRecord(DataSet: TDataSet; var Accept: Boolean);
+    procedure AppliedRestrictionsCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -125,6 +133,8 @@ var
   DataLibrary: TDataLibrary;
 
 implementation
+
+uses main;
 
 {$R *.dfm}
 
@@ -199,6 +209,36 @@ end;
 procedure TDataLibrary.TakenBooksCalcFields(DataSet: TDataSet);
 begin
   TakenBooks.FieldByName('must_return_date').AsDateTime:=IncDay(TakenBooks.FieldByName('taken_date').AsDateTime, 14);
+end;
+
+procedure TDataLibrary.ReadersCalcFields(DataSet: TDataSet);
+begin
+  if MainForm.Checkbox1.Checked = True then begin
+    StatusQuery.Close;
+    StatusQuery.Parameters.ParamByName('id').Value:=Readers.FieldByName('id_Reader').AsInteger;
+    StatusQuery.Open;
+    if StatusQuery.RecordCount > 0 then Readers.FieldByName('debt').Value:=True else Readers.FieldByName('debt').Value:=False;
+  end;
+  if MainForm.Checkbox2.Checked = True then begin
+    TakenFromDate.Close;
+    TakenFromDate.Parameters.ParamByName('id').Value:=Readers.FieldByName('id_Reader').AsInteger;
+    TakenFromDate.Parameters.ParamByName('date').Value:=StrToDate(DateToStr(MainForm.DateTimePicker3.Date));
+    TakenFromDate.Open;
+    if TakenFromDate.RecordCount > 0 then Readers.FieldByName('tdatecomp').Value:=True else Readers.FieldByName('tdatecomp').Value:=False;
+  end;
+end;
+
+procedure TDataLibrary.ReadersFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+  if MainForm.CheckBox2.Checked=true then
+    if Readers.FieldByName('tdatecomp').AsBoolean=True then
+      Accept:=True else Accept:=False;
+end;
+
+procedure TDataLibrary.AppliedRestrictionsCalcFields(DataSet: TDataSet);
+begin
+  AppliedRestrictions.FieldByName('time').AsString:=FormatDateTime('hh:nn', AppliedRestrictions.FieldByName('applied_time').AsDateTime);
 end;
 
 end.

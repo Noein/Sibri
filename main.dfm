@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 186
-  Top = 134
+  Left = 188
+  Top = 143
   Width = 1084
   Height = 834
   Caption = 'Sibri'
@@ -19,7 +19,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 0
     Width = 1076
-    Height = 772
+    Height = 764
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
@@ -29,7 +29,7 @@ object MainForm: TMainForm
         Left = 0
         Top = 0
         Width = 1068
-        Height = 744
+        Height = 736
         ActivePage = TabSheet5
         Align = alClient
         TabOrder = 0
@@ -56,7 +56,7 @@ object MainForm: TMainForm
           end
           object Panel10: TPanel
             Left = 0
-            Top = 400
+            Top = 392
             Width = 1060
             Height = 316
             Align = alBottom
@@ -87,13 +87,40 @@ object MainForm: TMainForm
             TabOrder = 13
             object FindReaderEdit: TLabeledEdit
               Left = 8
-              Top = 20
+              Top = 16
               Width = 281
               Height = 21
               EditLabel.Width = 96
               EditLabel.Height = 13
               EditLabel.Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1092#1072#1084#1080#1083#1080#1080
               TabOrder = 0
+            end
+            object CheckBox1: TCheckBox
+              Left = 808
+              Top = 24
+              Width = 249
+              Height = 17
+              Caption = #1042#1099#1076#1077#1083#1080#1090#1100' '#1095#1080#1090#1072#1090#1077#1083#1077#1081', '#1087#1088#1086#1089#1088#1086#1095#1080#1074#1096#1080#1093' '#1082#1085#1080#1075#1080
+              TabOrder = 1
+              OnClick = CheckBox1Click
+            end
+            object DateTimePicker3: TDateTimePicker
+              Left = 551
+              Top = 20
+              Width = 186
+              Height = 21
+              Date = 41008.968108668980000000
+              Time = 41008.968108668980000000
+              TabOrder = 2
+            end
+            object CheckBox2: TCheckBox
+              Left = 552
+              Top = 0
+              Width = 201
+              Height = 17
+              Caption = #1092#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1087#1086' '#1076#1072#1090#1077' '#1074#1079#1103#1090#1080#1103' '#1082#1085#1080#1075#1080
+              TabOrder = 3
+              OnClick = CheckBox2Click
             end
           end
           object GroupBox1: TGroupBox
@@ -171,7 +198,7 @@ object MainForm: TMainForm
               end>
           end
           object ExtendSearchButton: TButton
-            Left = 376
+            Left = 368
             Top = 16
             Width = 121
             Height = 25
@@ -180,7 +207,7 @@ object MainForm: TMainForm
             OnClick = ExtendSearchButtonClick
           end
           object FindReaderButton: TButton
-            Left = 304
+            Left = 296
             Top = 16
             Width = 65
             Height = 25
@@ -232,8 +259,9 @@ object MainForm: TMainForm
               end
               item
                 Expanded = False
-                FieldName = 'applied_time'
-                Title.Caption = #1042#1088#1077#1084#1103' '#1087#1088#1080#1084#1077#1085#1077#1085#1080#1103
+                FieldName = 'time'
+                Title.Caption = #1042#1088#1077#1084#1103
+                Width = 65
                 Visible = True
               end>
           end
@@ -295,7 +323,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 49
             Width = 1060
-            Height = 351
+            Height = 343
             Align = alClient
             DataSource = DataLibrary.DSReaders
             TabOrder = 10
@@ -304,6 +332,7 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnDrawColumnCell = DBGrid1DrawColumnCell
             OnMouseMove = DBGrid1MouseMove
             OnTitleClick = DBGrid1TitleClick
             Columns = <
@@ -438,7 +467,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 65
             Width = 1060
-            Height = 591
+            Height = 583
             Align = alClient
             DataSource = DataLibrary.DSBooks
             TabOrder = 0
@@ -555,7 +584,7 @@ object MainForm: TMainForm
           end
           object Panel8: TPanel
             Left = 0
-            Top = 656
+            Top = 648
             Width = 1060
             Height = 60
             Align = alBottom
@@ -609,7 +638,7 @@ object MainForm: TMainForm
         Left = 0
         Top = 0
         Width = 1068
-        Height = 744
+        Height = 736
         ActivePage = TabSheet8
         Align = alClient
         TabOrder = 0
@@ -1017,7 +1046,7 @@ object MainForm: TMainForm
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 772
+    Top = 764
     Width = 1076
     Height = 16
     Panels = <

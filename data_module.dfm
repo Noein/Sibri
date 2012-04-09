@@ -163,6 +163,7 @@ object DataLibrary: TDataLibrary
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
+    OnCalcFields = AppliedRestrictionsCalcFields
     IndexFieldNames = 'reader_id'
     MasterFields = 'id_Reader'
     MasterSource = DSReaders
@@ -182,8 +183,15 @@ object DataLibrary: TDataLibrary
     object AppliedRestrictionsapplied_date: TDateTimeField
       FieldName = 'applied_date'
     end
+    object AppliedRestrictionstime: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'time'
+      Size = 5
+      Calculated = True
+    end
     object AppliedRestrictionsapplied_time: TDateTimeField
       FieldName = 'applied_time'
+      Visible = False
     end
     object AppliedRestrictionsrestriction: TStringField
       FieldKind = fkLookup
@@ -225,6 +233,8 @@ object DataLibrary: TDataLibrary
     Connection = ConnectionLibrary
     CursorType = ctStatic
     AfterScroll = ReadersAfterScroll
+    OnCalcFields = ReadersCalcFields
+    OnFilterRecord = ReadersFilterRecord
     TableName = 'READERS'
     Left = 40
     Top = 344
@@ -278,6 +288,16 @@ object DataLibrary: TDataLibrary
       KeyFields = 'street_id'
       Size = 30
       Lookup = True
+    end
+    object Readersdebt: TBooleanField
+      FieldKind = fkCalculated
+      FieldName = 'debt'
+      Calculated = True
+    end
+    object Readerstdatecomp: TBooleanField
+      FieldKind = fkCalculated
+      FieldName = 'tdatecomp'
+      Calculated = True
     end
   end
   object DSReaders: TDataSource
@@ -572,5 +592,59 @@ object DataLibrary: TDataLibrary
     DataSet = Settings
     Left = 128
     Top = 712
+  end
+  object StatusQuery: TADOQuery
+    Connection = ConnectionLibrary
+    Parameters = <
+      item
+        Name = 'id'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+      end>
+    SQL.Strings = (
+      'SELECT READERS.id_Reader, TAKEN_BOOKS.taken_date'
+      
+        'FROM READERS INNER JOIN TAKEN_BOOKS ON READERS.id_Reader = TAKEN' +
+        '_BOOKS.reader_id'
+      
+        'WHERE (((READERS.id_Reader)=:id) AND (([TAKEN_BOOKS]![taken_date' +
+        ']+Day(14))<Date() And [TAKEN_BOOKS]![return_date] Is Null));')
+    Left = 296
+    Top = 720
+  end
+  object TakenFromDate: TADOQuery
+    Connection = ConnectionLibrary
+    Parameters = <
+      item
+        Name = 'id'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'date'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'SELECT TAKEN_BOOKS.id_Taken_book, TAKEN_BOOKS.reader_id, TAKEN_B' +
+        'OOKS.taken_date'
+      'FROM TAKEN_BOOKS'
+      
+        'WHERE (((TAKEN_BOOKS.reader_id)=:id) AND ((TAKEN_BOOKS.taken_dat' +
+        'e)=:date));')
+    Left = 208
+    Top = 720
   end
 end
