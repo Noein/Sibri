@@ -66,6 +66,7 @@ type
 
 var
   BookAddForm: TBookAddForm;
+  flag:boolean;
 
 implementation
 
@@ -75,11 +76,13 @@ uses data_module;
 
 procedure TBookAddForm.CancelButtonClick(Sender: TObject);
 begin
+  DataLibrary.Books.Delete;
   close();
 end;
 
 procedure TBookAddForm.SaveButtonClick(Sender: TObject);
 begin
+  DataLibrary.Books.Edit;
   DataLibrary.Books.FieldByName('publisher_id').AsString:=DBLookupComboBox1.KeyValue;
   DataLibrary.Books.FieldByName('category_id').AsString:=DBLookupComboBox2.KeyValue;
   DataLibrary.Books.FieldByName('reason_id').AsString:=DBLookupComboBox3.KeyValue;
@@ -123,10 +126,11 @@ end;
 procedure TBookAddForm.FormShow(Sender: TObject);
 begin
   DataLibrary.Books.Insert;
+  DataLibrary.Books.FieldByName('publisher_id').AsString:='1';
+  DataLibrary.Books.FieldByName('category_id').AsString:='1';
+  DataLibrary.Books.FieldByName('reason_id').AsString:='1';
+  DataLibrary.Books.Post;
   DateTimePicker1.Date:=Now;
-  DBLookupComboBox1.KeyValue:=Null;
-  DBLookupComboBox2.KeyValue:=Null;
-  DBLookupComboBox3.KeyValue:=Null;
   Edit1.Text:=''; Edit2.Text:=''; Edit3.Text:=''; Edit4.Text:='';
   Edit5.Text:=''; Edit7.Text:='';
 end;

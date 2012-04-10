@@ -171,6 +171,7 @@ object BookAddForm: TBookAddForm
     Height = 21
     KeyField = 'id_Publisher'
     ListField = 'title'
+    ListFieldIndex = 1
     ListSource = DataLibrary.DSPublishers
     TabOrder = 14
   end
@@ -181,6 +182,7 @@ object BookAddForm: TBookAddForm
     Height = 21
     KeyField = 'id_Category'
     ListField = 'title'
+    ListFieldIndex = 1
     ListSource = DataLibrary.DSCategories
     TabOrder = 15
   end
@@ -235,6 +237,7 @@ object BookAddForm: TBookAddForm
     Height = 21
     KeyField = 'id_Absence_reason'
     ListField = 'title'
+    ListFieldIndex = 1
     ListSource = DataLibrary.DSReasons
     TabOrder = 22
   end
