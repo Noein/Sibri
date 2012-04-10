@@ -1,6 +1,6 @@
 object Report1Form: TReport1Form
   Left = 271
-  Top = 327
+  Top = 359
   Width = 802
   Height = 246
   Caption = #1050' '#1089#1087#1080#1089#1072#1085#1080#1102
@@ -18,7 +18,7 @@ object Report1Form: TReport1Form
     Left = 0
     Top = 0
     Width = 794
-    Height = 219
+    Height = 212
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0

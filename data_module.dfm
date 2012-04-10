@@ -1,7 +1,7 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
   Left = 894
-  Top = 217
+  Top = 139
   Height = 809
   Width = 383
   object ConnectionLibrary: TADOConnection
@@ -603,6 +603,7 @@ object DataLibrary: TDataLibrary
         NumericScale = 255
         Precision = 255
         Size = 510
+        Value = Null
       end>
     SQL.Strings = (
       'SELECT READERS.id_Reader, TAKEN_BOOKS.taken_date'

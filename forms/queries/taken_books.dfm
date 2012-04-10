@@ -1,6 +1,6 @@
 object TakenBooksQForm: TTakenBooksQForm
   Left = 234
-  Top = 251
+  Top = 276
   Width = 871
   Height = 524
   Caption = #1047#1072#1087#1088#1086#1089' '#1074#1079#1103#1090#1099#1093' '#1082#1085#1080#1075
@@ -18,7 +18,7 @@ object TakenBooksQForm: TTakenBooksQForm
     Left = 0
     Top = 0
     Width = 233
-    Height = 497
+    Height = 490
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 4
@@ -27,7 +27,7 @@ object TakenBooksQForm: TTakenBooksQForm
       Top = 96
       Width = 155
       Height = 161
-      Date = 41006.696236666670000000
+      Date = 41006.932555787040000000
       ShowToday = False
       ShowTodayCircle = False
       TabOrder = 0
@@ -39,7 +39,7 @@ object TakenBooksQForm: TTakenBooksQForm
       Width = 233
       Height = 41
       BorderStyle = bsNone
-      Color = clScrollBar
+      Color = clBtnFace
       Lines.Strings = (
         #1050#1085#1080#1075#1080' '#1085#1077#1082#1086#1090#1086#1088#1086#1081' '#1082#1072#1090#1077#1075#1086#1088#1080#1080','
         ' '#1082#1086#1090#1086#1088#1099#1077' '#1073#1099#1083#1080' '#1074#1079#1103#1090#1099' '#1079#1072' '#1091#1082#1072#1079#1072#1085#1085#1099#1081' '#1084#1077#1089#1103#1094)
@@ -77,7 +77,7 @@ object TakenBooksQForm: TTakenBooksQForm
     Left = 233
     Top = 0
     Width = 630
-    Height = 497
+    Height = 490
     Align = alClient
     DataSource = DataLibrary.DSQuery1
     TabOrder = 3
