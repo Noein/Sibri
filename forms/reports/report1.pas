@@ -23,6 +23,12 @@ type
     QRDBText2: TQRDBText;
     QRDBText3: TQRDBText;
     QRSysData1: TQRSysData;
+    QRExpr1: TQRExpr;
+    QRLabel5: TQRLabel;
+    QRLabel6: TQRLabel;
+    QRDBText4: TQRDBText;
+    QRDBText5: TQRDBText;
+    QRLabel7: TQRLabel;
   private
     { Private declarations }
   public

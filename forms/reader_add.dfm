@@ -21,13 +21,13 @@ object ReaderAddForm: TReaderAddForm
     Left = 0
     Top = 0
     Width = 266
-    Height = 500
+    Height = 493
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
     DesignSize = (
       266
-      500)
+      493)
     object Label3: TLabel
       Left = 8
       Top = 8
@@ -219,7 +219,7 @@ object ReaderAddForm: TReaderAddForm
   end
   object Panel4: TPanel
     Left = 0
-    Top = 500
+    Top = 493
     Width = 266
     Height = 35
     Align = alBottom

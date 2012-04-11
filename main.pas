@@ -167,7 +167,7 @@ implementation
 
 uses data_module, about, book_add, reader_edit, reader_add, book_edit,
   apply_restr, reader_search, book_search, taken_books, debtors,
-  statistics, report1, report2_cond, settings;
+  statistics, report1, settings, report2;
 
 {$R *.dfm}
 
@@ -225,7 +225,8 @@ begin
   count:=DataLibrary.Books.fieldByName('count').AsInteger;
   if count > 0 then begin
     DataLibrary.Books.Edit;
-    DataLibrary.Books.fieldByName('count').AsInteger:=count - 1;
+    count:=count - 1;
+    DataLibrary.Books.fieldByName('count').AsInteger:=count;
     if count = 0 then DataLibrary.Books.fieldByName('reason_id').AsInteger:=reasons_ended;
     DataLibrary.Books.Post;
     DataLibrary.Books.Refresh;
@@ -454,7 +455,7 @@ end;
 
 procedure TMainForm.N11Click(Sender: TObject);
 begin
-  Report2CondForm.ShowModal();
+  Report2Form.QuickRep1.Preview;
 end;
 
 procedure TMainForm.N3Click(Sender: TObject);

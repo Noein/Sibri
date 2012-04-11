@@ -82,6 +82,8 @@ end;
 
 procedure TBookAddForm.SaveButtonClick(Sender: TObject);
 begin
+  try
+  try
   DataLibrary.Books.Edit;
   DataLibrary.Books.FieldByName('publisher_id').AsString:=DBLookupComboBox1.KeyValue;
   DataLibrary.Books.FieldByName('category_id').AsString:=DBLookupComboBox2.KeyValue;
@@ -96,6 +98,12 @@ begin
   DataLibrary.Books.Post;
   DataLibrary.Books.Refresh;
   close();
+  except
+  showmessage('Произошла ошибка. Приносим свои извинения. Попробуйте снова.');
+  end;
+  finally
+  close();
+  end;
 end;
 
 procedure TBookAddForm.DBGridPADrawColumnCell(Sender: TObject;
@@ -130,6 +138,7 @@ begin
   DataLibrary.Books.FieldByName('category_id').AsString:='1';
   DataLibrary.Books.FieldByName('reason_id').AsString:='1';
   DataLibrary.Books.Post;
+  DataLibrary.Books.Refresh;
   DateTimePicker1.Date:=Now;
   Edit1.Text:=''; Edit2.Text:=''; Edit3.Text:=''; Edit4.Text:='';
   Edit5.Text:=''; Edit7.Text:='';

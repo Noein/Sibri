@@ -554,7 +554,7 @@ object MainForm: TMainForm
               item
                 Expanded = False
                 FieldName = 'reason'
-                Title.Caption = #1087#1088#1080#1095#1080#1085#1072' '#1086#1090#1089#1091#1090#1089#1090#1074#1080#1103
+                Title.Caption = #1055#1088#1080#1095#1080#1085#1072' '#1086#1090#1089#1091#1090#1089#1090#1074#1080#1103
                 Visible = True
               end
               item
@@ -649,7 +649,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 1060
-            Height = 675
+            Height = 667
             Align = alClient
             DataSource = DataLibrary.DSAuthors
             TabOrder = 0
@@ -722,7 +722,7 @@ object MainForm: TMainForm
           end
           object Panel1: TPanel
             Left = 0
-            Top = 675
+            Top = 667
             Width = 1060
             Height = 41
             Align = alBottom

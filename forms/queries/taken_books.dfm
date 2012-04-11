@@ -1,10 +1,14 @@
 object TakenBooksQForm: TTakenBooksQForm
-  Left = 234
-  Top = 276
-  Width = 871
-  Height = 524
+  Left = 245
+  Top = 288
+  Width = 880
+  Height = 325
   Caption = #1047#1072#1087#1088#1086#1089' '#1074#1079#1103#1090#1099#1093' '#1082#1085#1080#1075
   Color = clBtnFace
+  Constraints.MaxHeight = 325
+  Constraints.MaxWidth = 880
+  Constraints.MinHeight = 325
+  Constraints.MinWidth = 880
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -18,16 +22,16 @@ object TakenBooksQForm: TTakenBooksQForm
     Left = 0
     Top = 0
     Width = 233
-    Height = 490
+    Height = 291
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 4
     object MonthCalendar: TMonthCalendar
       Left = 8
       Top = 96
-      Width = 155
+      Width = 169
       Height = 161
-      Date = 41006.932555787040000000
+      Date = 41006.872965219910000000
       ShowToday = False
       ShowTodayCircle = False
       TabOrder = 0
@@ -44,6 +48,15 @@ object TakenBooksQForm: TTakenBooksQForm
         #1050#1085#1080#1075#1080' '#1085#1077#1082#1086#1090#1086#1088#1086#1081' '#1082#1072#1090#1077#1075#1086#1088#1080#1080','
         ' '#1082#1086#1090#1086#1088#1099#1077' '#1073#1099#1083#1080' '#1074#1079#1103#1090#1099' '#1079#1072' '#1091#1082#1072#1079#1072#1085#1085#1099#1081' '#1084#1077#1089#1103#1094)
       TabOrder = 1
+    end
+    object Panel2: TPanel
+      Left = 0
+      Top = 130
+      Width = 233
+      Height = 161
+      Align = alBottom
+      BevelOuter = bvNone
+      TabOrder = 2
     end
   end
   object StaticText1: TStaticText
@@ -76,8 +89,8 @@ object TakenBooksQForm: TTakenBooksQForm
   object DBGrid1: TDBGrid
     Left = 233
     Top = 0
-    Width = 630
-    Height = 490
+    Width = 639
+    Height = 291
     Align = alClient
     DataSource = DataLibrary.DSQuery1
     TabOrder = 3

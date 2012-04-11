@@ -16,7 +16,6 @@ uses
   taken_books in 'forms\queries\taken_books.pas' {TakenBooksQForm},
   debtors in 'forms\queries\debtors.pas' {DebtorsQForm},
   report1 in 'forms\reports\report1.pas' {Report1Form},
-  report2_cond in 'forms\reports\report2_cond.pas' {Report2CondForm},
   report2 in 'forms\reports\report2.pas' {Report2Form},
   settings in 'forms\settings.pas' {SettingsForm};
 
@@ -38,7 +37,6 @@ begin
   Application.CreateForm(TTakenBooksQForm, TakenBooksQForm);
   Application.CreateForm(TDebtorsQForm, DebtorsQForm);
   Application.CreateForm(TReport1Form, Report1Form);
-  Application.CreateForm(TReport2CondForm, Report2CondForm);
   Application.CreateForm(TReport2Form, Report2Form);
   Application.CreateForm(TSettingsForm, SettingsForm);
   Application.Run;

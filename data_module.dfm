@@ -2,8 +2,8 @@ object DataLibrary: TDataLibrary
   OldCreateOrder = False
   Left = 894
   Top = 139
-  Height = 809
-  Width = 383
+  Height = 833
+  Width = 386
   object ConnectionLibrary: TADOConnection
     Connected = True
     ConnectionString = 
@@ -413,7 +413,7 @@ object DataLibrary: TDataLibrary
         Size = -1
         Value = Null
       end>
-    Left = 208
+    Left = 216
     Top = 656
   end
   object TakenBooksQuery: TADOQuery
@@ -440,7 +440,7 @@ object DataLibrary: TDataLibrary
         Size = -1
         Value = Null
       end>
-    Left = 288
+    Left = 296
     Top = 656
   end
   object DSQuery1: TDataSource
@@ -496,14 +496,14 @@ object DataLibrary: TDataLibrary
     Parameters = <>
     Prepared = True
     SQL.Strings = (
-      
-        'SELECT CATEGORIES.title, Count(BOOKS.id_Book) AS [Count-id_Book]' +
-        ', Sum(BOOKS.count) AS [Sum-count], ABSENCE_REASONS.title'
+      'TRANSFORM Count(BOOKS.id_Book) AS [Count-id_Book]'
+      'SELECT ABSENCE_REASONS.title, Count(BOOKS.id_Book) AS [all]'
       
         'FROM ABSENCE_REASONS INNER JOIN (CATEGORIES INNER JOIN BOOKS ON ' +
         'CATEGORIES.id_Category = BOOKS.category_id) ON ABSENCE_REASONS.i' +
         'd_Absence_reason = BOOKS.reason_id'
-      'GROUP BY CATEGORIES.title, ABSENCE_REASONS.title;')
+      'GROUP BY ABSENCE_REASONS.title'
+      'PIVOT CATEGORIES.title;')
     Left = 216
     Top = 408
   end
@@ -525,60 +525,58 @@ object DataLibrary: TDataLibrary
     SQL.Strings = (
       
         'SELECT BOOKS.title, First(AUTHORS.last_name) AS [First-last_name' +
-        '], Year([BOOKS]![publication_date]) AS pubYear'
+        '], BOOKS.BBC, CATEGORIES.title, Year([BOOKS]![publication_date])' +
+        ' AS pubYear'
       
-        'FROM BOOKS INNER JOIN (AUTHORS INNER JOIN PARTICIPATING_AUTHORS ' +
-        'ON AUTHORS.id_Author = PARTICIPATING_AUTHORS.author_id) ON BOOKS' +
-        '.id_Book = PARTICIPATING_AUTHORS.book_id'
+        'FROM CATEGORIES INNER JOIN (BOOKS INNER JOIN (AUTHORS INNER JOIN' +
+        ' PARTICIPATING_AUTHORS ON AUTHORS.id_Author = PARTICIPATING_AUTH' +
+        'ORS.author_id) ON BOOKS.id_Book = PARTICIPATING_AUTHORS.book_id)' +
+        ' ON CATEGORIES.id_Category = BOOKS.category_id'
       
-        'GROUP BY BOOKS.title, Year([BOOKS]![publication_date]), BOOKS.re' +
-        'ason_id'
+        'GROUP BY BOOKS.title, BOOKS.BBC, CATEGORIES.title, Year([BOOKS]!' +
+        '[publication_date]), BOOKS.reason_id'
       
         'HAVING (((Year([BOOKS]![publication_date]))<Year(Now())-40) AND ' +
         '((BOOKS.reason_id)<>:trash_reas));')
     Left = 216
-    Top = 464
+    Top = 472
   end
   object Rep2Query: TADOQuery
+    Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
-    Parameters = <
-      item
-        Name = 'date'
-        Attributes = [paNullable]
-        DataType = ftWideString
-        NumericScale = 255
-        Precision = 255
-        Size = 510
-        Value = Null
-      end>
+    Parameters = <>
     SQL.Strings = (
       
         'SELECT BOOKS.title, First(AUTHORS.last_name) AS [First-last_name' +
         '], TAKEN_BOOKS.taken_date, [taken_date]+Day(14) AS must_return_d' +
-        'ate'
+        'ate, READERS!last_name+" "+READERS!first_name+" "+READERS!patron' +
+        'ymic AS fio, READERS.home_phone'
       
-        'FROM (BOOKS INNER JOIN TAKEN_BOOKS ON BOOKS.id_Book = TAKEN_BOOK' +
-        'S.book_id) INNER JOIN (AUTHORS INNER JOIN PARTICIPATING_AUTHORS ' +
-        'ON AUTHORS.id_Author = PARTICIPATING_AUTHORS.author_id) ON BOOKS' +
-        '.id_Book = PARTICIPATING_AUTHORS.book_id'
+        'FROM READERS INNER JOIN (CATEGORIES INNER JOIN ((BOOKS INNER JOI' +
+        'N (AUTHORS INNER JOIN PARTICIPATING_AUTHORS ON AUTHORS.id_Author' +
+        ' = PARTICIPATING_AUTHORS.author_id) ON BOOKS.id_Book = PARTICIPA' +
+        'TING_AUTHORS.book_id) INNER JOIN TAKEN_BOOKS ON BOOKS.id_Book = ' +
+        'TAKEN_BOOKS.book_id) ON CATEGORIES.id_Category = BOOKS.category_' +
+        'id) ON READERS.id_Reader = TAKEN_BOOKS.reader_id'
       
         'GROUP BY BOOKS.title, TAKEN_BOOKS.taken_date, [taken_date]+Day(1' +
-        '4), TAKEN_BOOKS.return_date'
+        '4), READERS!last_name+" "+READERS!first_name+" "+READERS!patrony' +
+        'mic, READERS.home_phone, TAKEN_BOOKS.return_date'
       
-        'HAVING (((TAKEN_BOOKS.taken_date)=:date) AND (([taken_date]+Day(' +
-        '14))<Now()) AND ((TAKEN_BOOKS.return_date) Is Null));')
+        'HAVING ((([taken_date]+Day(14))<Now()) AND ((TAKEN_BOOKS.return_' +
+        'date) Is Null));')
     Left = 216
-    Top = 520
+    Top = 528
   end
   object DSRep1: TDataSource
     DataSet = Rep1Query
     Left = 296
-    Top = 464
+    Top = 472
   end
   object DSRep2: TDataSource
     Left = 296
-    Top = 520
+    Top = 528
   end
   object Settings: TADOTable
     Active = True
@@ -645,7 +643,7 @@ object DataLibrary: TDataLibrary
       
         'WHERE (((TAKEN_BOOKS.reader_id)=:id) AND ((TAKEN_BOOKS.taken_dat' +
         'e)=:date));')
-    Left = 208
+    Left = 216
     Top = 720
   end
 end

@@ -33,6 +33,7 @@ type
     Panel1: TPanel;
     MonthCalendar: TMonthCalendar;
     Memo1: TMemo;
+    Panel2: TPanel;
     procedure DBLookupComboBoxCatClick(Sender: TObject);
     procedure runQuery;
     procedure FormShow(Sender: TObject);
