@@ -18,9 +18,9 @@ object ApplyRestForm: TApplyRestForm
     Top = 24
     Width = 265
     Height = 21
-    KeyField = 'id_Restriction'
+    KeyField = 'id_Sanction'
     ListField = 'title'
-    ListSource = DataLibrary.DSRestrictions
+    ListSource = DataLibrary.DSSanctions
     TabOrder = 0
   end
   object StaticText1: TStaticText

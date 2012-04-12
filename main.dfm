@@ -30,7 +30,7 @@ object MainForm: TMainForm
         Top = 0
         Width = 1068
         Height = 736
-        ActivePage = TabSheet6
+        ActivePage = TabSheet5
         Align = alClient
         TabOrder = 0
         object TabSheet5: TTabSheet
@@ -231,7 +231,7 @@ object MainForm: TMainForm
             Columns = <
               item
                 Expanded = False
-                FieldName = 'id_Applied_restriction'
+                FieldName = 'id_Applied_sanction'
                 Visible = False
               end
               item
@@ -241,15 +241,14 @@ object MainForm: TMainForm
               end
               item
                 Expanded = False
-                FieldName = 'restriction_id'
-                Visible = False
+                FieldName = 'sanction'
+                Title.Caption = #1052#1077#1088#1072
+                Visible = True
               end
               item
                 Expanded = False
-                FieldName = 'restriction'
-                Title.Caption = #1052#1077#1088#1072
-                Width = 131
-                Visible = True
+                FieldName = 'sanction_id'
+                Visible = False
               end
               item
                 Expanded = False
@@ -260,9 +259,13 @@ object MainForm: TMainForm
               item
                 Expanded = False
                 FieldName = 'time'
-                Title.Caption = #1042#1088#1077#1084#1103
-                Width = 65
+                Title.Caption = #1042#1088#1077#1084#1103' '#1087#1088#1080#1084#1077#1085#1077#1085#1080#1103
                 Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'applied_time'
+                Visible = False
               end>
           end
           object ReturnBookButton: TButton
@@ -560,7 +563,7 @@ object MainForm: TMainForm
               end
               item
                 Expanded = False
-                FieldName = 'descryption'
+                FieldName = 'description'
                 Title.Caption = #1054#1087#1080#1089#1072#1085#1080#1077
                 Visible = True
               end>
@@ -802,7 +805,7 @@ object MainForm: TMainForm
               end
               item
                 Expanded = False
-                FieldName = 'descryption'
+                FieldName = 'description'
                 Title.Caption = #1054#1087#1080#1089#1072#1085#1080#1077
                 Visible = True
               end>
@@ -877,7 +880,7 @@ object MainForm: TMainForm
               end
               item
                 Expanded = False
-                FieldName = 'descryption'
+                FieldName = 'description'
                 Title.Caption = #1054#1087#1080#1089#1072#1085#1080#1077
                 Visible = True
               end>
@@ -926,7 +929,7 @@ object MainForm: TMainForm
               end
               item
                 Expanded = False
-                FieldName = 'descryption'
+                FieldName = 'description'
                 Title.Caption = #1054#1087#1080#1089#1072#1085#1080#1077
                 Visible = True
               end>
@@ -959,7 +962,7 @@ object MainForm: TMainForm
             Width = 1060
             Height = 675
             Align = alClient
-            DataSource = DataLibrary.DSRestrictions
+            DataSource = DataLibrary.DSSanctions
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -975,7 +978,7 @@ object MainForm: TMainForm
               end
               item
                 Expanded = False
-                FieldName = 'descryption'
+                FieldName = 'description'
                 Title.Caption = #1054#1087#1080#1089#1072#1085#1080#1077
                 Visible = True
               end>
@@ -993,7 +996,7 @@ object MainForm: TMainForm
               Top = 0
               Width = 1060
               Height = 41
-              DataSource = DataLibrary.DSRestrictions
+              DataSource = DataLibrary.DSSanctions
               Align = alClient
               TabOrder = 0
             end

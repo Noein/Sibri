@@ -235,7 +235,7 @@ object BookAddForm: TBookAddForm
     Top = 528
     Width = 281
     Height = 21
-    KeyField = 'id_Absence_reason'
+    KeyField = 'id_Reason'
     ListField = 'title'
     ListFieldIndex = 1
     ListSource = DataLibrary.DSReasons

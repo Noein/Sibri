@@ -94,7 +94,7 @@ begin
   DataLibrary.Books.FieldByName('ISBN').AsString:=Edit2.Text;
   DataLibrary.Books.FieldByName('BBC').AsString:=Edit3.Text;
   DataLibrary.Books.FieldByName('UDC').AsString:=Edit4.Text;
-  DataLibrary.Books.FieldByName('descryption').AsString:=Edit7.Text;
+  DataLibrary.Books.FieldByName('description').AsString:=Edit7.Text;
   DataLibrary.Books.Post;
   DataLibrary.Books.Refresh;
   close();

@@ -33,12 +33,11 @@ type
     Books: TADOTable;
     Reasons: TADOTable;
     Streets: TADOTable;
-    Restrictions: TADOTable;
-    AppliedRestrictions: TADOTable;
+    Sanctions: TADOTable;
     DSBooks: TDataSource;
     DSReasons: TDataSource;
     DSStreets: TDataSource;
-    DSRestrictions: TDataSource;
+    DSSanctions: TDataSource;
     DSApplRestr: TDataSource;
     Readers: TADOTable;
     DSReaders: TDataSource;
@@ -58,7 +57,7 @@ type
     BooksISBN: TWideStringField;
     BooksBBC: TWideStringField;
     BooksUDC: TWideStringField;
-    Booksdescryption: TWideStringField;
+    Booksdescription: TWideStringField;
     Booksauthors: TStringField;
     AuthorsQuery: TADOQuery;
     TakenBooksQuery: TADOQuery;
@@ -87,12 +86,6 @@ type
     TakenBookstaken_date: TDateTimeField;
     TakenBooksreturn_date: TDateTimeField;
     TakenBooksbook_title: TStringField;
-    AppliedRestrictionsid_Applied_restriction: TAutoIncField;
-    AppliedRestrictionsreader_id: TIntegerField;
-    AppliedRestrictionsrestriction_id: TIntegerField;
-    AppliedRestrictionsapplied_date: TDateTimeField;
-    AppliedRestrictionsapplied_time: TDateTimeField;
-    AppliedRestrictionsrestriction: TStringField;
     Bookspublisher: TStringField;
     Bookscategory: TStringField;
     Booksreason: TStringField;
@@ -113,7 +106,14 @@ type
     TakenFromDate: TADOQuery;
     Readersdebt: TBooleanField;
     Readerstdatecomp: TBooleanField;
-    AppliedRestrictionstime: TStringField;
+    AppliedSanctions: TADOTable;
+    AppliedSanctionsid_Applied_sanction: TAutoIncField;
+    AppliedSanctionsreader_id: TIntegerField;
+    AppliedSanctionssanction_id: TIntegerField;
+    AppliedSanctionsapplied_date: TDateTimeField;
+    AppliedSanctionsapplied_time: TDateTimeField;
+    AppliedSanctionstime: TStringField;
+    AppliedSanctionssanction: TStringField;
     procedure ConnectionLibraryBeforeConnect(Sender: TObject);
     procedure ReadersAfterScroll(DataSet: TDataSet);
     procedure BooksCalcFields(DataSet: TDataSet);
@@ -121,7 +121,7 @@ type
     procedure TakenBooksCalcFields(DataSet: TDataSet);
     procedure ReadersCalcFields(DataSet: TDataSet);
     procedure ReadersFilterRecord(DataSet: TDataSet; var Accept: Boolean);
-    procedure AppliedRestrictionsCalcFields(DataSet: TDataSet);
+    procedure AppliedSanctionsCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -236,9 +236,9 @@ begin
       Accept:=True else Accept:=False;
 end;
 
-procedure TDataLibrary.AppliedRestrictionsCalcFields(DataSet: TDataSet);
+procedure TDataLibrary.AppliedSanctionsCalcFields(DataSet: TDataSet);
 begin
-  AppliedRestrictions.FieldByName('time').AsString:=FormatDateTime('hh:nn', AppliedRestrictions.FieldByName('applied_time').AsDateTime);
+  AppliedSanctions.FieldByName('time').AsString:=FormatDateTime('hh:nn', AppliedSanctions.FieldByName('applied_time').AsDateTime);
 end;
 
 end.

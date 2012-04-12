@@ -241,7 +241,7 @@ object BookEditForm: TBookEditForm
     Top = 528
     Width = 281
     Height = 21
-    KeyField = 'id_Absence_reason'
+    KeyField = 'id_Reason'
     ListField = 'title'
     ListSource = DataLibrary.DSReasons
     TabOrder = 23

@@ -300,8 +300,8 @@ var i:integer;
 begin
   if MessageBox(handle, '¬ы действительно хотите очистить все записи о примененных мерах?',
    'ѕодтверждение', MB_YESNO Or MB_ICONQUESTION) = IDYES then
-    For i:=DataLibrary.AppliedRestrictions.RecordCount downto 1 do
-      DataLibrary.AppliedRestrictions.Delete();
+    For i:=DataLibrary.AppliedSanctions.RecordCount downto 1 do
+      DataLibrary.AppliedSanctions.Delete();
 end;
 
 procedure TMainForm.AppyRestButtonClick(Sender: TObject);

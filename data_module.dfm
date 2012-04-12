@@ -1,7 +1,7 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
-  Left = 894
-  Top = 139
+  Left = 901
+  Top = 105
   Height = 833
   Width = 386
   object ConnectionLibrary: TADOConnection
@@ -100,9 +100,9 @@ object DataLibrary: TDataLibrary
       FieldName = 'UDC'
       Size = 50
     end
-    object Booksdescryption: TWideStringField
+    object Booksdescription: TWideStringField
       DisplayWidth = 22
-      FieldName = 'descryption'
+      FieldName = 'description'
       Size = 255
     end
     object Bookspublisher: TStringField
@@ -128,7 +128,7 @@ object DataLibrary: TDataLibrary
       FieldKind = fkLookup
       FieldName = 'reason'
       LookupDataSet = Reasons
-      LookupKeyFields = 'id_Absence_reason'
+      LookupKeyFields = 'id_Reason'
       LookupResultField = 'title'
       KeyFields = 'reason_id'
       Size = 15
@@ -139,7 +139,7 @@ object DataLibrary: TDataLibrary
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
-    TableName = 'ABSENCE_REASONS'
+    TableName = 'REASONS'
     Left = 40
     Top = 224
   end
@@ -151,57 +151,13 @@ object DataLibrary: TDataLibrary
     Left = 40
     Top = 408
   end
-  object Restrictions: TADOTable
+  object Sanctions: TADOTable
     Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
-    TableName = 'RESTRICTIONS'
+    TableName = 'SANCTIONS'
     Left = 40
     Top = 464
-  end
-  object AppliedRestrictions: TADOTable
-    Active = True
-    Connection = ConnectionLibrary
-    CursorType = ctStatic
-    OnCalcFields = AppliedRestrictionsCalcFields
-    IndexFieldNames = 'reader_id'
-    MasterFields = 'id_Reader'
-    MasterSource = DSReaders
-    TableName = 'APPLIED_RESTRICTIONS'
-    Left = 40
-    Top = 528
-    object AppliedRestrictionsid_Applied_restriction: TAutoIncField
-      FieldName = 'id_Applied_restriction'
-      ReadOnly = True
-    end
-    object AppliedRestrictionsreader_id: TIntegerField
-      FieldName = 'reader_id'
-    end
-    object AppliedRestrictionsrestriction_id: TIntegerField
-      FieldName = 'restriction_id'
-    end
-    object AppliedRestrictionsapplied_date: TDateTimeField
-      FieldName = 'applied_date'
-    end
-    object AppliedRestrictionstime: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'time'
-      Size = 5
-      Calculated = True
-    end
-    object AppliedRestrictionsapplied_time: TDateTimeField
-      FieldName = 'applied_time'
-      Visible = False
-    end
-    object AppliedRestrictionsrestriction: TStringField
-      FieldKind = fkLookup
-      FieldName = 'restriction'
-      LookupDataSet = Restrictions
-      LookupKeyFields = 'id_Restriction'
-      LookupResultField = 'title'
-      KeyFields = 'restriction_id'
-      Lookup = True
-    end
   end
   object DSBooks: TDataSource
     DataSet = Books
@@ -218,13 +174,13 @@ object DataLibrary: TDataLibrary
     Left = 128
     Top = 408
   end
-  object DSRestrictions: TDataSource
-    DataSet = Restrictions
+  object DSSanctions: TDataSource
+    DataSet = Sanctions
     Left = 128
     Top = 464
   end
   object DSApplRestr: TDataSource
-    DataSet = AppliedRestrictions
+    DataSet = AppliedSanctions
     Left = 128
     Top = 528
   end
@@ -449,7 +405,6 @@ object DataLibrary: TDataLibrary
     Top = 288
   end
   object DebtorsQuery: TADOQuery
-    Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
     Parameters = <
@@ -469,13 +424,13 @@ object DataLibrary: TDataLibrary
         'er])+", '#1082#1086#1088#1087#1091#1089'  "+CStr([READERS]![home_case]) AS adress, READERS' +
         '.home_phone'
       
-        'FROM STREETS INNER JOIN ((READERS INNER JOIN APPLIED_RESTRICTION' +
-        'S ON READERS.id_Reader = APPLIED_RESTRICTIONS.reader_id) INNER J' +
-        'OIN TAKEN_BOOKS ON READERS.id_Reader = TAKEN_BOOKS.reader_id) ON' +
-        ' STREETS.id_Street = READERS.street_id'
+        'FROM STREETS INNER JOIN ((READERS INNER JOIN SANCTIONSS ON READE' +
+        'RS.id_Reader = SANCTIONS.reader_id) INNER JOIN TAKEN_BOOKS ON RE' +
+        'ADERS.id_Reader = TAKEN_BOOKS.reader_id) ON STREETS.id_Street = ' +
+        'READERS.street_id'
       
-        'WHERE ((([APPLIED_RESTRICTIONS]![restriction_id])=:restr) AND ((' +
-        '[TAKEN_BOOKS]![return_date]) Is Null));')
+        'WHERE ((([SANCTIONS]![sanction_id])=:restr) AND (([TAKEN_BOOKS]!' +
+        '[return_date]) Is Null));')
     Left = 216
     Top = 344
   end
@@ -497,12 +452,12 @@ object DataLibrary: TDataLibrary
     Prepared = True
     SQL.Strings = (
       'TRANSFORM Count(BOOKS.id_Book) AS [Count-id_Book]'
-      'SELECT ABSENCE_REASONS.title, Count(BOOKS.id_Book) AS [all]'
+      'SELECT REASONS.title, Count(BOOKS.id_Book) AS [all]'
       
-        'FROM ABSENCE_REASONS INNER JOIN (CATEGORIES INNER JOIN BOOKS ON ' +
-        'CATEGORIES.id_Category = BOOKS.category_id) ON ABSENCE_REASONS.i' +
-        'd_Absence_reason = BOOKS.reason_id'
-      'GROUP BY ABSENCE_REASONS.title'
+        'FROM REASONS INNER JOIN (CATEGORIES INNER JOIN BOOKS ON CATEGORI' +
+        'ES.id_Category = BOOKS.category_id) ON REASONS.id_Reason = BOOKS' +
+        '.reason_id'
+      'GROUP BY REASONS.title'
       'PIVOT CATEGORIES.title;')
     Left = 216
     Top = 408
@@ -615,7 +570,9 @@ object DataLibrary: TDataLibrary
     Top = 720
   end
   object TakenFromDate: TADOQuery
+    Active = True
     Connection = ConnectionLibrary
+    CursorType = ctStatic
     Parameters = <
       item
         Name = 'id'
@@ -645,5 +602,52 @@ object DataLibrary: TDataLibrary
         'e)=:date));')
     Left = 216
     Top = 720
+  end
+  object AppliedSanctions: TADOTable
+    Active = True
+    Connection = ConnectionLibrary
+    CursorType = ctStatic
+    OnCalcFields = AppliedSanctionsCalcFields
+    IndexFieldNames = 'reader_id'
+    MasterFields = 'id_Reader'
+    MasterSource = DSReaders
+    TableName = 'APPLIED_SANCTIONS'
+    Left = 40
+    Top = 528
+    object AppliedSanctionsid_Applied_sanction: TAutoIncField
+      FieldName = 'id_Applied_sanction'
+      ReadOnly = True
+      Visible = False
+    end
+    object AppliedSanctionsreader_id: TIntegerField
+      FieldName = 'reader_id'
+      Visible = False
+    end
+    object AppliedSanctionssanction_id: TIntegerField
+      FieldName = 'sanction_id'
+      Visible = False
+    end
+    object AppliedSanctionsapplied_date: TDateTimeField
+      FieldName = 'applied_date'
+    end
+    object AppliedSanctionsapplied_time: TDateTimeField
+      FieldName = 'applied_time'
+      Visible = False
+    end
+    object AppliedSanctionstime: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'time'
+      Size = 5
+      Calculated = True
+    end
+    object AppliedSanctionssanction: TStringField
+      FieldKind = fkLookup
+      FieldName = 'sanction'
+      LookupDataSet = Sanctions
+      LookupKeyFields = 'id_Sanction'
+      LookupResultField = 'title'
+      KeyFields = 'sanction_id'
+      Lookup = True
+    end
   end
 end

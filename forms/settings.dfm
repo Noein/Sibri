@@ -44,9 +44,9 @@ object SettingsForm: TSettingsForm
         Top = 48
         Width = 145
         Height = 21
-        KeyField = 'id_Restriction'
+        KeyField = 'id_Sanction'
         ListField = 'title'
-        ListSource = DataLibrary.DSRestrictions
+        ListSource = DataLibrary.DSSanctions
         TabOrder = 0
       end
     end
@@ -71,7 +71,7 @@ object SettingsForm: TSettingsForm
         Top = 48
         Width = 145
         Height = 21
-        KeyField = 'id_Absence_reason'
+        KeyField = 'id_Reason'
         ListField = 'title'
         ListSource = DataLibrary.DSReasons
         TabOrder = 0
@@ -98,7 +98,7 @@ object SettingsForm: TSettingsForm
         Top = 48
         Width = 145
         Height = 21
-        KeyField = 'id_Absence_reason'
+        KeyField = 'id_Reason'
         ListField = 'title'
         ListSource = DataLibrary.DSReasons
         TabOrder = 0

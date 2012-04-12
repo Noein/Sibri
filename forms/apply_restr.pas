@@ -56,10 +56,10 @@ end;
 procedure TApplyRestForm.ApplyButtonClick(Sender: TObject);
 begin
   if DBLookupComboBox1.KeyValue <> Null then begin
-    DataLibrary.AppliedRestrictions.Insert;
-    DataLibrary.AppliedRestrictions.FieldByName('restriction_id').AsInteger:=DBLookupComboBox1.KeyValue;
-    DataLibrary.AppliedRestrictions.FieldByName('applied_date').AsString:=DateToStr(Now);
-    DataLibrary.AppliedRestrictions.FieldByName('applied_time').AsString:=TimeToStr(Now);
+    DataLibrary.AppliedSanctions.Insert;
+    DataLibrary.AppliedSanctions.FieldByName('sanction_id').AsInteger:=DBLookupComboBox1.KeyValue;
+    DataLibrary.AppliedSanctions.FieldByName('applied_date').AsString:=DateToStr(Now);
+    DataLibrary.AppliedSanctions.FieldByName('applied_time').AsString:=TimeToStr(Now);
     close();
     end
   else
