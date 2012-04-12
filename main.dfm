@@ -1,5 +1,5 @@
 object MainForm: TMainForm
-  Left = 187
+  Left = 188
   Top = 143
   Width = 1084
   Height = 834
@@ -149,6 +149,8 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnMouseMove = DBGrid2MouseMove
+            OnTitleClick = DBGrid2TitleClick
             Columns = <
               item
                 Expanded = False
@@ -228,6 +230,8 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnMouseMove = DBGrid3MouseMove
+            OnTitleClick = DBGrid3TitleClick
             Columns = <
               item
                 Expanded = False
@@ -243,6 +247,7 @@ object MainForm: TMainForm
                 Expanded = False
                 FieldName = 'sanction'
                 Title.Caption = #1052#1077#1088#1072
+                Width = 152
                 Visible = True
               end
               item
@@ -254,12 +259,14 @@ object MainForm: TMainForm
                 Expanded = False
                 FieldName = 'applied_date'
                 Title.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1084#1077#1085#1077#1085#1080#1103
+                Width = 101
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'time'
                 Title.Caption = #1042#1088#1077#1084#1103' '#1087#1088#1080#1084#1077#1085#1077#1085#1080#1103
+                Width = 106
                 Visible = True
               end
               item
@@ -479,6 +486,8 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnMouseMove = DBGridBooksMouseMove
+            OnTitleClick = DBGridBooksTitleClick
             Columns = <
               item
                 Expanded = False
@@ -643,7 +652,7 @@ object MainForm: TMainForm
         Top = 0
         Width = 1068
         Height = 736
-        ActivePage = TabSheet8
+        ActivePage = TabSheet11
         Align = alClient
         TabOrder = 0
         object TabSheet8: TTabSheet
@@ -663,6 +672,8 @@ object MainForm: TMainForm
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
             OnDrawColumnCell = DBGrid6DrawColumnCell
+            OnMouseMove = DBGrid6MouseMove
+            OnTitleClick = DBGrid6TitleClick
             Columns = <
               item
                 Expanded = False
@@ -750,7 +761,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 1060
-            Height = 675
+            Height = 667
             Align = alClient
             DataSource = DataLibrary.DSPublishers
             TabOrder = 0
@@ -761,6 +772,8 @@ object MainForm: TMainForm
             TitleFont.Style = []
             OnColExit = DBGrid10ColExit
             OnDrawColumnCell = DBGrid10DrawColumnCell
+            OnMouseMove = DBGrid10MouseMove
+            OnTitleClick = DBGrid10TitleClick
             Columns = <
               item
                 Expanded = False
@@ -839,7 +852,7 @@ object MainForm: TMainForm
           end
           object Panel2: TPanel
             Left = 0
-            Top = 675
+            Top = 667
             Width = 1060
             Height = 41
             Align = alBottom
@@ -862,7 +875,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 1060
-            Height = 675
+            Height = 667
             Align = alClient
             DataSource = DataLibrary.DSCategories
             TabOrder = 0
@@ -871,6 +884,8 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnMouseMove = DBGrid5MouseMove
+            OnTitleClick = DBGrid5TitleClick
             Columns = <
               item
                 Expanded = False
@@ -887,7 +902,7 @@ object MainForm: TMainForm
           end
           object Panel3: TPanel
             Left = 0
-            Top = 675
+            Top = 667
             Width = 1060
             Height = 41
             Align = alBottom
@@ -911,7 +926,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 1060
-            Height = 675
+            Height = 667
             Align = alClient
             DataSource = DataLibrary.DSReasons
             TabOrder = 0
@@ -920,6 +935,8 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnMouseMove = DBGrid7MouseMove
+            OnTitleClick = DBGrid7TitleClick
             Columns = <
               item
                 Expanded = False
@@ -936,7 +953,7 @@ object MainForm: TMainForm
           end
           object Panel4: TPanel
             Left = 0
-            Top = 675
+            Top = 667
             Width = 1060
             Height = 41
             Align = alBottom
@@ -960,7 +977,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 1060
-            Height = 675
+            Height = 667
             Align = alClient
             DataSource = DataLibrary.DSSanctions
             TabOrder = 0
@@ -969,6 +986,8 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnMouseMove = DBGrid8MouseMove
+            OnTitleClick = DBGrid8TitleClick
             Columns = <
               item
                 Expanded = False
@@ -985,7 +1004,7 @@ object MainForm: TMainForm
           end
           object Panel5: TPanel
             Left = 0
-            Top = 675
+            Top = 667
             Width = 1060
             Height = 41
             Align = alBottom
@@ -1009,7 +1028,7 @@ object MainForm: TMainForm
             Left = 0
             Top = 0
             Width = 1060
-            Height = 675
+            Height = 667
             Align = alClient
             DataSource = DataLibrary.DSStreets
             TabOrder = 0
@@ -1018,6 +1037,8 @@ object MainForm: TMainForm
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnMouseMove = DBGrid9MouseMove
+            OnTitleClick = DBGrid9TitleClick
             Columns = <
               item
                 Expanded = False
@@ -1028,7 +1049,7 @@ object MainForm: TMainForm
           end
           object Panel6: TPanel
             Left = 0
-            Top = 675
+            Top = 667
             Width = 1060
             Height = 41
             Align = alBottom

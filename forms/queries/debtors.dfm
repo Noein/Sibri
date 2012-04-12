@@ -1,8 +1,8 @@
 object DebtorsQForm: TDebtorsQForm
-  Left = 215
-  Top = 222
-  Width = 854
-  Height = 678
+  Left = 225
+  Top = 296
+  Width = 809
+  Height = 351
   Caption = #1044#1086#1083#1078#1085#1080#1082#1080
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object DebtorsQForm: TDebtorsQForm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 846
+    Width = 801
     Height = 33
     Align = alTop
     BevelOuter = bvNone
@@ -35,8 +35,8 @@ object DebtorsQForm: TDebtorsQForm
   object DBGrid1: TDBGrid
     Left = 0
     Top = 33
-    Width = 846
-    Height = 618
+    Width = 801
+    Height = 284
     Align = alClient
     DataSource = DataLibrary.DSQuery2
     TabOrder = 0
@@ -66,15 +66,14 @@ object DebtorsQForm: TDebtorsQForm
       end
       item
         Expanded = False
-        FieldName = 'adress'
-        Title.Caption = #1040#1076#1088#1077#1089
-        Width = 300
+        FieldName = 'home_phone'
+        Title.Caption = #1058#1077#1083#1077#1092#1086#1085
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'home_phone'
-        Title.Caption = #1058#1077#1083#1077#1092#1086#1085
+        FieldName = 'adress'
+        Title.Caption = #1040#1076#1088#1077#1089
         Visible = True
       end>
   end

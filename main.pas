@@ -153,6 +153,33 @@ type
     procedure CheckBox1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure CheckBox2Click(Sender: TObject);
+  procedure DBGrid2MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+  procedure DBGrid2TitleClick(Column: TColumn);
+
+  procedure DBGrid3MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+  procedure DBGrid3TitleClick(Column: TColumn);
+
+  procedure DBGridBooksMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+  procedure DBGridBooksTitleClick(Column: TColumn);
+
+  procedure DBGrid5MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+  procedure DBGrid5TitleClick(Column: TColumn);
+
+  procedure DBGrid6MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+  procedure DBGrid6TitleClick(Column: TColumn);
+
+  procedure DBGrid7MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+  procedure DBGrid7TitleClick(Column: TColumn);
+
+  procedure DBGrid8MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+  procedure DBGrid8TitleClick(Column: TColumn);
+
+  procedure DBGrid9MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+  procedure DBGrid9TitleClick(Column: TColumn);
+
+  procedure DBGrid10MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+  procedure DBGrid10TitleClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -512,6 +539,311 @@ begin
   end;
 end;
 
+procedure TMainForm.DBGrid2MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  pt:TGridcoord;
+begin
+  pt:= DBGrid2.MouseCoord(x, y);
+  if pt.y=0 then
+    DBGrid2.Cursor:=crHandPoint
+  else
+    DBGrid2.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGrid2TitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex:integer=-1;
+{$J-}
+begin
+  if DBGrid2.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGrid2.DataSource.DataSet) do
+  begin
+    try
+      DBGrid2.Columns[PreviousColumnIndex].title.Font.Style:=DBGrid2.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+    
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName+' DESC'
+    else
+      Sort:=Column.Field.FieldName+' ASC';
+  end;
+end;
+
+procedure TMainForm.DBGrid3MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  pt:TGridcoord;
+begin
+  pt:= DBGrid3.MouseCoord(x, y);
+  if pt.y=0 then
+    DBGrid3.Cursor:=crHandPoint
+  else
+    DBGrid3.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGrid3TitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex:integer=-1;
+{$J-}
+begin
+  if DBGrid3.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGrid3.DataSource.DataSet) do
+  begin
+    try
+      DBGrid3.Columns[PreviousColumnIndex].title.Font.Style:=DBGrid3.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+    
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName+' DESC'
+    else
+      Sort:=Column.Field.FieldName+' ASC';
+  end;
+end;
+
+procedure TMainForm.DBGridBooksMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  pt:TGridcoord;
+begin
+  pt:= DBGridBooks.MouseCoord(x, y);
+  if pt.y=0 then
+    DBGridBooks.Cursor:=crHandPoint
+  else
+    DBGridBooks.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGridBooksTitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex:integer=-1;
+{$J-}
+begin
+  if DBGridBooks.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGridBooks.DataSource.DataSet) do
+  begin
+    try
+      DBGridBooks.Columns[PreviousColumnIndex].title.Font.Style:=DBGridBooks.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+    
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName+' DESC'
+    else
+      Sort:=Column.Field.FieldName+' ASC';
+  end;
+end;
+
+procedure TMainForm.DBGrid5MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  pt:TGridcoord;
+begin
+  pt:= DBGrid5.MouseCoord(x, y);
+  if pt.y=0 then
+    DBGrid5.Cursor:=crHandPoint
+  else
+    DBGrid5.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGrid5TitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex:integer=-1;
+{$J-}
+begin
+  if DBGrid5.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGrid5.DataSource.DataSet) do
+  begin
+    try
+      DBGrid5.Columns[PreviousColumnIndex].title.Font.Style:=DBGrid5.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+    
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName+' DESC'
+    else
+      Sort:=Column.Field.FieldName+' ASC';
+  end;
+end;
+
+procedure TMainForm.DBGrid6MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  pt:TGridcoord;
+begin
+  pt:= DBGrid6.MouseCoord(x, y);
+  if pt.y=0 then
+    DBGrid6.Cursor:=crHandPoint
+  else
+    DBGrid6.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGrid6TitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex:integer=-1;
+{$J-}
+begin
+  if DBGrid6.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGrid6.DataSource.DataSet) do
+  begin
+    try
+      DBGrid6.Columns[PreviousColumnIndex].title.Font.Style:=DBGrid6.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+    
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName+' DESC'
+    else
+      Sort:=Column.Field.FieldName+' ASC';
+  end;
+end;
+
+procedure TMainForm.DBGrid7MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  pt:TGridcoord;
+begin
+  pt:= DBGrid7.MouseCoord(x, y);
+  if pt.y=0 then
+    DBGrid7.Cursor:=crHandPoint
+  else
+    DBGrid7.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGrid7TitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex:integer=-1;
+{$J-}
+begin
+  if DBGrid7.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGrid7.DataSource.DataSet) do
+  begin
+    try
+      DBGrid7.Columns[PreviousColumnIndex].title.Font.Style:=DBGrid7.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+    
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName+' DESC'
+    else
+      Sort:=Column.Field.FieldName+' ASC';
+  end;
+end;
+
+procedure TMainForm.DBGrid8MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  pt:TGridcoord;
+begin
+  pt:= DBGrid8.MouseCoord(x, y);
+  if pt.y=0 then
+    DBGrid8.Cursor:=crHandPoint
+  else
+    DBGrid8.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGrid8TitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex:integer=-1;
+{$J-}
+begin
+  if DBGrid8.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGrid8.DataSource.DataSet) do
+  begin
+    try
+      DBGrid8.Columns[PreviousColumnIndex].title.Font.Style:=DBGrid8.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+    
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName+' DESC'
+    else
+      Sort:=Column.Field.FieldName+' ASC';
+  end;
+end;
+
+procedure TMainForm.DBGrid9MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  pt:TGridcoord;
+begin
+  pt:= DBGrid9.MouseCoord(x, y);
+  if pt.y=0 then
+    DBGrid9.Cursor:=crHandPoint
+  else
+    DBGrid9.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGrid9TitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex:integer=-1;
+{$J-}
+begin
+  if DBGrid9.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGrid9.DataSource.DataSet) do
+  begin
+    try
+      DBGrid9.Columns[PreviousColumnIndex].title.Font.Style:=DBGrid9.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+    
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName+' DESC'
+    else
+      Sort:=Column.Field.FieldName+' ASC';
+  end;
+end;
+
+procedure TMainForm.DBGrid10MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  pt:TGridcoord;
+begin
+  pt:= DBGrid10.MouseCoord(x, y);
+  if pt.y=0 then
+    DBGrid10.Cursor:=crHandPoint
+  else
+    DBGrid10.Cursor:=crDefault;
+end;
+
+procedure TMainForm.DBGrid10TitleClick(Column: TColumn);
+{$J+}
+  const PreviousColumnIndex:integer=-1;
+{$J-}
+begin
+  if DBGrid10.DataSource.DataSet is TCustomADODataSet then
+  with TCustomADODataSet(DBGrid10.DataSource.DataSet) do
+  begin
+    try
+      DBGrid10.Columns[PreviousColumnIndex].title.Font.Style:=DBGrid10.Columns[PreviousColumnIndex].title.Font.Style - [fsBold];
+    except
+    end;
+    
+    Column.title.Font.Style:=Column.title.Font.Style + [fsBold];
+    PreviousColumnIndex:=Column.Index;
+
+    if (Pos(Column.Field.FieldName, Sort) = 1) and (Pos(' DESC', Sort)= 0) then
+      Sort:=Column.Field.FieldName+' DESC'
+    else
+      Sort:=Column.Field.FieldName+' ASC';
+  end;
+end;
 
 procedure TMainForm.DBGrid1DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;

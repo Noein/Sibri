@@ -1,7 +1,7 @@
 object DataLibrary: TDataLibrary
   OldCreateOrder = False
-  Left = 901
-  Top = 105
+  Left = 894
+  Top = 115
   Height = 833
   Width = 386
   object ConnectionLibrary: TADOConnection
@@ -405,6 +405,7 @@ object DataLibrary: TDataLibrary
     Top = 288
   end
   object DebtorsQuery: TADOQuery
+    Active = True
     Connection = ConnectionLibrary
     CursorType = ctStatic
     Parameters = <
@@ -417,6 +418,7 @@ object DataLibrary: TDataLibrary
         Size = 510
         Value = Null
       end>
+    Prepared = True
     SQL.Strings = (
       
         'SELECT DISTINCT READERS.last_name, READERS.first_name, READERS.p' +
@@ -424,13 +426,13 @@ object DataLibrary: TDataLibrary
         'er])+", '#1082#1086#1088#1087#1091#1089'  "+CStr([READERS]![home_case]) AS adress, READERS' +
         '.home_phone'
       
-        'FROM STREETS INNER JOIN ((READERS INNER JOIN SANCTIONSS ON READE' +
-        'RS.id_Reader = SANCTIONS.reader_id) INNER JOIN TAKEN_BOOKS ON RE' +
-        'ADERS.id_Reader = TAKEN_BOOKS.reader_id) ON STREETS.id_Street = ' +
-        'READERS.street_id'
+        'FROM STREETS INNER JOIN ((READERS INNER JOIN APPLIED_SANCTIONS O' +
+        'N READERS.id_Reader = APPLIED_SANCTIONS.reader_id) INNER JOIN TA' +
+        'KEN_BOOKS ON READERS.id_Reader = TAKEN_BOOKS.reader_id) ON STREE' +
+        'TS.id_Street = READERS.street_id'
       
-        'WHERE ((([SANCTIONS]![sanction_id])=:restr) AND (([TAKEN_BOOKS]!' +
-        '[return_date]) Is Null));')
+        'WHERE ((([APPLIED_SANCTIONS]![sanction_id])=:restr) AND (([TAKEN' +
+        '_BOOKS]![return_date]) Is Null));')
     Left = 216
     Top = 344
   end

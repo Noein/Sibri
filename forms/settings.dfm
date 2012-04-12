@@ -1,6 +1,6 @@
 object SettingsForm: TSettingsForm
   Left = 390
-  Top = 317
+  Top = 347
   Width = 522
   Height = 336
   Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
