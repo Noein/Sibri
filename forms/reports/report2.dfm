@@ -473,7 +473,7 @@ object Report2Form: TReport2Form
         2770.187500000000000000)
       BandType = rbPageFooter
       object QRSysData1: TQRSysData
-        Left = 328
+        Left = 536
         Top = 16
         Width = 46
         Height = 17
@@ -484,7 +484,7 @@ object Report2Form: TReport2Form
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          867.833333333333500000
+          1418.166666666667000000
           42.333333333333340000
           121.708333333333300000)
         Alignment = taLeftJustify
@@ -496,7 +496,7 @@ object Report2Form: TReport2Form
         FontSize = 10
       end
       object QRSysData2: TQRSysData
-        Left = 56
+        Left = 224
         Top = 16
         Width = 78
         Height = 17
@@ -507,7 +507,7 @@ object Report2Form: TReport2Form
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          148.166666666666700000
+          592.666666666666800000
           42.333333333333340000
           206.375000000000000000)
         Alignment = taLeftJustify
@@ -519,9 +519,9 @@ object Report2Form: TReport2Form
         FontSize = 10
       end
       object QRLabel9: TQRLabel
-        Left = 0
+        Left = 40
         Top = 16
-        Width = 44
+        Width = 181
         Height = 17
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -530,14 +530,39 @@ object Report2Form: TReport2Form
         Frame.DrawRight = False
         Size.Values = (
           44.979166666666670000
-          0.000000000000000000
+          105.833333333333300000
           42.333333333333340000
-          116.416666666666700000)
+          478.895833333333400000)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = #1042#1089#1077#1075#1086': '
+        Caption = #1042#1089#1077#1075#1086' '#1085#1077#1074#1086#1079#1074#1088#1072#1097#1077#1085#1085#1099#1093' '#1082#1085#1080#1075': '
+        Color = clWhite
+        Transparent = False
+        WordWrap = True
+        FontSize = 10
+      end
+      object QRLabel11: TQRLabel
+        Left = 456
+        Top = 16
+        Width = 75
+        Height = 17
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          44.979166666666670000
+          1206.500000000000000000
+          42.333333333333340000
+          198.437500000000000000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = #1057#1090#1088#1072#1085#1080#1094#1072' '#8470
         Color = clWhite
         Transparent = False
         WordWrap = True
@@ -585,6 +610,54 @@ object Report2Form: TReport2Form
         Color = clWhite
         Transparent = False
         WordWrap = True
+        FontSize = 10
+      end
+      object QRLabel10: TQRLabel
+        Left = 40
+        Top = 16
+        Width = 93
+        Height = 17
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          44.979166666666670000
+          105.833333333333300000
+          42.333333333333340000
+          246.062500000000000000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = #1058#1077#1082#1091#1097#1072#1103' '#1076#1072#1090#1072': '
+        Color = clWhite
+        Transparent = False
+        WordWrap = True
+        FontSize = 10
+      end
+      object QRSysData3: TQRSysData
+        Left = 136
+        Top = 16
+        Width = 36
+        Height = 17
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          44.979166666666670000
+          359.833333333333400000
+          42.333333333333340000
+          95.250000000000000000)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        Color = clWhite
+        Data = qrsDate
+        Transparent = False
         FontSize = 10
       end
     end

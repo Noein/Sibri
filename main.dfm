@@ -30,7 +30,7 @@ object MainForm: TMainForm
         Top = 0
         Width = 1068
         Height = 736
-        ActivePage = TabSheet5
+        ActivePage = TabSheet6
         Align = alClient
         TabOrder = 0
         object TabSheet5: TTabSheet
@@ -513,7 +513,8 @@ object MainForm: TMainForm
               item
                 Expanded = False
                 FieldName = 'publication_date'
-                Title.Caption = #1044#1072#1090#1072' '#1087#1091#1073#1083#1080#1082#1072#1094#1080#1080
+                Title.Caption = #1044#1072#1090#1072' '#1080#1079#1076#1072#1085#1080#1103
+                Width = 80
                 Visible = True
               end
               item

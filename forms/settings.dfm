@@ -1,8 +1,8 @@
 object SettingsForm: TSettingsForm
   Left = 390
   Top = 317
-  Width = 548
-  Height = 420
+  Width = 522
+  Height = 336
   Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,35 +15,17 @@ object SettingsForm: TSettingsForm
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
-    Left = 0
-    Top = 0
-    Width = 540
-    Height = 41
-    Align = alTop
-    BevelOuter = bvNone
-    TabOrder = 0
-    object Label1: TLabel
-      Left = 8
-      Top = 16
-      Width = 520
-      Height = 13
-      Caption = 
-        #1044#1083#1103' '#1090#1086#1075#1086', '#1095#1090#1086#1073#1099' '#1087#1088#1086#1075#1088#1072#1084#1084#1072' '#1088#1072#1073#1086#1090#1072#1083#1072' '#1086#1078#1080#1076#1072#1077#1084#1099#1084' '#1086#1073#1088#1072#1079#1086#1084' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' ' +
-        #1079#1072#1076#1072#1090#1100' '#1085#1077#1082#1086#1090#1086#1088#1099#1077' '#1085#1072#1089#1090#1088#1086#1081#1082#1080
-    end
-  end
   object Panel2: TPanel
     Left = 0
-    Top = 41
-    Width = 540
-    Height = 316
+    Top = 0
+    Width = 514
+    Height = 266
     Align = alClient
     BevelOuter = bvNone
-    TabOrder = 1
+    TabOrder = 0
     object GroupBox1: TGroupBox
       Left = 8
-      Top = 16
+      Top = 8
       Width = 497
       Height = 81
       Caption = #1053#1072#1089#1090#1088#1086#1082#1080' '#1079#1072#1087#1088#1086#1089#1086#1074
@@ -70,9 +52,9 @@ object SettingsForm: TSettingsForm
     end
     object GroupBox2: TGroupBox
       Left = 8
-      Top = 104
+      Top = 96
       Width = 497
-      Height = 89
+      Height = 81
       Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080' '#1086#1090#1095#1105#1090#1086#1074
       TabOrder = 1
       object Label3: TLabel
@@ -97,9 +79,9 @@ object SettingsForm: TSettingsForm
     end
     object GroupBox3: TGroupBox
       Left = 8
-      Top = 200
+      Top = 184
       Width = 497
-      Height = 89
+      Height = 81
       Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080' '#1073#1080#1073#1083#1080#1086#1090#1077#1082#1080
       TabOrder = 2
       object Label4: TLabel
@@ -125,12 +107,12 @@ object SettingsForm: TSettingsForm
   end
   object Panel3: TPanel
     Left = 0
-    Top = 357
-    Width = 540
+    Top = 266
+    Width = 514
     Height = 36
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 2
+    TabOrder = 1
     object Button1: TButton
       Left = 416
       Top = 8

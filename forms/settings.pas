@@ -8,8 +8,6 @@ uses
 
 type
   TSettingsForm = class(TForm)
-    Panel1: TPanel;
-    Label1: TLabel;
     Panel2: TPanel;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;

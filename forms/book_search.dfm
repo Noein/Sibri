@@ -57,7 +57,7 @@ object BookSearchForm: TBookSearchForm
     Left = 176
     Top = 88
     Width = 75
-    Height = 13
+    Height = 17
     Caption = #1044#1072#1090#1072' '#1080#1079#1076#1072#1085#1080#1103
     TabOrder = 4
   end
@@ -87,7 +87,7 @@ object BookSearchForm: TBookSearchForm
     Left = 176
     Top = 8
     Width = 57
-    Height = 10
+    Height = 17
     Caption = #1050#1072#1090#1077#1075#1086#1088#1080#1103
     TabOrder = 7
   end
@@ -132,9 +132,9 @@ object BookSearchForm: TBookSearchForm
   object StaticText3: TStaticText
     Left = 176
     Top = 48
-    Width = 53
-    Height = 13
-    Caption = #1048#1079#1076#1072#1090#1077#1083#1100
+    Width = 76
+    Height = 17
+    Caption = #1048#1079#1076#1072#1090#1077#1083#1100#1089#1090#1074#1086
     TabOrder = 12
   end
   object ClearButton: TButton
